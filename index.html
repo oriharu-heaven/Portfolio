@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Designer & Developer Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.google.com/share?selection.family=Lexend+Deca:wght@100..900" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-header__inner container">
+            <a href="#" class="site-header__logo">Your Name</a>
+            <div class="header-controls">
+                <nav class="site-nav">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM5.106 17.834a.75.75 0 001.06 1.06l1.591-1.59a.75.75 0 00-1.06-1.061l-1.591 1.59zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.166 5.106a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591z"/></svg>
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69a.75.75 0 01.981.981A10.503 10.503 0 0118 18a10.5 10.5 0 01-10.5-10.5c0-4.368 2.667-8.112 6.46-9.672a.75.75 0 01.818.162z" clip-rule="evenodd"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero__inner">
+            <h1 class="hero__title anim-char-fadein" data-original-text="CREATIVE<br>PORTFOLIO"></h1>
+            <p class="hero__name anim-char-fadein" data-original-text="Designer & Developer"></p>
+        </div>
+    </section>
+
+    <main>
+        <section class="section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section__title anim-char-fadein" data-original-text="About Me"></h2>
+                    <p class="section__text anim-char-fadein" data-original-text="東京を拠点に活動するUI/UXデザイナー兼フロントエンドデベロッパー。<br>ミニマルで美しいデザインと、ユーザーに心地よい体験を提供するインタラクションを得意としています。ビジネスの課題解決とユーザーの満足度向上の両立を目指し、プロジェクトに取り組んでいます。"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="work">
+            <div class="container">
+                <h2 class="section__title anim-char-fadein" data-original-text="Selected Works"></h2>
+
+                <div class="work-list">
+                    <div class="work-item">
+                        <div class="work-item__image anim-scroll-fade">
+                            <img src="https://via.placeholder.com/800x600/A6CDC6/16404D?text=Project+Image+1" alt="作品1の画像">
+                        </div>
+                        <div class="work-item__content">
+                            <h3 class="work-item__title anim-char-fadein" data-original-text="Project Name A"></h3>
+                            <p class="work-item__category anim-char-fadein" data-original-text="UI/UX Design, Web Development"></p>
+                            <a href="#" class="work-item__link anim-char-fadein" data-original-text="View Project"></a>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-item__image anim-scroll-fade">
+                             <img src="https://via.placeholder.com/800x600/A6CDC6/16404D?text=Project+Image+2" alt="作品2の画像">
+                        </div>
+                        <div class="work-item__content">
+                            <h3 class="work-item__title anim-char-fadein" data-original-text="Project Name B"></h3>
+                            <p class="work-item__category anim-char-fadein" data-original-text="Branding, Art Direction"></p>
+                            <a href="#" class="work-item__link anim-char-fadein" data-original-text="View Project"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                 <div class="contact-content">
+                    <h2 class="section__title anim-char-fadein" data-original-text="Get In Touch"></h2>
+                    <p class="section__text anim-char-fadein" data-original-text="プロジェクトのご相談やご依頼など、お気軽にご連絡ください。"></p>
+                    <a href="mailto:youraddress@example.com" class="contact__button anim-char-fadein" data-original-text="youraddress@example.com"></a>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__nav">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer__sns">
+                <a href="#" target="_blank">X (Twitter)</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">LinkedIn</a>
+            </div>
+            <p class="footer__copy">&copy; 2025 Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
