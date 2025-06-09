@@ -110,4 +110,100 @@ document.addEventListener('DOMContentLoaded', () => {
 
     imageElements.forEach(el => imageObserver.observe(el));
 
+
+    // =======================================================================
+    // --- スクロール連動3Dアニメーション (Three.js & GSAP) ---
+    // =======================================================================
+    
+    // ライブラリが存在するか確認
+    if (typeof THREE === 'undefined' || typeof gsap === 'undefined') {
+        console.error('Three.jsまたはGSAPライブラリが読み込まれていません。');
+        return;
+    }
+
+    // GSAPにScrollTriggerプラグインを登録
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- Three.jsの基本設定 ---
+    const canvas = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true, // 背景を透過させる
+    });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    camera.position.z = 5;
+
+    // --- 3Dオブジェクト（点群の球体）の作成 ---
+    // ジオメトリ（形状）を球体に変更
+    const geometry = new THREE.SphereGeometry(2, 64, 64); // 半径2, 横分割64, 縦分割64
+    // マテリアル（材質）を点群用に変更
+    const material = new THREE.PointsMaterial({
+        color: 0xDDA853,      // 点の色
+        size: 0.02,           // 点の基本サイズ
+        sizeAttenuation: true // 遠くの点が小さく見えるようにする
+    });
+    // メッシュではなく、Pointsオブジェクトを作成
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // --- ライトの追加 (PointsMaterialはライトの影響を受けないが念のため) ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
+
+    // --- ウィンドウリサイズへの対応 ---
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+
+    // --- GSAP ScrollTriggerによるアニメーション設定 ---
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: 'body', 
+            start: 'top top', 
+            end: 'bottom bottom',
+            scrub: 1, 
+        }
+    });
+
+    // スクロールに合わせてオブジェクトを回転させる
+    tl.to(points.rotation, {
+        x: Math.PI * 2,
+        y: Math.PI * 4,
+    }, 0); // タイムラインの開始位置からアニメーション開始
+
+    // スクロールに合わせてオブジェクトのスケール（大きさ）を変更する
+    // yoyo:true で往復アニメーションになる
+    tl.to(points.scale, {
+        x: 1.5,
+        y: 1.5,
+        z: 1.5,
+        repeat: 1, // 1回繰り返す（つまり往復）
+        yoyo: true, // 行って戻る
+        ease: 'power1.inOut'
+    }, 0);
+
+
+    // --- アニメーションループ ---
+    const clock = new THREE.Clock();
+    const tick = () => {
+        const elapsedTime = clock.getElapsedTime();
+        
+        // マウスカーソルの位置に応じて少しだけオブジェクトを傾ける
+        // この部分は実装していませんが、さらなるインタラクティブ性のために追加可能です
+
+        // レンダリング
+        renderer.render(scene, camera);
+        
+        // 次のフレームを要求
+        window.requestAnimationFrame(tick);
+    }
+    
+    tick();
 });

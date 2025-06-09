@@ -43,6 +43,17 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* --- 3Dキャンバスのスタイル --- */
+#webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    /* コンテンツより後ろに配置 */
+    z-index: -1;
+}
+
+
 img {
     max-width: 100%;
     height: auto;
@@ -69,6 +80,9 @@ a:hover {
 
 .section {
     padding: 120px 0;
+    /* 各セクションに背景色を指定し、下の3Dが透けないようにする */
+    background-color: var(--color-bg);
+    transition: background-color 0.3s ease;
 }
 
 .section__title, .section__text, .work-item__category, .footer__copy, .work-item__title {
@@ -166,7 +180,8 @@ body.light-mode .theme-toggle .sun { display: none; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 80px; /* 固定ヘッダー分の余白 */
+    /* ヒーローセクションの背景は透明にしてcanvasが見えるようにする */
+    background-color: transparent; 
 }
 
 .hero__title {
@@ -198,7 +213,12 @@ body.light-mode .theme-toggle .sun { display: none; }
 .work-list { display: grid; gap: 100px; }
 .work-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .work-item:nth-child(even) .work-item__image { order: 2; }
-.work-item__image { background-color: var(--color-subtle-text); }
+
+/* 画像コンテナ: はみ出した部分を隠す */
+.work-item__image { 
+    background-color: var(--color-subtle-text);
+    overflow: hidden; 
+}
 .work-item__title { font-size: 2rem; font-weight: 400; margin-bottom: 10px; }
 .work-item__category { color: var(--color-subtle-text); margin-bottom: 20px; }
 
@@ -229,6 +249,8 @@ body.light-mode .theme-toggle .sun { display: none; }
     text-align: center;
     border-top: 1px solid var(--color-border);
     transition: border-color 0.3s ease;
+    /* フッターにも背景色を指定 */
+    background-color: var(--color-bg);
 }
 .footer__nav, .footer__sns {
     display: flex;
@@ -244,5 +266,20 @@ body.light-mode .theme-toggle .sun { display: none; }
 /* --- アニメーション --- */
 .anim-char-fadein { opacity: 0; transition: opacity 0.5s ease; }
 .anim-char-fadein.is-visible { opacity: 1; }
-.anim-scroll-fade { opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1); }
-.anim-scroll-fade.is-visible { opacity: 1; transform: translateY(0); }
+
+/* 画像アニメーション（clip-path版） */
+.anim-scroll-fade img {
+    /* 初期状態：クリップされて見えない & 少し大きい */
+    clip-path: inset(48% 48% 48% 48%);
+    transform: scale(1.1);
+    opacity: 0;
+    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), 
+                transform 1.2s cubic-bezier(0.77, 0, 0.175, 1),
+                opacity 1s ease;
+}
+.anim-scroll-fade.is-visible img {
+    /* 表示後の状態：クリップが解除され、元のサイズに戻る */
+    clip-path: inset(0% 0% 0% 0%);
+    transform: scale(1);
+    opacity: 1;
+}
