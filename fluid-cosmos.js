@@ -1,17 +1,133 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const canvas = document.getElementById('main-art-canvas');
-    if (canvas) {
+    // --- 共有ヘッダーロジック ---
+    const setupHeaderControls = () => {
+        const body = document.body;
+
+        // 1. カラーパレット切り替え
+        const colorToggleButton = document.getElementById('color-palette-toggle');
+        if (colorToggleButton) {
+            const palettes = ['palette-1', 'palette-2', 'palette-3'];
+            let currentPaletteIndex = 0;
+
+            const savedPalette = localStorage.getItem('palette');
+            if (savedPalette && palettes.includes(savedPalette)) {
+                body.dataset.palette = savedPalette;
+                currentPaletteIndex = palettes.indexOf(savedPalette);
+            } else {
+                body.dataset.palette = palettes[0];
+            }
+
+            colorToggleButton.addEventListener('click', () => {
+                currentPaletteIndex = (currentPaletteIndex + 1) % palettes.length;
+                const newPalette = palettes[currentPaletteIndex];
+                body.dataset.palette = newPalette;
+                localStorage.setItem('palette', newPalette);
+            });
+        }
+
+        // 2. ライト/ダークテーマ切り替え
+        const themeToggleButton = document.getElementById('theme-toggle');
+        if (themeToggleButton) {
+            if (localStorage.getItem('theme') === 'light') {
+                body.classList.add('light-mode');
+            }
+            themeToggleButton.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+            });
+        }
+        
+        // 3. スクロール時のヘッダー表示
+        const siteHeader = document.querySelector('.site-header');
+        if (siteHeader) {
+            window.addEventListener('scroll', () => {
+                siteHeader.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        }
+    };
+    
+    // --- 共有アニメーションロジック ---
+    const setupSharedAnimations = () => {
+        const textElements = document.querySelectorAll('.anim-char-fadein');
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        if (textElements.length > 0) {
+            const textObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        animateText(target);
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            textElements.forEach(el => {
+                if (!el.dataset.originalText) { el.dataset.originalText = el.innerHTML; }
+                el.innerHTML = '';
+                textObserver.observe(el);
+            });
+
+            function animateText(target) {
+                const originalHTML = target.dataset.originalText || '';
+                const parts = originalHTML.match(/<[^>]+>|./g) || [];
+                const duration = 1000;
+                let startTime = null;
+                target.classList.add('is-visible');
+                function animationStep(currentTime) {
+                    if (!startTime) startTime = currentTime;
+                    const progress = Math.min((currentTime - startTime) / duration, 1);
+                    const fixedCount = Math.floor(progress * parts.length);
+                    let newHTML = '';
+                    for (let i = 0; i < parts.length; i++) {
+                        if (i < fixedCount) {
+                            newHTML += parts[i];
+                        } else if (parts[i].startsWith('<') || /\s/.test(parts[i])) {
+                            newHTML += parts[i];
+                        } else {
+                            newHTML += characters.charAt(Math.floor(Math.random() * characters.length));
+                        }
+                    }
+                    target.innerHTML = newHTML;
+                    if (progress < 1) {
+                        requestAnimationFrame(animationStep);
+                    } else {
+                        target.innerHTML = originalHTML;
+                    }
+                }
+                requestAnimationFrame(animationStep);
+            }
+        }
+        
+        const imageElements = document.querySelectorAll('.anim-scroll-fade');
+        if (imageElements.length > 0) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            imageElements.forEach(el => imageObserver.observe(el));
+        }
+    };
+
+    // --- ページ固有ロジックの実行 ---
+
+    // 共通部分の初期化
+    setupHeaderControls();
+    setupSharedAnimations();
+
+    // fluid-cosmos.html用のロジック
+    if (document.getElementById('main-art-canvas')) {
+        const canvas = document.getElementById('main-art-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
         
-        const MOUSE = {
-            x: undefined,
-            y: undefined,
-        };
+        const MOUSE = { x: undefined, y: undefined };
 
-        // --- 設定 ---
         const PARTICLE_COUNT = 800;
         const CONNECTION_DISTANCE = 100; 
         const MAX_CONNECTIONS_PER_PARTICLE = 3;
@@ -19,30 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const MAX_SPEED = 1.5;
         const MOUSE_RADIUS = 80;
 
-        // --- 空間グリッド (パフォーマンス最適化用) ---
         let grid = [];
         const GRID_CELL_SIZE = 120;
         let gridCols, gridRows;
 
-        // --- 色相を正しく平均化するヘルパー関数 ---
         const averageHue = (hue1, hue2) => {
-            const rad1 = hue1 * (Math.PI / 180);
-            const rad2 = hue2 * (Math.PI / 180);
-            const x1 = Math.cos(rad1);
-            const y1 = Math.sin(rad1);
-            const x2 = Math.cos(rad2);
-            const y2 = Math.sin(rad2);
-            const avgX = (x1 + x2) / 2;
-            const avgY = (y1 + y2) / 2;
-            const avgRad = Math.atan2(avgY, avgX);
-            let avgHue = avgRad * (180 / Math.PI);
-            if (avgHue < 0) {
-                avgHue += 360;
+            const d1 = Math.abs(hue1 - hue2);
+            const d2 = 360 - d1;
+            if (d1 < d2) {
+                return (hue1 + hue2) / 2;
+            } else {
+                let avg = (hue1 + hue2 + 360) / 2;
+                return avg > 360 ? avg - 360 : avg;
             }
-            return avgHue;
         };
         
-        // --- 初期化 ---
         const setup = () => {
             const dpr = Math.min(window.devicePixelRatio, 2);
             const rect = canvas.parentElement.getBoundingClientRect();
@@ -51,19 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
             canvas.width = width * dpr;
             canvas.height = height * dpr;
             ctx.scale(dpr, dpr);
-            
             particles = [];
-
             for (let i = 0; i < PARTICLE_COUNT; i++) {
                 particles.push(new Particle());
             }
-            
             gridCols = Math.ceil(width / GRID_CELL_SIZE);
             gridRows = Math.ceil(height / GRID_CELL_SIZE);
             grid = new Array(gridCols * gridRows);
         };
 
-        // --- パーティクルクラス ---
         class Particle {
             constructor(x, y) {
                 this.x = x ?? Math.random() * width;
@@ -74,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.connections = 0;
                 this.hue = Math.random() * 360; 
             }
-
             update(mouse) {
                 if(mouse.x !== undefined) {
                     const dx = this.x - mouse.x;
@@ -87,25 +189,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         this.vy += Math.sin(angle) * force * 0.5;
                     }
                 }
-                
                 const speed = Math.sqrt(this.vx*this.vx + this.vy*this.vy);
                 if (speed > MAX_SPEED) {
                     this.vx = (this.vx / speed) * MAX_SPEED;
                     this.vy = (this.vy / speed) * MAX_SPEED;
                 }
-
                 this.vx *= 0.97;
                 this.vy *= 0.97;
-
                 this.x += this.vx;
                 this.y += this.vy;
-                
-                if (this.x < 0) this.x = width;
-                if (this.x > width) this.x = 0;
-                if (this.y < 0) this.y = height;
-                if (this.y > height) this.y = 0;
+                if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
             }
-
             draw(context) {
                 context.fillStyle = `hsla(${this.hue}, 100%, 70%, 0.8)`;
                 context.beginPath();
@@ -114,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // --- アニメーションループ ---
         const animate = () => {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
             ctx.fillRect(0, 0, width, height);
@@ -126,19 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
                  particles.shift();
             }
 
-            for (let i = 0; i < grid.length; i++) {
-                grid[i] = [];
-            }
+            for (let i = 0; i < grid.length; i++) grid[i] = [];
             for (const p of particles) {
                 p.update(MOUSE);
                 p.draw(ctx);
                 p.connections = 0; 
-
                 const gridX = Math.floor(p.x / GRID_CELL_SIZE);
                 const gridY = Math.floor(p.y / GRID_CELL_SIZE);
                 if (gridX >= 0 && gridX < gridCols && gridY >= 0 && gridY < gridRows) {
-                    const index = gridY * gridCols + gridX;
-                    grid[index].push(p);
+                    grid[gridY * gridCols + gridX].push(p);
                 }
             }
             
@@ -147,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cellParticles = grid[i];
                 for (const p1 of cellParticles) {
                     if (p1.connections >= MAX_CONNECTIONS_PER_PARTICLE) continue;
-
                     for (let dx = -1; dx <= 1; dx++) {
                         for (let dy = -1; dy <= 1; dy++) {
                             const gridX = (i % gridCols) + dx;
@@ -156,17 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const searchIndex = gridY * gridCols + gridX;
                                 for (const p2 of grid[searchIndex]) {
                                     if (p1 === p2 || p2.connections >= MAX_CONNECTIONS_PER_PARTICLE) continue;
-                                    
                                     const dist_x = p1.x - p2.x;
                                     const dist_y = p1.y - p2.y;
                                     const dist = Math.sqrt(dist_x * dist_x + dist_y * dist_y);
-                                    
                                     if (dist < CONNECTION_DISTANCE) {
-                                        p1.connections++;
-                                        p2.connections++;
-                                        
+                                        p1.connections++; p2.connections++;
                                         const blendedHue = averageHue(p1.hue, p2.hue);
-                                        
                                         ctx.beginPath();
                                         ctx.moveTo(p1.x, p1.y);
                                         ctx.lineTo(p2.x, p2.y);
@@ -179,112 +263,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-            
             requestAnimationFrame(animate);
         };
 
-        // --- イベントリスナー ---
         const getMousePos = (e) => {
             const rect = canvas.getBoundingClientRect();
             return { x: e.clientX - rect.left, y: e.clientY - rect.top };
         };
-
-        canvas.addEventListener('mousemove', (e) => {
-            const pos = getMousePos(e);
-            MOUSE.x = pos.x;
-            MOUSE.y = pos.y;
-        });
-        
-        canvas.addEventListener('mouseleave', () => {
-            MOUSE.x = undefined;
-            MOUSE.y = undefined;
-        });
-
+        canvas.addEventListener('mousemove', (e) => { MOUSE.x = getMousePos(e).x; MOUSE.y = getMousePos(e).y; });
+        canvas.addEventListener('mouseleave', () => { MOUSE.x = undefined; MOUSE.y = undefined; });
         canvas.addEventListener('click', (e) => {
             const pos = getMousePos(e);
             for (let i = 0; i < CLICK_BURST_COUNT; i++) {
                 const p = new Particle(pos.x, pos.y);
                 const angle = Math.random() * Math.PI * 2;
                 const speed = Math.random() * 4 + 1;
-                p.vx = Math.cos(angle) * speed;
-                p.vy = Math.sin(angle) * speed;
+                p.vx = Math.cos(angle) * speed; p.vy = Math.sin(angle) * speed;
                 particles.push(p);
             }
         });
-
         window.addEventListener('resize', setup);
-        
         setup();
         animate();
-    }
-    
-    // --- 共通のテーマ切り替え、文字アニメーション ---
-    const body = document.body;
-    const themeToggleButton = document.getElementById('theme-toggle');
-    if (themeToggleButton) {
-        if (localStorage.getItem('theme') === 'light') {
-            body.classList.add('light-mode');
-        }
-        themeToggleButton.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : '');
-        });
-    }
-
-    const textElements = document.querySelectorAll('.anim-char-fadein');
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    if(textElements.length > 0){
-        const textObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    animateText(target);
-                    observer.unobserve(target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        textElements.forEach(el => {
-            if (!el.dataset.originalText) {
-                el.dataset.originalText = el.innerHTML;
-            }
-            el.innerHTML = '';
-            textObserver.observe(el);
-        });
-
-        function animateText(target) {
-            const originalHTML = target.dataset.originalText || '';
-            const parts = originalHTML.match(/<[^>]+>|./g) || [];
-            const duration = 1000;
-            let startTime = null;
-            target.classList.add('is-visible');
-            function animationStep(currentTime) {
-                if (!startTime) startTime = currentTime;
-                const elapsedTime = currentTime - startTime;
-                const progress = Math.min(elapsedTime / duration, 1);
-                const fixedPartsCount = Math.floor(progress * parts.length);
-                let newHTML = '';
-                for (let i = 0; i < parts.length; i++) {
-                    if (i < fixedPartsCount) {
-                        newHTML += parts[i];
-                    } else {
-                        if (parts[i].startsWith('<') && parts[i].endsWith('>')) {
-                            newHTML += parts[i];
-                        } else if (/\s/.test(parts[i])) {
-                            newHTML += parts[i];
-                        } else {
-                            newHTML += characters.charAt(Math.floor(Math.random() * characters.length));
-                        }
-                    }
-                }
-                target.innerHTML = newHTML;
-                if (progress < 1) {
-                    requestAnimationFrame(animationStep);
-                } else {
-                    target.innerHTML = originalHTML;
-                }
-            }
-            requestAnimationFrame(animationStep);
-        }
     }
 });
