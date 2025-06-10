@@ -1,131 +1,244 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Haru Orishimo | Portfolio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    
-    <script src="script.js" defer></script>
-</head>
-<body data-palette="palette-1">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Noto+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+      defer
+    ></script>
+
+    <script src="script.js" defer></script>
+  </head>
+  <body data-palette="palette-1">
     <canvas id="webgl-canvas"></canvas>
 
     <header class="site-header">
-        <div class="site-header__inner container">
-            <a href="index.html" class="site-header__logo">Haru Orishimo</a>
-            <div class="header-controls">
-                <nav class="site-nav">
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#work">Works</a></li>
-                        <li><a href="play.html">Play</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <button id="color-palette-toggle" class="palette-toggle">Color</button>
-                <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode">
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.37 5.51C9.19 6.15 9.1 6.82 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27C17.45 17.19 14.93 19 12 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49z"/></svg>
-                </button>
-            </div>
+      <div class="site-header__inner container">
+        <a href="index.html" class="site-header__logo">Haru Orishimo</a>
+        <div class="header-controls">
+          <nav class="site-nav">
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#work">Works</a></li>
+              <li><a href="play.html">Play</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <button id="color-palette-toggle" class="palette-toggle">
+            Color
+          </button>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            title="Toggle light/dark mode"
+          >
+            <svg
+              class="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"
+              />
+            </svg>
+            <svg
+              class="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M9.37 5.51C9.19 6.15 9.1 6.82 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27C17.45 17.19 14.93 19 12 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49z"
+              />
+            </svg>
+          </button>
         </div>
+      </div>
     </header>
 
     <section class="hero">
-        <div class="hero__inner">
-            <h1 class="hero__title anim-char-fadein" data-original-text="CREATIVE<br>PORTFOLIO"></h1>
-            <p class="hero__name anim-char-fadein" data-original-text="Designer & Developer"></p>
-        </div>
+      <div class="hero__inner">
+        <h1
+          class="hero__title anim-char-fadein"
+          data-original-text="CREATIVE<br>PORTFOLIO"
+        ></h1>
+        <p
+          class="hero__name anim-char-fadein"
+          data-original-text="Designer & Developer"
+        ></p>
+      </div>
     </section>
 
     <main>
-        <section class="section" id="about">
-            <div class="container">
-                <div class="about-content">
-                    <h2 class="section__title anim-char-fadein" data-original-text="About Me"></h2>
-                    <p class="section__text anim-char-fadein" data-original-text="大学一年生。<br>一流のエンジニアになるために日々研鑽を磨いています。"></p>
-                </div>
-            </div>
-        </section>
+      <section class="section" id="about">
+        <div class="container">
+          <div class="about-content">
+            <h2
+              class="section__title anim-char-fadein"
+              data-original-text="About Me"
+            ></h2>
+            <p
+              class="section__text anim-char-fadein"
+              data-original-text="大学一年生。<br>一流のエンジニアになるために日々研鑽を磨いています。"
+            ></p>
 
-        <section class="section" id="work">
-            <div class="container">
-                <h2 class="section__title anim-char-fadein" data-original-text="Selected Works"></h2>
-                <div class="work-list">
-                    <div class="work-item">
-                        <div class="work-item__image anim-scroll-fade">
-                            <img src="https://via.placeholder.com/800x600/7AE2CF/06202B?text=Project+Image+1" alt="作品1の画像">
-                        </div>
-                        <div class="work-item__content">
-                            <h3 class="work-item__title anim-char-fadein" data-original-text="BOOMTECT"></h3>
-                            <p class="work-item__category anim-char-fadein" data-original-text="Game Development using Unity<br>25/6"></p>
-                            <a href="#" class="work-item__link anim-char-fadein" data-original-text="View Work"></a>
-                        </div>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-item__image anim-scroll-fade">
-                             <img src="https://via.placeholder.com/800x600/7AE2CF/06202B?text=Project+Image+2" alt="作品2の画像">
-                        </div>
-                        <div class="work-item__content">
-                            <h3 class="work-item__title anim-char-fadein" data-original-text="Project Name B"></h3>
-                            <p class="work-item__category anim-char-fadein" data-original-text="Branding, Art Direction"></p>
-                            <a href="#" class="work-item__link anim-char-fadein" data-original-text="View Project"></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="skills-container">
+              <div class="skills-icons">
+                <i class="devicon-html5-plain" title="HTML5"></i>
+                <i class="devicon-css3-plain" title="CSS3"></i>
+                <i class="devicon-javascript-plain" title="JavaScript"></i>
+                <i class="devicon-csharp-plain" title="C#"></i>
+                <i class="devicon-unity-plain"></i>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="section" id="art">
-            <div class="container">
-                <h2 class="section__title anim-char-fadein" data-original-text="Interactive Art"></h2>
-                <p class="section__text anim-char-fadein" data-original-text="カーソルを動かして、インタラクティブなアートをお楽しみください。">Move your cursor and enjoy the interactive art.</p>
-                <div class="canvas-wrapper">
-                    <canvas id="interactive-canvas"></canvas>
-                </div>
-                <div class="more-link-wrapper">
-                    <a href="play.html" class="more-link-button">Play More</a>
-                </div>
+      <section class="section" id="work">
+        <div class="container">
+          <h2
+            class="section__title anim-char-fadein"
+            data-original-text="Selected Works"
+          ></h2>
+          <div class="work-list">
+            <div class="work-item">
+              <div class="work-item__image anim-scroll-fade">
+                <img
+                  src="https://via.placeholder.com/800x600/7AE2CF/06202B?text=Project+Image+1"
+                  alt="作品1の画像"
+                />
+              </div>
+              <div class="work-item__content">
+                <h3
+                  class="work-item__title anim-char-fadein"
+                  data-original-text="BOOMTECT"
+                ></h3>
+                <p
+                  class="work-item__category anim-char-fadein"
+                  data-original-text="Game Development using Unity<br>25/6"
+                ></p>
+                <a
+                  href="#"
+                  class="work-item__link anim-char-fadein"
+                  data-original-text="View Work"
+                ></a>
+              </div>
             </div>
-        </section>
+            <div class="work-item">
+              <div class="work-item__image anim-scroll-fade">
+                <img
+                  src="https://via.placeholder.com/800x600/7AE2CF/06202B?text=Project+Image+2"
+                  alt="作品2の画像"
+                />
+              </div>
+              <div class="work-item__content">
+                <h3
+                  class="work-item__title anim-char-fadein"
+                  data-original-text="Project Name B"
+                ></h3>
+                <p
+                  class="work-item__category anim-char-fadein"
+                  data-original-text="Branding, Art Direction"
+                ></p>
+                <a
+                  href="#"
+                  class="work-item__link anim-char-fadein"
+                  data-original-text="View Project"
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="section" id="contact">
-            <div class="container">
-                 <div class="contact-content">
-                    <h2 class="section__title anim-char-fadein" data-original-text="Get In Touch"></h2>
-                    <p class="section__text anim-char-fadein" data-original-text="プロジェクトのご相談やご依頼など、お気軽にご連絡ください。"></p>
-                    <a href="mailto:youraddress@example.com" class="contact__button anim-char-fadein" data-original-text="haruorishimo@gmail.com"></a>
-                 </div>
-            </div>
-        </section>
+      <section class="section" id="art">
+        <div class="container">
+          <h2
+            class="section__title anim-char-fadein"
+            data-original-text="Interactive Art"
+          ></h2>
+          <p
+            class="section__text anim-char-fadein"
+            data-original-text="カーソルを動かして、インタラクティブなアートをお楽しみください。"
+          >
+            Move your cursor and enjoy the interactive art.
+          </p>
+          <div class="canvas-wrapper">
+            <canvas id="interactive-canvas"></canvas>
+          </div>
+          <div class="more-link-wrapper">
+            <a href="play.html" class="more-link-button">Play More</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="contact-content">
+            <h2
+              class="section__title anim-char-fadein"
+              data-original-text="Get In Touch"
+            ></h2>
+            <p
+              class="section__text anim-char-fadein"
+              data-original-text="プロジェクトのご相談やご依頼など、お気軽にご連絡ください。"
+            ></p>
+            <a
+              href="mailto:youraddress@example.com"
+              class="contact__button anim-char-fadein"
+              data-original-text="haruorishimo@gmail.com"
+            ></a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer__nav">
-                <a href="#about">About</a>
-                <a href="#work">Work</a>
-                <a href="play.html">Play</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer__sns">
-                <a href="#" target="_blank">X (Twitter)</a>
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">LinkedIn</a>
-            </div>
-            <p class="footer__copy">&copy; 2025 Haru Orishimo. All Rights Reserved.</p>
+      <div class="container">
+        <div class="footer__nav">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="play.html">Play</a>
+          <a href="#contact">Contact</a>
         </div>
+        <div class="footer__sns">
+          <a href="#" target="_blank">X (Twitter)</a>
+          <a href="#" target="_blank">Instagram</a>
+          <a href="#" target="_blank">LinkedIn</a>
+        </div>
+        <p class="footer__copy">
+          &copy; 2025 Haru Orishimo. All Rights Reserved.
+        </p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
