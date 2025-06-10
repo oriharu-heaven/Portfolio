@@ -3,13 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 共有ヘッダーロジック ---
     const setupHeaderControls = () => {
         const body = document.body;
-
-        // 1. カラーパレット切り替え
         const colorToggleButton = document.getElementById('color-palette-toggle');
+        const themeToggleButton = document.getElementById('theme-toggle');
+
         if (colorToggleButton) {
             const palettes = ['palette-1', 'palette-2', 'palette-3'];
             let currentPaletteIndex = 0;
-
             const savedPalette = localStorage.getItem('palette');
             if (savedPalette && palettes.includes(savedPalette)) {
                 body.dataset.palette = savedPalette;
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 body.dataset.palette = palettes[0];
             }
-
             colorToggleButton.addEventListener('click', () => {
                 currentPaletteIndex = (currentPaletteIndex + 1) % palettes.length;
                 const newPalette = palettes[currentPaletteIndex];
@@ -25,9 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('palette', newPalette);
             });
         }
-
-        // 2. ライト/ダークテーマ切り替え
-        const themeToggleButton = document.getElementById('theme-toggle');
         if (themeToggleButton) {
             if (localStorage.getItem('theme') === 'light') {
                 body.classList.add('light-mode');
@@ -37,14 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
             });
         }
-        
-        // 3. スクロール時のヘッダー表示
         const siteHeader = document.querySelector('.site-header');
         if (siteHeader) {
             window.addEventListener('scroll', () => {
                 siteHeader.classList.toggle('scrolled', window.scrollY > 50);
             });
         }
+        return { themeToggleButton }; // art canvas用にトグルボタンを返す
     };
     
     // --- 共有アニメーションロジック ---
@@ -111,34 +105,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { threshold: 0.2 });
             imageElements.forEach(el => imageObserver.observe(el));
         }
+
+        const lineTitles = document.querySelectorAll('.section__title');
+        if (lineTitles.length > 0) {
+            const titleObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            lineTitles.forEach(title => {
+                const originalText = title.dataset.originalText || title.textContent;
+                title.innerHTML = `<span class="title-text">${originalText}</span>`;
+                title.classList.add('anim-lines');
+                title.dataset.originalText = title.innerHTML;
+                titleObserver.observe(title);
+            });
+        }
     };
 
     // --- ページ固有ロジックの実行 ---
 
-    // 共通部分の初期化
-    setupHeaderControls();
+    const { themeToggleButton } = setupHeaderControls();
     setupSharedAnimations();
 
-    // index.html用のロジック
+    // グローバルなアニメーション関数を初期化
+    let threeTick = () => {};
+
+    // index.html用のメイン3D背景
     if (document.getElementById('webgl-canvas')) {
-        const mouse3D = new THREE.Vector2(); 
-        let threeTick = () => {};
-    
         if (typeof THREE !== 'undefined' && typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
 
             const canvas = document.getElementById('webgl-canvas');
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             camera.position.z = 5;
 
-            const sceneObjects = [];
             const objectGroup = new THREE.Group();
             scene.add(objectGroup);
-            
+            const sceneObjects = [];
+            const mouse3D = new THREE.Vector2();
+
             const centerMaterial = new THREE.PointsMaterial({ size: 0.03, sizeAttenuation: true });
             const centerSphereGeom = new THREE.SphereGeometry(1.5, 64, 64);
             const centerSphere = new THREE.Points(centerSphereGeom, centerMaterial);
@@ -151,11 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const geom = new THREE.SphereGeometry(radius, 24, 24);
                 const pointsMaterial = new THREE.PointsMaterial({ size: 0.03, sizeAttenuation: true });
                 const points = new THREE.Points(geom, pointsMaterial);
+                
                 const centerRadius = 2.0;
                 const centerPhi = Math.acos(2 * Math.random() - 1);
                 const centerTheta = Math.random() * 2 * Math.PI;
                 const centerPos = new THREE.Vector3().setFromSphericalCoords(centerRadius * Math.random(), centerPhi, centerTheta);
+                
                 const relativePos = new THREE.Vector3().setFromSphericalCoords(Math.pow(Math.random(), 2) * 2.0, Math.acos(2 * Math.random() - 1), Math.random() * 2 * Math.PI);
+                
                 points.position.copy(centerPos.add(relativePos));
                 points.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
                 points.userData.hueOffset = Math.random();
@@ -180,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }).to(objectGroup.rotation, { x: Math.PI, y: Math.PI * 2 }, 0);
 
             const clock = new THREE.Clock();
-            threeTick = () => {
+            threeTick = () => { // グローバルスコープのthreeTickを更新
                 const elapsedTime = clock.getElapsedTime();
                 sceneObjects.forEach((object, index) => {
                     const speedFactor = 0.1 * (index % 5 + 1);
@@ -191,88 +208,179 @@ document.addEventListener('DOMContentLoaded', () => {
                     const hue = (elapsedTime * 0.05 + object.userData.hueOffset) % 1;
                     object.material.color.setHSL(hue, 0.7, 0.6);
                 });
+
                 const targetRotationX = mouse3D.y * 1.0;
                 const targetRotationY = mouse3D.x * 1.0;
                 objectGroup.rotation.x += (targetRotationX - objectGroup.rotation.x) * 0.05;
                 objectGroup.rotation.y += (targetRotationY - objectGroup.rotation.y) * 0.05;
+                
                 const targetCameraX = mouse3D.x * 0.2;
                 const targetCameraY = mouse3D.y * 0.2;
                 camera.position.x += (targetCameraX - camera.position.x) * 0.05;
                 camera.position.y += (targetCameraY - camera.position.y) * 0.05;
                 camera.lookAt(scene.position);
+                
                 renderer.render(scene, camera);
             };
         }
+    }
+    
+    // --- 統合アニメーションループのためのセットアップ ---
+    const followerText = createFollower('', ['cursor-follower__text']);
+    const followerShape = createFollower('', ['cursor-follower__shape']);
+    const mousePos = { x: 0, y: 0 };
+    let isCursorGlitching = false;
+    
+    function createFollower(text, classNames = []) {
+        const el = document.createElement('div');
+        el.classList.add('cursor-follower', ...classNames);
+        el.innerHTML = `<span>${text}</span>`;
+        document.body.appendChild(el);
+        return { el, x: -200, y: -200 };
+    }
 
-        const heroTitle = document.querySelector('.hero__title');
-        let isGlitching = false;
-        if (heroTitle) {
-            function glitchTitle() {
-                if (isGlitching || !heroTitle.dataset.originalText) return;
-                isGlitching = true;
-                const originalHTML = heroTitle.dataset.originalText;
-                const parts = originalHTML.match(/<[^>]+>|./g) || [];
-                const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
-                let glitchInterval = setInterval(() => {
-                    let newHTML = '';
-                    for (const part of parts) {
-                        newHTML += (part.startsWith('<') || /\s/.test(part) || Math.random() < 0.5) ? part : glitchChars.charAt(Math.floor(Math.random() * glitchChars.length));
-                    }
-                    heroTitle.innerHTML = newHTML;
-                }, 20);
-                setTimeout(() => {
-                    clearInterval(glitchInterval);
-                    heroTitle.innerHTML = originalHTML;
-                    isGlitching = false;
-                }, 400);
-            }
-            setInterval(() => { if (Math.random() < 0.3) glitchTitle(); }, Math.random() * 5000 + 3000);
+    window.addEventListener('mousemove', e => {
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+    });
+    
+    document.body.addEventListener('mouseleave', () => {
+        followerText.el.classList.add('hidden');
+        followerShape.el.classList.add('hidden');
+    });
+
+    document.body.addEventListener('mouseenter', () => {
+        followerText.el.classList.remove('hidden');
+        followerShape.el.classList.remove('hidden');
+    });
+
+    setInterval(() => {
+        isCursorGlitching = true;
+        setTimeout(() => { isCursorGlitching = false; }, 300);
+    }, 4000); 
+
+    function unifiedTick() {
+        followerText.x += (mousePos.x - followerText.x) * 0.1;
+        followerText.y += (mousePos.y - followerText.y) * 0.1;
+        followerShape.x += (mousePos.x - followerShape.x) * 0.07;
+        followerShape.y += (mousePos.y - followerShape.y) * 0.07;
+        followerText.el.style.transform = `translate(${followerText.x}px, ${followerText.y}px)`;
+        followerShape.el.style.transform = `translate(${followerShape.x}px, ${followerShape.y}px)`;
+        
+        const textSpan = followerText.el.firstElementChild;
+        const timestamp = Math.floor(Date.now() / 1000).toString();
+        textSpan.textContent = isCursorGlitching ? timestamp.split('').map(c => Math.random() > 0.3 ? '!?#<>/+*'[Math.floor(Math.random()*8)] : c).join('') : timestamp;
+
+        threeTick(); // 3Dアニメーションを呼び出し
+        requestAnimationFrame(unifiedTick);
+    }
+    unifiedTick(); // 統合ループを開始
+
+    // ===【差し替え】'#interactive-canvas'用のパーティクルアートロジック ===
+    const artCanvas = document.getElementById('interactive-canvas');
+    if (artCanvas) {
+        const ctx = artCanvas.getContext('2d');
+        const canvasWrapper = artCanvas.parentElement;
+        let particlesArray;
+
+        const mouse = {
+            x: undefined,
+            y: undefined,
+        };
+
+        function setCanvasSize() {
+            const dpr = Math.min(window.devicePixelRatio, 2);
+            artCanvas.width = canvasWrapper.clientWidth * dpr;
+            artCanvas.height = canvasWrapper.clientHeight * dpr;
+            ctx.scale(dpr, dpr);
         }
 
-        const followerText = createFollower('', ['cursor-follower__text']);
-        const followerShape = createFollower('', ['cursor-follower__shape']);
-        function createFollower(text, classNames = []) {
-            const el = document.createElement('div');
-            el.classList.add('cursor-follower', ...classNames);
-            el.innerHTML = `<span>${text}</span>`;
-            document.body.appendChild(el);
-            return { el, x: -200, y: -200 };
-        }
-        const mousePos = { x: 0, y: 0 };
-        window.addEventListener('mousemove', e => {
-            mousePos.x = e.clientX;
-            mousePos.y = e.clientY;
-        });
-        document.body.addEventListener('mouseleave', () => {
-            followerText.el.classList.add('hidden');
-            followerShape.el.classList.add('hidden');
-        });
-        document.body.addEventListener('mouseenter', () => {
-            followerText.el.classList.remove('hidden');
-            followerShape.el.classList.remove('hidden');
+        artCanvas.addEventListener('mousemove', (event) => {
+            const rect = artCanvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
         });
         
-        let isCursorGlitching = false;
-        setInterval(() => {
-            isCursorGlitching = true;
-            setTimeout(() => { isCursorGlitching = false; }, 300);
-        }, 4000); 
+        artCanvas.addEventListener('mouseleave', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
 
-        function unifiedTick() {
-            followerText.x += (mousePos.x - followerText.x) * 0.1;
-            followerText.y += (mousePos.y - followerText.y) * 0.1;
-            followerShape.x += (mousePos.x - followerShape.x) * 0.07;
-            followerShape.y += (mousePos.y - followerShape.y) * 0.07;
-            followerText.el.style.transform = `translate(${followerText.x}px, ${followerText.y}px)`;
-            followerShape.el.style.transform = `translate(${followerShape.x}px, ${followerShape.y}px)`;
-            
-            const textSpan = followerText.el.firstElementChild;
-            const timestamp = Math.floor(Date.now() / 1000).toString();
-            textSpan.textContent = isCursorGlitching ? timestamp.split('').map(c => Math.random() > 0.3 ? '!?#<>/+*'[Math.floor(Math.random()*8)] : c).join('') : timestamp;
-
-            threeTick();
-            requestAnimationFrame(unifiedTick);
+        class Particle {
+            constructor() {
+                this.x = mouse.x;
+                this.y = mouse.y;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = `hsl(${Math.random() * 360}, 100%, 70%)`; // 彩度を少し上げて見やすく
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
-        unifiedTick();
+
+        function init() {
+            setCanvasSize();
+            particlesArray = [];
+        }
+
+        function handleParticles() {
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+
+                if (particlesArray[i].size <= 0.3) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        
+        function createParticleTrail() {
+             if (mouse.x !== undefined && mouse.y !== undefined) {
+                for (let i = 0; i < 5; i++) { // パーティクルの生成数を調整
+                    particlesArray.push(new Particle());
+                }
+            }
+        }
+
+        function animate() {
+            // 背景を半透明で塗りつぶし、軌跡を残す
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            const { clientWidth, clientHeight } = canvasWrapper;
+            ctx.fillRect(0, 0, clientWidth, clientHeight);
+            
+            createParticleTrail();
+            handleParticles();
+            
+            requestAnimationFrame(animate);
+        }
+        
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(init, 200);
+        });
+
+        // テーマ/パレット変更時にCanvasをクリア
+        if(themeToggleButton) {
+            themeToggleButton.addEventListener('click', init);
+        }
+        const colorToggleButton = document.getElementById('color-palette-toggle');
+        if (colorToggleButton) {
+            colorToggleButton.addEventListener('click', init);
+        }
+
+        init();
+        animate();
     }
 });
