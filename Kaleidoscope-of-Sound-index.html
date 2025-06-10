@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluid Cosmos | Haru Orishimo</title>
-    
+    <title>音の万華鏡 | Haru Orishimo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
-    
-    <script src="fluid-cosmos.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="Kaleidoscope-of-Sound-ui.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body data-palette="palette-1">
 
@@ -35,15 +37,17 @@
             </div>
         </div>
     </header>
-
+    
     <main>
-        <section class="section" id="playground">
-            <div class="container">
-                <h1 class="section__title anim-char-fadein" data-original-text="Fluid Cosmos"></h1>
-                <p class="section__text anim-char-fadein" data-original-text="マウスをドラッグして、宇宙を創造してください。クリックで波紋が広がります。">Drag your mouse to create your cosmos. Click to make a ripple.</p>
-                
-                <div class="art-container">
-                    <canvas id="main-art-canvas"></canvas>
+        <section class="section">
+            <div class="container" style="text-align: center;">
+                <h1 class="section__title anim-char-fadein" data-original-text="音の織りなす万華鏡"></h1>
+                <p class="section__text anim-char-fadein" data-original-text="マイクを使って、あなたの声でアートを動かしてみましょう。<br>アート内をクリックすると、ビジュアルテーマが切り替わります。">
+                    Use your microphone to bring the art to life with your voice. Click on the artwork to switch visual themes.
+                </p>
+                <div id="ui-container">
+                    <button id="startButton" class="more-link-button">体験を開始する</button>
+                    <p id="mic-status"></p>
                 </div>
             </div>
         </section>
@@ -54,21 +58,29 @@
         </section>
     </main>
 
+    <div id="canvas-container"></div>
+    <div id="theme-display">
+        <h2 id="theme-name"></h2>
+    </div>
+
     <footer class="footer">
-        <div class="container">
-            <div class="footer__nav">
-                <a href="index.html#about">About</a>
-                <a href="index.html#work">Work</a>
-                <a href="play.html">Play</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-            <div class="footer__sns">
-                <a href="#" target="_blank">X (Twitter)</a>
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">LinkedIn</a>
-            </div>
-            <p class="footer__copy">&copy; 2025 Haru Orishimo. All Rights Reserved.</p>
+      <div class="container">
+        <div class="footer__nav">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#work">Work</a>
+          <a href="../play.html">Play</a>
+          <a href="../index.html#contact">Contact</a>
         </div>
+        <div class="footer__sns">
+          <a href="#" target="_blank">X (Twitter)</a>
+          <a href="#" target="_blank">Instagram</a>
+          <a href="#" target="_blank">LinkedIn</a>
+        </div>
+        <p class="footer__copy">
+          &copy; 2025 Haru Orishimo. All Rights Reserved.
+        </p>
+      </div>
     </footer>
+
 </body>
 </html>

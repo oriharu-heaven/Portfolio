@@ -112,7 +112,9 @@ function initWebGL() {
 async function initAudio() {
     if (audioState.isInitialized) return;
     try {
-        uiContainer.classList.add('hidden');
+        // ★★★ 変更点(1/2): uiContainerを非表示にする行を削除 ★★★
+        // uiContainer.classList.add('hidden'); // ← この行を削除しました
+
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioContext.createAnalyser();
@@ -121,6 +123,10 @@ async function initAudio() {
         microphone = audioContext.createMediaStreamSource(stream);
         microphone.connect(analyser);
         audioState.isInitialized = true;
+
+        // ★★★ 変更点(2/2): 初期化が成功したらボタンを非表示にする ★★★
+        startButton.style.display = 'none'; // ← この行を追加しました
+
         themeNameEl.textContent = themes[currentThemeIndex].name;
         themeDisplay.classList.add('visible');
         clearTimeout(themeDisplayTimeout);
@@ -130,7 +136,7 @@ async function initAudio() {
         animate();
     } catch (err) {
         micStatus.textContent = 'マイクへのアクセスに失敗しました。ブラウザの設定を確認してください。';
-        uiContainer.classList.remove('hidden');
+        // uiContainer.classList.remove('hidden'); // 不要になったため削除
         console.error("マイクの初期化に失敗:", err);
     }
 }
