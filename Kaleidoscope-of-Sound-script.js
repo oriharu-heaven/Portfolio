@@ -29,7 +29,7 @@ const audioState = {
     vocalizationTime: 0,
 };
 
-// テーマ管理 (変更点：デフォルトテーマを「液体」に変更)
+// テーマ管理
 const themes = [
     { name: '液体', id: 'liquidMetal' },
     { name: '泡', id: 'kaleidoscope' },
@@ -75,14 +75,17 @@ function initWebGL() {
     scene = new THREE.Scene();
     camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // ▼▼▼【変更点】ウィンドウサイズではなく、コンテナのサイズを使用する ▼▼▼
+    renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
     canvasContainer.appendChild(renderer.domElement);
 
     const geometry = new THREE.PlaneGeometry(2, 2);
     
     const uniforms = {
         u_time: { value: 0.0 },
-        u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+        // ▼▼▼【変更点】解像度のユニフォームにもコンテナのサイズを渡す ▼▼▼
+        u_resolution: { value: new THREE.Vector2(canvasContainer.clientWidth, canvasContainer.clientHeight) },
         u_amplitude: { value: 0.0 },
         u_pitch: { value: 0.0 },
         u_totalRotation: { value: 0.0 },
@@ -97,7 +100,6 @@ function initWebGL() {
     material = new THREE.ShaderMaterial({
         uniforms,
         vertexShader: `void main() { gl_Position = vec4(position, 1.0); }`,
-        // 変更点：themes配列の最初のテーマを読み込むように修正
         fragmentShader: SHADERS[themes[0].id]
     });
 
@@ -112,9 +114,6 @@ function initWebGL() {
 async function initAudio() {
     if (audioState.isInitialized) return;
     try {
-        // ★★★ 変更点(1/2): uiContainerを非表示にする行を削除 ★★★
-        // uiContainer.classList.add('hidden'); // ← この行を削除しました
-
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioContext.createAnalyser();
@@ -124,8 +123,7 @@ async function initAudio() {
         microphone.connect(analyser);
         audioState.isInitialized = true;
 
-        // ★★★ 変更点(2/2): 初期化が成功したらボタンを非表示にする ★★★
-        startButton.style.display = 'none'; // ← この行を追加しました
+        startButton.style.display = 'none';
 
         themeNameEl.textContent = themes[currentThemeIndex].name;
         themeDisplay.classList.add('visible');
@@ -136,7 +134,6 @@ async function initAudio() {
         animate();
     } catch (err) {
         micStatus.textContent = 'マイクへのアクセスに失敗しました。ブラウザの設定を確認してください。';
-        // uiContainer.classList.remove('hidden'); // 不要になったため削除
         console.error("マイクの初期化に失敗:", err);
     }
 }
@@ -225,8 +222,9 @@ function animate() {
 // ウィンドウリサイズ処理
 // ===================================
 function onWindowResize() {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    material.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+    // ▼▼▼【変更点】ウィンドウではなくコンテナのサイズに合わせてリサイズする ▼▼▼
+    renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+    material.uniforms.u_resolution.value.set(canvasContainer.clientWidth, canvasContainer.clientHeight);
 }
 
 // ===================================
