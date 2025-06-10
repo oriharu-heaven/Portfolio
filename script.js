@@ -96,6 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- スクロール連動3Dアニメーション (Three.js & GSAP) ---
     // =======================================================================
     
+    const mouse3D = new THREE.Vector2(); 
+    
     if (typeof THREE !== 'undefined' && typeof gsap !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -107,39 +109,60 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         camera.position.z = 5;
 
-        // --- 3Dオブジェクト群の作成 ---
-        // ... (この部分は変更なし) ...
         const sceneObjects = [];
         const objectGroup = new THREE.Group();
         scene.add(objectGroup);
-        const material = new THREE.PointsMaterial({ size: 0.03, sizeAttenuation: true });
+        
+        const centerMaterial = new THREE.PointsMaterial({ size: 0.03, sizeAttenuation: true });
         const centerSphereGeom = new THREE.SphereGeometry(1.5, 64, 64);
-        const centerSphere = new THREE.Points(centerSphereGeom, material);
+        const centerSphere = new THREE.Points(centerSphereGeom, centerMaterial);
         centerSphere.userData.hueOffset = Math.random();
         objectGroup.add(centerSphere);
         sceneObjects.push(centerSphere);
-        for (let i = 0; i < 20; i++) {
+
+        for (let i = 0; i < 40; i++) {
             const radius = Math.random() * 0.7 + 0.1;
             const segments = radius > 0.5 ? 24 : 16;
             const geom = new THREE.SphereGeometry(radius, segments, segments);
-            const points = new THREE.Points(geom, material);
-            points.position.set((Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12, (Math.random() - 0.5) * 12);
+            
+            const pointsMaterial = new THREE.PointsMaterial({
+                size: 0.03,
+                sizeAttenuation: true
+            });
+            const points = new THREE.Points(geom, pointsMaterial);
+            
+            const centerRadius = 2.0; 
+            const centerPhi = Math.acos(2 * Math.random() - 1);
+            const centerTheta = Math.random() * 2 * Math.PI;
+            const centerPos = new THREE.Vector3();
+            const centerR = centerRadius * Math.random();
+            centerPos.x = centerR * Math.sin(centerPhi) * Math.cos(centerTheta);
+            centerPos.y = centerR * Math.sin(centerPhi) * Math.sin(centerTheta);
+            centerPos.z = centerR * Math.cos(centerPhi);
+
+            const relativeRadiusMax = 2.0;
+            const relativeR = Math.pow(Math.random(), 2) * relativeRadiusMax;
+            const relativePhi = Math.acos(2 * Math.random() - 1);
+            const relativeTheta = Math.random() * 2 * Math.PI;
+            const relativePos = new THREE.Vector3();
+            relativePos.x = relativeR * Math.sin(relativePhi) * Math.cos(relativeTheta);
+            relativePos.y = relativeR * Math.sin(relativePhi) * Math.sin(relativeTheta);
+            relativePos.z = relativeR * Math.cos(relativePhi);
+
+            const finalPos = centerPos.add(relativePos);
+            points.position.copy(finalPos);
+            
             points.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
             points.userData.hueOffset = Math.random();
             objectGroup.add(points);
             sceneObjects.push(points);
         }
 
-        // --- マウス座標のトラッキング ---
-        const mouse = new THREE.Vector2();
         window.addEventListener('mousemove', (event) => {
-            // マウス座標を-1から1の範囲に正規化
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            mouse3D.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse3D.y = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
-        // --- ウィンドウリサイズへの対応 ---
-        // ... (この部分は変更なし) ...
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
@@ -147,8 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         });
 
-        // --- GSAP ScrollTriggerでグループ全体を回転 ---
-        // ... (この部分は変更なし) ...
         gsap.timeline({
             scrollTrigger: {
                 trigger: 'body',
@@ -161,12 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
             y: Math.PI * 2,
         }, 0);
 
-        // --- アニメーションループ ---
         const clock = new THREE.Clock();
-        const tick = () => {
+        var tick = () => {
             const elapsedTime = clock.getElapsedTime();
 
-            // オブジェクト個別の自律アニメーション
             sceneObjects.forEach((object, index) => {
                 const speedFactor = 0.1 * (index % 5 + 1);
                 object.rotation.x += 0.0001 * speedFactor;
@@ -177,26 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 object.material.color.setHSL(hue, 0.7, 0.6);
             });
 
-            // ★★★ マウスに連動したカメラのパララックスエフェクト ★★★
-            // 目標とするカメラのX,Y座標をマウスの位置から設定
-            const targetCameraX = mouse.x * 0.5;
-            const targetCameraY = mouse.y * 0.5;
-            // 現在のカメラ位置から目標位置へ滑らかに（0.05の速さで）移動させる
+            const targetRotationX = mouse3D.y * 1.0;
+            const targetRotationY = mouse3D.x * 1.0;
+            objectGroup.rotation.x += (targetRotationX - objectGroup.rotation.x) * 0.05;
+            objectGroup.rotation.y += (targetRotationY - objectGroup.rotation.y) * 0.05;
+
+            const targetCameraX = mouse3D.x * 0.2;
+            const targetCameraY = mouse3D.y * 0.2;
             camera.position.x += (targetCameraX - camera.position.x) * 0.05;
             camera.position.y += (targetCameraY - camera.position.y) * 0.05;
-            // 常にシーンの中心（原点）を見続けるようにする
             camera.lookAt(scene.position);
             
             renderer.render(scene, camera);
-            requestAnimationFrame(tick);
         }
-        tick();
     }
-
 
     // =======================================================================
     // --- タイトルのグリッチ（文字化け）エフェクト ---
-    // =======================================================================
     // ... (この部分は変更なし) ...
     const heroTitle = document.querySelector('.hero__title');
     let isGlitching = false;
@@ -233,4 +249,195 @@ document.addEventListener('DOMContentLoaded', () => {
             glitchTitle();
         }
     }, Math.random() * 5000 + 3000);
+
+    // =======================================================================
+    // --- カーソル追従エフェクト ---
+    // ... (この部分は変更なし) ...
+    const followerText = createFollower('', ['cursor-follower__text']);
+    const followerShape = createFollower('', ['cursor-follower__shape']);
+
+    function createFollower(text, classNames = []) {
+        const el = document.createElement('div');
+        el.classList.add('cursor-follower', ...classNames);
+        el.innerHTML = `<span>${text}</span>`;
+        document.body.appendChild(el);
+        return {
+            el: el,
+            x: -200,
+            y: -200,
+        };
+    }
+
+    const mousePos = { x: 0, y: 0 };
+    window.addEventListener('mousemove', e => {
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+    });
+
+    document.body.addEventListener('mouseleave', () => {
+        followerText.el.classList.add('hidden');
+        followerShape.el.classList.add('hidden');
+    });
+
+    document.body.addEventListener('mouseenter', () => {
+        followerText.el.classList.remove('hidden');
+        followerShape.el.classList.remove('hidden');
+    });
+
+    let isCursorGlitching = false;
+    const cursorGlitchChars = '!?#<>/+*';
+    
+    setInterval(() => {
+        if (Math.random() > 0.5) {
+            isCursorGlitching = true;
+            setTimeout(() => {
+                isCursorGlitching = false;
+            }, 300);
+        }
+    }, 2000); 
+
+    // =======================================================================
+    // --- 統合アニメーションループ ---
+    // =======================================================================
+    const threeTick = (typeof tick === 'function') ? tick : () => {};
+
+    function unifiedTick() {
+        // カーソル追従
+        followerText.x += (mousePos.x - followerText.x) * 0.1;
+        followerText.y += (mousePos.y - followerText.y) * 0.1;
+        followerShape.x += (mousePos.x - followerShape.x) * 0.07;
+        followerShape.y += (mousePos.y - followerShape.y) * 0.07;
+        
+        followerText.el.style.transform = `translate(${followerText.x}px, ${followerText.y}px)`;
+        followerShape.el.style.transform = `translate(${followerShape.x}px, ${followerShape.y}px)`;
+
+        const textSpan = followerText.el.firstElementChild;
+        const timestamp = Math.floor(Date.now() / 1000).toString();
+
+        if (isCursorGlitching) {
+            let glitchedText = '';
+            for (const char of timestamp) {
+                if (Math.random() > 0.3) {
+                    glitchedText += cursorGlitchChars[Math.floor(Math.random() * cursorGlitchChars.length)];
+                } else {
+                    glitchedText += char;
+                }
+            }
+            textSpan.textContent = glitchedText;
+        } else {
+            textSpan.textContent = timestamp;
+        }
+
+        // Three.jsアニメーション
+        threeTick();
+        
+        requestAnimationFrame(unifiedTick);
+    }
+
+    unifiedTick();
+
+
+    // =======================================================================
+    // --- Interactive Art Canvas ---
+    // =======================================================================
+    const artCanvas = document.getElementById('interactive-canvas');
+    if (artCanvas) {
+        const ctx = artCanvas.getContext('2d');
+        const canvasWrapper = artCanvas.parentElement;
+        let particlesArray;
+
+        function setCanvasSize() {
+            const dpr = Math.min(window.devicePixelRatio, 2);
+            artCanvas.width = canvasWrapper.clientWidth * dpr;
+            artCanvas.height = canvasWrapper.clientHeight * dpr;
+            ctx.scale(dpr, dpr);
+        }
+
+        const mouse = {
+            x: undefined,
+            y: undefined,
+        };
+
+        artCanvas.addEventListener('mousemove', (event) => {
+            const rect = artCanvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
+        });
+        
+        artCanvas.addEventListener('mouseleave', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = mouse.x;
+                this.y = mouse.y;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                // ★★★ 変更点: 各パーティクルの色をランダムな色相に設定 ★★★
+                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            setCanvasSize();
+            particlesArray = [];
+        }
+
+        function handleParticles() {
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+
+                if (particlesArray[i].size <= 0.3) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        
+        function createParticleTrail() {
+             if (mouse.x !== undefined && mouse.y !== undefined) {
+                for (let i = 0; i < 5; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(22, 64, 77, 0.1)';
+            ctx.fillRect(0, 0, artCanvas.width, artCanvas.height);
+            
+            createParticleTrail();
+            handleParticles();
+            
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+             init();
+        });
+        
+        // テーマ変更時にCanvasの背景をクリア
+        themeToggleButton.addEventListener('click', () => {
+             init();
+        });
+    }
+
 });
