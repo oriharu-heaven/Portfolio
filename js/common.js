@@ -232,9 +232,21 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCursor();
     };
 
+    // =========================================================
+    // 4. 動的コピーライト年更新
+    // =========================================================
+    const setupCopyright = () => {
+        const copyEls = document.querySelectorAll('.footer__copy');
+        copyEls.forEach(el => {
+            const currentYear = new Date().getFullYear();
+            el.innerHTML = `&copy; ${currentYear} Haru Orishimo. All Rights Reserved.`;
+        });
+    };
+
     // --- 実行 ---
     setupHeaderControls();
     setupSharedAnimations();
     setupCursorFollower();
+    setupCopyright();
 
 });

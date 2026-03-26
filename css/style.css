@@ -241,6 +241,9 @@ body.light-mode .theme-toggle .sun { display: none; }
 
 .footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--color-border); transition: border-color 0.3s ease; background-color: var(--color-bg); }
 .footer__nav, .footer__sns { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
+.sns-link { display: flex; align-items: center; gap: 8px; font-size: 1.1rem; transition: color 0.3s ease; }
+.sns-link i { font-size: 1.5rem; transition: color 0.3s ease; }
+.sns-link:hover, .sns-link:hover i { color: var(--color-accent); }
 .footer__copy { color: var(--color-subtle-text); font-size: 0.9rem; transition: color 0.3s ease; }
 
 .anim-char-fadein { opacity: 0; transition: opacity 0.5s ease; }

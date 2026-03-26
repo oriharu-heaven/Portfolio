@@ -35,6 +35,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#work">Works</a></li>
             <li><a href="play.html">Play</a></li>
+            <li><a href="tech.html">Tech</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -72,13 +73,38 @@
           <p class="section__text anim-char-fadein" data-original-text="大学一年生。<br>一流のエンジニアになるために日々研鑽を磨いています。"></p>
 
           <div class="skills-container">
-            <div class="skills-icons">
-              <i class="devicon-html5-plain" title="HTML5"></i>
-              <i class="devicon-css3-plain" title="CSS3"></i>
-              <i class="devicon-javascript-plain" title="JavaScript"></i>
-              <i class="devicon-csharp-plain" title="C#"></i>
-              <i class="devicon-unity-plain"></i>
+
+            <div class="skill-block" style="margin-bottom: 30px;">
+              <p class="section__text anim-char-fadein" data-original-text="Skills"
+                style="text-align: center; margin-bottom: 10px;"></p>
+
+              <div class="skills-icons" style="justify-content: center; margin-bottom: 20px;">
+                <i class="devicon-html5-plain" title="HTML5"></i>
+                <i class="devicon-css3-plain" title="CSS3"></i>
+                <i class="devicon-javascript-plain" title="JavaScript"></i>
+                <i class="devicon-csharp-plain" title="C#"></i>
+                <i class="devicon-unity-plain" title="Unity"></i>
+              </div>
+
+              <div class="skills-icons" style="justify-content: center;">
+                <i class="devicon-swift-plain" title="Swift"></i>
+                <i class="devicon-git-plain" title="Git"></i>
+                <i class="devicon-github-original" title="GitHub"></i>
+                <i class="devicon-vscode-plain" title="VS Code"></i>
+              </div>
             </div>
+
+            <div class="skill-block">
+              <p class="section__text anim-char-fadein" data-original-text="Learning"
+                style="text-align: center; margin-bottom: 10px;"></p>
+              <div class="skills-icons" style="justify-content: center;">
+                <i class="devicon-python-plain" title="Python"></i>
+                <i class="devicon-java-plain" title="Java"></i>
+                <i class="devicon-c-plain" title="C"></i>
+                <i class="devicon-premierepro-plain" title="Premiere Pro"></i>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -90,21 +116,37 @@
         <div class="work-list">
           <div class="work-item">
             <div class="work-item__image anim-scroll-fade">
-              <img src="images\BOOMTECT-image.jpg" alt="作品1の画像" />
+              <a href="https://unityroom.com/games/boomtect"><img src="images\BOOMTECT-image.jpg"
+                  alt="BOOMTECT_image" /></a>
             </div>
             <div class="work-item__content">
               <h3 class="work-item__title anim-char-fadein" data-original-text="BOOMTECT"></h3>
               <p class="work-item__category anim-char-fadein" data-original-text="Game Development using Unity<br>25/6">
               </p>
-              <a href="#" class="work-item__link anim-char-fadein" data-original-text="View Work"></a>
+              <a href="https://unityroom.com/games/boomtect" class="work-item__link anim-char-fadein"
+                data-original-text="View Work"></a>
             </div>
           </div>
           <div class="work-item">
             <div class="work-item__image anim-scroll-fade">
-              <img src="https://placehold.co/800x600/7AE2CF/06202B?text=Project+Image+2" alt="作品2の画像" />
+              <a href="https://apps.apple.com/jp/app/langairy/id6760103888"><img src="images/Langairy-image.png"
+                  alt="Langairy_image" /></a>
             </div>
             <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="Project Name B"></h3>
+              <h3 class="work-item__title anim-char-fadein" data-original-text="Langairy"></h3>
+              <p class="work-item__category anim-char-fadein"
+                data-original-text="iOS app Development using SwiftUI<br>26/3">
+              </p>
+              <a href="https://apps.apple.com/jp/app/langairy/id6760103888" class="work-item__link anim-char-fadein"
+                data-original-text="View Work"></a>
+            </div>
+          </div>
+          <div class="work-item">
+            <div class="work-item__image anim-scroll-fade">
+              <img src="https://placehold.co/800x600/7AE2CF/06202B?text=Project+Image+3" alt="作品3の画像" />
+            </div>
+            <div class="work-item__content">
+              <h3 class="work-item__title anim-char-fadein" data-original-text="Project Name C"></h3>
               <p class="work-item__category anim-char-fadein" data-original-text="Branding, Art Direction"></p>
               <a href="#" class="work-item__link anim-char-fadein" data-original-text="View Project"></a>
             </div>
@@ -113,20 +155,7 @@
       </div>
     </section>
 
-    <section class="section" id="art">
-      <div class="container">
-        <h2 class="section__title anim-char-fadein" data-original-text="Interactive Art"></h2>
-        <p class="section__text anim-char-fadein" data-original-text="カーソルを動かして、インタラクティブなアートをお楽しみください。">
-          Move your cursor and enjoy the interactive art.
-        </p>
-        <div class="canvas-wrapper">
-          <canvas id="interactive-canvas"></canvas>
-        </div>
-        <div class="more-link-wrapper">
-          <a href="play.html" class="more-link-button">Play More</a>
-        </div>
-      </div>
-    </section>
+
 
     <section class="section" id="contact">
       <div class="container">
@@ -146,15 +175,23 @@
         <a href="#about">About</a>
         <a href="#work">Work</a>
         <a href="play.html">Play</a>
+        <a href="tech.html">Tech</a>
         <a href="#contact">Contact</a>
       </div>
-      <div class="footer__sns"></div>
-      <a href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank">LinkedIn</a>
+
+      <div class="footer__sns">
+        <a href="https://github.com/oriharu-heaven" target="_blank" class="sns-link">
+          <i class="devicon-github-original"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" class="sns-link">
+          <i class="devicon-linkedin-plain"></i> LinkedIn
+        </a>
+      </div>
+
     </div>
     <p class="footer__copy">
       &copy; 2026 Haru Orishimo. All Rights Reserved.
     </p>
-    </div>
   </footer>
 </body>
 
