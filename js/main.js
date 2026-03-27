@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 空間のランダムな位置に配置
             const centerRadius = 2.0;
             const centerPhi = Math.acos(2 * Math.random() - 1);
-            const centerTheta = Math.random() * 2 * Math.PI;
+            const centerTheta = Math.random() * 4 * Math.PI;
             const centerPos = new THREE.Vector3().setFromSphericalCoords(centerRadius * Math.random(), centerPhi, centerTheta);
             const relativePos = new THREE.Vector3().setFromSphericalCoords(Math.pow(Math.random(), 2) * 2.0, Math.acos(2 * Math.random() - 1), Math.random() * 2 * Math.PI);
 

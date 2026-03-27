@@ -5,6 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haru Orishimo | Portfolio</title>
+  <meta name="description" content="Haru Orishimoのポートフォリオサイト。情報工学を専攻する大学2年生。データサイエンスやアプリケーション開発に取り組んでいます。" />
+  <meta property="og:title" content="Haru Orishimo | Portfolio" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Haru Orishimoのポートフォリオサイト。情報工学を専攻する大学2年生。データサイエンスやアプリケーション開発に取り組んでいます。" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -68,8 +72,34 @@
       <div class="container">
         <div class="about-content">
           <h2 class="section__title anim-char-fadein" data-original-text="About Me"></h2>
-          <p class="section__text anim-char-fadein" data-original-text="情報工学を修める大学2年生。<br>一流のエンジニアになるために日々研鑽を磨いています。">
+          <p class="section__text about-me-text anim-char-fadein"
+            data-original-text="情報工学を専攻する大学2年生です。データサイエンスやアプリケーション開発に強い関心があり、社会課題を解決できるエンジニアを目指して日々学習しています。高校時代のアメリカ留学で培った英語力（TOEFL iBT 93）があり、開発中のエラー解決や最新技術のキャッチアップが必要な場面では、英語の公式ドキュメントや一次情報にもスムーズにアクセスし、ポジティブに吸収して開発に活かすことができます。">
           </p>
+
+          <div class="about-extra-container vertical-layout">
+            <div class="about-card anim-scroll-fade">
+              <h3 class="about-card__title">Personality & Hobbies</h3>
+              <p class="about-card__text">
+                好奇心旺盛でフットワークが軽く、新しい環境に飛び込むのが好きです（MBTI:ENFP）。<br>趣味は一人旅、音楽鑑賞、水泳、そして最近始めたカメラです。大学からダンスサークルに所属しており、ブレイクダンスをメインに取り組みつつ、現在は新たにパンキングダンスにも挑戦しています。年末年始には小豆島へリゾートバイトに行くなど、様々な経験を通して視野を広げることを大切にしています。
+              </p>
+            </div>
+
+            <div class="about-card anim-scroll-fade">
+              <h3 class="about-card__title">Experience</h3>
+              <ul class="experience-list">
+                <li>
+                  <span class="experience-title">エンジニアインターン (Life is Tech!)</span>
+                  <p class="experience-desc">
+                    中高生向けのプログラミング教育事業にて、大学生メンター（インターン）として活動。技術的な知識を初学者にわかりやすく伝えるアウトプット能力と、学習者が自力でエラーを解決できるよう導くサポート力を培っています。
+                  </p>
+                </li>
+                <li>
+                  <span class="experience-title">東京大学「DL基礎講座」受講</span>
+                  <p class="experience-desc">大学のカリキュラム外でも自主的なインプットを行っており、Deep Learningや機械学習の基礎的な理論と実装について学んでいます。</p>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           <div class="skills-container">
 
@@ -113,56 +143,137 @@
       <div class="container">
         <h2 class="section__title anim-char-fadein" data-original-text="Selected Works"></h2>
         <div class="work-list">
+
           <div class="work-item">
             <div class="work-item__image anim-scroll-fade">
-              <a href="https://unityroom.com/games/boomtect"><img src="images\BOOMTECT-image.jpg"
-                  alt="BOOMTECT_image" /></a>
+              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="boomtect">
+                <img src="images/BOOMTECT-image.jpg" alt="BOOMTECT_image" />
+              </a>
             </div>
             <div class="work-item__content">
               <h3 class="work-item__title anim-char-fadein" data-original-text="BOOMTECT"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="Game Development using Unity<br>25/6">
+              <p class="work-item__category anim-char-fadein" data-original-text="Unity Game<br>25/6">
               </p>
-              <a href="https://unityroom.com/games/boomtect" class="work-item__link anim-char-fadein"
-                data-original-text="View Work"></a>
+              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
+                data-work="boomtect" data-original-text="View Details"></a>
+
+              <!-- Modal Data: BOOMTECT -->
+              <div class="work-data" id="data-boomtect" style="display: none;">
+                <h4 class="work-modal-title">BOOMTECT <span class="work-modal-tech">(Unity, C#)</span></h4>
+                <div class="work-modal-section">
+                  <h5>Overview</h5>
+                  <p>学校や職場といった身近な環境を舞台に、特殊な爆発物を用いて建物を破壊する爽快破壊シミュレーションゲーム。</p>
+                </div>
+                <div class="work-modal-section">
+                  <h5>Motivation</h5>
+                  <p>
+                    日々のちょっとした退屈やモヤモヤを、ゲームの中でスカッと吹き飛ばしてもらいたい！という思いから企画しました。クスッと笑えるようなユーモアと、本格的なパズル要素を掛け合わせ、多くの人に楽しんでもらえる作品を目指しました。
+                  </p>
+                </div>
+                <div class="work-modal-section">
+                  <h5>Challenges</h5>
+                  <p>
+                    単に壊すだけでなく、ゲーム性を高めるための物理演算とパフォーマンスの両立に挑戦しました。ゲーム内の様々なアクションを実装するため、C#でのコンポーネント設計を工夫しています。大量の破片オブジェクトが発生した際も快適にプレイできるよう、不要な演算の削減やオブジェクトの管理手法を実装した点が一番の工夫です。
+                  </p>
+                </div>
+                <div class="work-modal-link">
+                  <a href="https://unityroom.com/games/boomtect" target="_blank" class="work-modal-ext">Play on
+                    unityroom <i class="devicon-unity-plain"></i></a>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="work-item">
             <div class="work-item__image anim-scroll-fade">
-              <a href="https://apps.apple.com/jp/app/langairy/id6760103888"><img src="images/Langairy-image.png"
-                  alt="Langairy_image" /></a>
+              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="langairy">
+                <img src="images/Langairy-image.png" alt="Langairy_image" />
+              </a>
             </div>
             <div class="work-item__content">
               <h3 class="work-item__title anim-char-fadein" data-original-text="Langairy"></h3>
-              <p class="work-item__category anim-char-fadein"
-                data-original-text="iOS app Development using SwiftUI<br>26/3">
+              <p class="work-item__category anim-char-fadein" data-original-text="iOS Application<br>26/3">
               </p>
-              <a href="https://apps.apple.com/jp/app/langairy/id6760103888" class="work-item__link anim-char-fadein"
-                data-original-text="View Work"></a>
+              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
+                data-work="langairy" data-original-text="View Details"></a>
+
+              <!-- Modal Data: Langairy -->
+              <div class="work-data" id="data-langairy" style="display: none;">
+                <h4 class="work-modal-title">Langairy <span class="work-modal-tech">(Swift, SwiftUI, Gemini API)</span>
+                </h4>
+                <div class="work-modal-section">
+                  <h5>Overview</h5>
+                  <p>ユーザー自身の日常体験を英語学習教材に変換し、リーディングとスピーキング能力のギャップを埋めるiOSアプリ。</p>
+                </div>
+                <div class="work-modal-section">
+                  <h5>Motivation</h5>
+                  <p>従来の画一的な教材ではなく、自分のリアルな「エピソード」に紐づいた生きた英語を学ぶことで、実践的で記憶に定着しやすい学習体験を作りたいと考え開発しました。</p>
+                </div>
+                <div class="work-modal-section">
+                  <h5>Challenges</h5>
+                  <p>単なる翻訳アプリで終わらせないための技術的統合に注力しました。Gemini APIを活用し、日本語や英単語が混在した「ルー語」のような日記文脈から自然な英語（カジュアル/アカデミック）を生成するAI
+                    Paraphrasing機能を実装。また、忘却曲線に基づく復習アルゴリズム（SM-2）の実装や、音声認識を利用したシャドーイング機能のリアルタイム評価など、SwiftUIの宣言的UIと非同期処理を組み合わせて、認知科学に基づいた学習サイクルをスムーズに動作させる設計にこだわりました。
+                  </p>
+                </div>
+                <div class="work-modal-link">
+                  <a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank"
+                    class="work-modal-ext">View on App Store <i class="devicon-apple-original"></i></a>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="work-item">
             <div class="work-item__image anim-scroll-fade">
-              <img src="https://placehold.co/800x600/7AE2CF/06202B?text=Coming+soon..." alt="Coming soon..." />
+              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="portfolio">
+                <img src="images/portfolio-image.png" alt="Portfolio Site" />
+              </a>
             </div>
             <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="Coming soon..."></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text=""></p>
-              <a class="work-item__link anim-char-fadein" data-original-text="Coming soon..."></a>
+              <h3 class="work-item__title anim-char-fadein" data-original-text="Portfolio Site"></h3>
+              <p class="work-item__category anim-char-fadein" data-original-text="Web Development<br>26/3"></p>
+              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
+                data-work="portfolio" data-original-text="View Details"></a>
+
+              <!-- Modal Data: Portfolio -->
+              <div class="work-data" id="data-portfolio" style="display: none;">
+                <h4 class="work-modal-title">Portfolio Site <span class="work-modal-tech">(HTML, CSS, GSAP,
+                    Three.js)</span></h4>
+                <div class="work-modal-section">
+                  <h5>Overview</h5>
+                  <p>自身のスキルや経験、制作物を紹介するためのポートフォリオサイト。</p>
+                </div>
+                <div class="work-modal-section">
+                  <h5>Motivation</h5>
+                  <p>エンジニアインターンへの応募に向けて、自分自身の技術力やUI/UXへのこだわり、そして人柄を視覚的に伝えられる名刺代わりのサイトを作りたいと考え制作しました。
+                  </p>
+                </div>
+                <div class="work-modal-section">
+                  <h5>Challenges</h5>
+                  <p>
+                    GSAPやThree.jsといったライブラリを活用し、スクロールに連動したアニメーションやWebGLを用いた3D表現を取り入れ、モダンで没入感のある体験を目指しました。また、ダークモード/ライトモードの切り替え機能やカラーパレットの変更機能を実装し、ユーザビリティと遊び心を両立させる設計にこだわっています。
+                  </p>
+                </div>
+                <div class="work-modal-link">
+                  <a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" class="work-modal-ext">View
+                    Source <i class="devicon-github-original"></i></a>
+                </div>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>
-
-
 
     <section class="section" id="contact">
       <div class="container">
         <div class="contact-content">
           <h2 class="section__title anim-char-fadein" data-original-text="Get In Touch"></h2>
           <br>
-          <a href="mailto:youraddress@example.com" class="contact__button anim-char-fadein"
-            data-original-text="haruorishimo@gmail.com"></a>
+          <a href="mailto:hevun0604@gmail.com" class="contact__button anim-char-fadein"
+            data-original-text="hevun0604@gmail.com"></a>
         </div>
       </div>
     </section>
@@ -190,6 +301,24 @@
       &copy; 2026 Haru Orishimo. All Rights Reserved.
     </p>
   </footer>
+
+  <!-- Modal Overlay -->
+  <div id="work-modal" class="work-modal">
+    <div class="work-modal__overlay" id="work-modal-overlay"></div>
+    <div class="work-modal__content">
+      <button class="work-modal__close" id="work-modal-close" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="work-modal__body" id="work-modal-body">
+        <!-- Content will be injected here via JS -->
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

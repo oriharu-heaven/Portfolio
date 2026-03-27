@@ -243,10 +243,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // =========================================================
+    // 5. Work Modal Control
+    // =========================================================
+    const setupWorkModals = () => {
+        const modal = document.getElementById('work-modal');
+        if (!modal) return;
+        
+        const overlay = document.getElementById('work-modal-overlay');
+        const closeBtn = document.getElementById('work-modal-close');
+        const modalBody = document.getElementById('work-modal-body');
+        const triggers = document.querySelectorAll('.work-modal-trigger');
+        
+        const openModal = (workId) => {
+            const dataEl = document.getElementById(`data-${workId}`);
+            if (dataEl) {
+                modalBody.innerHTML = dataEl.innerHTML;
+                modal.classList.add('is-open');
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+            }
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('is-open');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                modalBody.innerHTML = ''; // Clear after transition
+            }, 400); // Wait for transition duration
+        };
+
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const workId = trigger.getAttribute('data-work');
+                if (workId) {
+                    openModal(workId);
+                }
+            });
+        });
+
+        overlay.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+    };
+
     // --- 実行 ---
     setupHeaderControls();
     setupSharedAnimations();
     setupCursorFollower();
     setupCopyright();
+    setupWorkModals();
 
 });
