@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (colorToggleButton) {
             const palettes = ['palette-1', 'palette-2', 'palette-3'];
             let currentPaletteIndex = 0;
-            
+
             // 保存済みのパレット設定があれば読み込む
             const savedPalette = localStorage.getItem('palette');
             if (savedPalette && palettes.includes(savedPalette)) {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 body.dataset.palette = palettes[0];
             }
-            
+
             colorToggleButton.addEventListener('click', () => {
                 currentPaletteIndex = (currentPaletteIndex + 1) % palettes.length;
                 const newPalette = palettes[currentPaletteIndex];
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     };
-    
+
     // =========================================================
     // 2. 共有アニメーション（文字表示エフェクト、画像フェードインなど）
     // =========================================================
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- 乱数を使った文字出現アニメーション ---
         const textElements = document.querySelectorAll('.anim-char-fadein');
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        
+
         if (textElements.length > 0) {
             const textObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -96,16 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const parts = originalHTML.match(/<[^>]+>|./g) || [];
                 const duration = 1000; // 1秒かけてアニメーション
                 let startTime = null;
-                
+
                 target.classList.add('is-visible');
-                
+
                 function animationStep(currentTime) {
                     if (!startTime) startTime = currentTime;
                     // 進捗度（0.0〜1.0）
                     const progress = Math.min((currentTime - startTime) / duration, 1);
                     const fixedCount = Math.floor(progress * parts.length);
                     let newHTML = '';
-                    
+
                     for (let i = 0; i < parts.length; i++) {
                         if (i < fixedCount) {
                             newHTML += parts[i]; // 確定した文字
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                     target.innerHTML = newHTML;
-                    
+
                     if (progress < 1) {
                         requestAnimationFrame(animationStep); // 次のフレームで再度実行
                     } else {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(animationStep);
             }
         }
-        
+
         // --- 画像のスクロールフェードイン ---
         const imageElements = document.querySelectorAll('.anim-scroll-fade');
         if (imageElements.length > 0) {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lineTitles.length > 0) {
             const titleObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if(entry.isIntersecting) {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const followerShape = createFollower('', ['cursor-follower__shape']);
         const mousePos = { x: 0, y: 0 };
         let isCursorGlitching = false;
-        
+
         // 追従要素を生成する関数
         function createFollower(text, classNames = []) {
             const el = document.createElement('div');
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mousePos.x = e.clientX;
             mousePos.y = e.clientY;
         });
-        
+
         // 画面外に出たときは隠す
         document.body.addEventListener('mouseleave', () => {
             followerText.el.classList.add('hidden');
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             isCursorGlitching = true;
             setTimeout(() => { isCursorGlitching = false; }, 300);
-        }, 4000); 
+        }, 4000);
 
         // 毎フレーム更新処理（滑らかに追従させるための遅延アニメーション）
         function updateCursor() {
@@ -211,15 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
             followerText.y += (mousePos.y - followerText.y) * 0.1;
             followerShape.x += (mousePos.x - followerShape.x) * 0.07;
             followerShape.y += (mousePos.y - followerShape.y) * 0.07;
-            
+
             followerText.el.style.transform = `translate(${followerText.x}px, ${followerText.y}px)`;
             followerShape.el.style.transform = `translate(${followerShape.x}px, ${followerShape.y}px)`;
-            
+
             // カーソル横にタイムスタンプらしき数字を表示
             const textSpan = followerText.el.firstElementChild;
             const timestamp = Math.floor(Date.now() / 1000).toString();
-            textSpan.textContent = isCursorGlitching 
-                ? timestamp.split('').map(c => Math.random() > 0.3 ? '!?#<>/+*'[Math.floor(Math.random()*8)] : c).join('') 
+            textSpan.textContent = isCursorGlitching
+                ? timestamp.split('').map(c => Math.random() > 0.3 ? '!?#<>/+*'[Math.floor(Math.random() * 8)] : c).join('')
                 : timestamp;
 
             // もし window.threeTick がメインスクリプトで定義されていれば呼び出す（WebGLの描画ループ統合のため）

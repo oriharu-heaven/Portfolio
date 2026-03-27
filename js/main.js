@@ -13,7 +13,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // WebGL描画ループを common.js のアニメーションループから呼び出せるようにグローバルに関数を公開
-    window.threeTick = () => {};
+    window.threeTick = () => { };
 
     // =========================================================
     // 1. 背景の3Dアニメーション（Three.js）
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // 高解像度ディスプレイ対応
         camera.position.z = 5;
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mouse3D = new THREE.Vector2();
 
         // 中央の大きな球体（点群で表現）
-        const centerMaterial = new THREE.PointsMaterial({ size: 0.03, sizeAttenuation: true });
+        const centerMaterial = new THREE.PointsMaterial({ size: 0.01, sizeAttenuation: true });
         const centerSphereGeom = new THREE.SphereGeometry(1.5, 64, 64);
         const centerSphere = new THREE.Points(centerSphereGeom, centerMaterial);
         centerSphere.userData.hueOffset = Math.random();
@@ -50,22 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 周りを飛ぶ小さな球体群
         for (let i = 0; i < 40; i++) {
-            const radius = Math.random() * 0.7 + 0.1;
+            const radius = Math.random() * 0.7 + 0.3;
             const geom = new THREE.SphereGeometry(radius, 24, 24);
-            const pointsMaterial = new THREE.PointsMaterial({ size: 0.03, sizeAttenuation: true });
+            const pointsMaterial = new THREE.PointsMaterial({ size: 0.01, sizeAttenuation: true });
             const points = new THREE.Points(geom, pointsMaterial);
-            
+
             // 空間のランダムな位置に配置
             const centerRadius = 2.0;
             const centerPhi = Math.acos(2 * Math.random() - 1);
             const centerTheta = Math.random() * 2 * Math.PI;
             const centerPos = new THREE.Vector3().setFromSphericalCoords(centerRadius * Math.random(), centerPhi, centerTheta);
             const relativePos = new THREE.Vector3().setFromSphericalCoords(Math.pow(Math.random(), 2) * 2.0, Math.acos(2 * Math.random() - 1), Math.random() * 2 * Math.PI);
-            
+
             points.position.copy(centerPos.add(relativePos));
             points.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
             points.userData.hueOffset = Math.random();
-            
+
             objectGroup.add(points);
             sceneObjects.push(points);
         }
@@ -94,16 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // common.js 側のアニメーションループから毎フレーム呼ばれる関数を定義
         window.threeTick = () => {
             const elapsedTime = clock.getElapsedTime();
-            
+
             sceneObjects.forEach((object, index) => {
                 const speedFactor = 0.1 * (index % 5 + 1);
                 object.rotation.x += 0.0001 * speedFactor;
                 object.rotation.y += 0.0002 * speedFactor;
-                
+
                 // 時間経過でフワフワと拡大縮小させる
                 const scaleValue = Math.sin(elapsedTime * 0.5 + index) * 0.1 + 0.9;
                 object.scale.set(scaleValue, scaleValue, scaleValue);
-                
+
                 // 色（色相）を時間で変化させるグラデーション
                 const hue = (elapsedTime * 0.05 + object.userData.hueOffset) % 1;
                 object.material.color.setHSL(hue, 0.7, 0.6);
@@ -114,14 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetRotationY = mouse3D.x * 1.0;
             objectGroup.rotation.x += (targetRotationX - objectGroup.rotation.x) * 0.05;
             objectGroup.rotation.y += (targetRotationY - objectGroup.rotation.y) * 0.05;
-            
+
             // カメラ位置も少し追従
             const targetCameraX = mouse3D.x * 0.2;
             const targetCameraY = mouse3D.y * 0.2;
             camera.position.x += (targetCameraX - camera.position.x) * 0.05;
             camera.position.y += (targetCameraY - camera.position.y) * 0.05;
             camera.lookAt(scene.position);
-            
+
             // 最終的に画面に描画
             renderer.render(scene, camera);
         };
