@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <defs>
+    <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.6" fill="#2a2a2a"/></pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d2a3a"/><stop offset="1" stop-color="#3b4f66"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <!-- menu bar -->
+  <rect x="0" y="0" width="800" height="44" fill="#f2f2f4" opacity="0.92"/>
+  <text x="24" y="29" font-size="18" fill="#222"></text>
+  <text x="52" y="29" font-size="15" fill="#222" font-weight="700">Finder</text>
+  <text x="120" y="29" font-size="15" fill="#444">ファイル　編集　表示</text>
+  <!-- ticker -->
+  <rect x="360" y="7" width="330" height="30" rx="5" fill="#0b0b0b"/>
+  <rect x="364" y="11" width="322" height="22" fill="url(#dots)"/>
+  <text x="372" y="28" font-size="16" fill="#ffb21a" font-weight="700" letter-spacing="1">晴れ 18℃　平常運転　Claude 完了</text>
+  <text x="704" y="29" font-size="15" fill="#222">10:24</text>
+  <!-- hero board -->
+  <rect x="90" y="170" width="620" height="170" rx="14" fill="#0b0b0b" stroke="#555" stroke-width="3"/>
+  <rect x="104" y="184" width="592" height="142" fill="url(#dots)"/>
+  <text x="400" y="248" text-anchor="middle" font-size="44" fill="#ffb21a" font-weight="800" letter-spacing="4">ま も な く</text>
+  <text x="400" y="304" text-anchor="middle" font-size="30" fill="#39d353" font-weight="700" letter-spacing="2">お知らせが 流れます</text>
+  <text x="400" y="420" text-anchor="middle" font-size="40" fill="#fff" font-weight="800">Denko</text>
+  <text x="400" y="460" text-anchor="middle" font-size="18" fill="#cfd8e3">メニューバーが駅の電光掲示板になる Mac アプリ</text>
+  <text x="400" y="520" text-anchor="middle" font-size="15" fill="#9fb0c4">Swift / SwiftUI ・ Homebrew で配布 ・ MIT License</text>
+</svg>
