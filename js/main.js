@@ -23,6 +23,24 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  const navLinks = [...document.querySelectorAll(".nav a")];
+  const sections = navLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+  const setCurrent = () => {
+    const line = window.innerHeight * 0.35;
+    let current = sections[0];
+    sections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= line) current = section;
+    });
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href") === `#${current.id}`) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+  };
+  setCurrent();
+  window.addEventListener("scroll", setCurrent, { passive: true });
+
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
     const active = document.activeElement;

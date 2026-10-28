@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="light">
   <title>折下陽春 | Portfolio</title>
   <meta name="description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。">
   <meta property="og:title" content="折下陽春 | Portfolio">
@@ -12,7 +12,7 @@
   <meta property="og:description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&family=Gochi+Hand&family=Yomogi&display=swap">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="js/main.js" defer></script>
@@ -21,371 +21,357 @@
 <body>
   <a class="skip" href="#main">本文へ移動</a>
 
-  <header class="header">
-    <div class="wrap header__inner">
-      <a class="header__name" href="#top">Haru Orishimo</a>
+  <div class="page">
+    <header class="header">
+      <a class="header__logo" href="#top" aria-label="トップへ"><span aria-hidden="true">ʕ•ᴥ•ʔ</span></a>
       <nav aria-label="メイン">
         <ul class="nav">
-          <li><a href="#works">Works</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#career">Career</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#top" aria-current="true"><span aria-hidden="true">★</span>Home</a></li>
+          <li><a href="#about"><span aria-hidden="true">●</span>About</a></li>
+          <li><a href="#works"><span aria-hidden="true">▦</span>Works</a></li>
+          <li><a href="#skills"><span aria-hidden="true">◆</span>Skills</a></li>
+          <li><a href="#career"><span aria-hidden="true">▲</span>Career</a></li>
         </ul>
       </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="intro wrap" id="top" aria-labelledby="name">
-      <p class="intro__affiliation">東京都立大学 システムデザイン学部 情報科学科 2年</p>
-      <h1 id="name"><span class="intro__line">折下 陽春</span><span class="intro__en" lang="en">Haru Orishimo</span></h1>
-      <div class="intro__text">
-        <p>大切にしているのは、作る前に「誰が、何に困っているか」を自分の目で確かめることです。技術はそれを解決するための手段の一つだと考えています。</p>
-        <p>これからは、実際に使われる現場でものづくりの経験を重ね、将来は国や分野にとらわれず、人の困りごとを解決する仕事に就きたいと考えています。</p>
+      <div class="header__end">
+        <ul class="social" aria-label="外部リンク">
+          <li><a class="social__dot social__dot--yellow" href="https://github.com/oriharu-heaven" target="_blank" rel="noopener" aria-label="GitHub"><img src="images/icons/github.svg" width="14" height="14" alt=""></a></li>
+          <li><a class="social__dot social__dot--pink" href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a></li>
+          <li><a class="social__dot social__dot--green" href="https://www.wantedly.com/id/haru_orishimo" target="_blank" rel="noopener" aria-label="Wantedly">W</a></li>
+        </ul>
+        <a class="header__contact" href="#contact"><span aria-hidden="true">♥</span>Contact</a>
       </div>
-      <div class="actions">
-        <a class="button button--primary" href="#works">作品を見る</a>
-        <a class="button" href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub</a>
-        <a class="button" href="mailto:hevun0604@gmail.com">メール</a>
-      </div>
-    </section>
+    </header>
 
-    <section class="section" id="works" aria-labelledby="works-title">
-      <div class="wrap">
-        <h2 id="works-title" class="reveal">Works</h2>
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="name">
+        <div class="nameplate">
+          <p class="nameplate__hello" aria-hidden="true">my name is</p>
+          <h1 id="name" class="nameplate__box"><span lang="en" aria-hidden="true">HARU</span><span class="sr-only">折下 陽春（Haru Orishimo）</span></h1>
+          <span class="tag tag--mint tag--tl" aria-hidden="true">Make things</span>
+          <span class="tag tag--beige tag--tr" aria-hidden="true">See who's stuck</span>
+          <span class="tag tag--yellow tag--hand tag--bl" aria-hidden="true">情報科学科 2年</span>
+          <span class="tag tag--mint tag--hand tag--br" aria-hidden="true">Tokyo, JP</span>
+          <svg class="arrow arrow--bl" viewBox="0 0 40 30" aria-hidden="true"><path d="M2 28 C 14 24, 26 16, 36 4 M28 5 L36 4 L35 12" /></svg>
+          <svg class="arrow arrow--br" viewBox="0 0 40 30" aria-hidden="true"><path d="M38 28 C 26 24, 14 16, 4 4 M12 5 L4 4 L5 12" /></svg>
+        </div>
+        <p class="hero__status"><span class="dot" aria-hidden="true"></span>東京都立大学 システムデザイン学部 情報科学科</p>
 
-        <div class="works">
-          <article class="card reveal" id="ff-portal" style="--i:0">
-            <span class="ribbon ribbon--live" aria-hidden="true"></span>
-            <a class="card__media" href="images/ff-portal-timetable.jpg" aria-label="時間割画面の拡大画像を開く"><img src="images/ff-portal.jpg" width="1600" height="1200" alt="練習カレンダーと練習室の時間割の画面" loading="lazy"></a>
-            <div class="card__body">
-              <p class="status status--live">運用中</p>
-              <h3>サークル練習管理アプリ</h3>
-              <p>約150名のダンスサークルの練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
-              <p class="meta">Webアプリ<span>2026.9 –</span></p>
-              <ul class="chips" aria-label="使用技術"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Vercel</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>課題</dt>
-                  <dd>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認で、見落としが起きていた。</dd>
-                  <dt>機能</dt>
-                  <dd>練習室ごとの時間割、10分単位の空き部屋申請（重複はDB制約で防止）、出欠回答、鍵の所在共有、カレンダー連携、役職ごとの権限。</dd>
-                  <dt>結果</dt>
-                  <dd>運用開始から約2か月で、ほぼ全員が週3〜4日利用。出欠確認の手間がほぼなくなった。</dd>
-                  <dt>役割</dt>
-                  <dd>仕様書の作成、設計判断、動作確認、改善。実装はClaude Codeを使用。</dd>
-                </dl>
-              </details>
+        <span class="sticker sticker--left" aria-hidden="true">🛠</span>
+        <span class="sticker sticker--right" aria-hidden="true">🎮</span>
+
+        <p class="hero__lead">誰が、何に困っているか<span class="emoji" aria-hidden="true">👀</span><br>確かめてから、つくる。<span class="emoji" aria-hidden="true">🌸</span></p>
+        <a class="cta" href="mailto:hevun0604@gmail.com"><span class="cta__box" aria-hidden="true">↗</span>Contact me</a>
+      </section>
+
+      <svg class="divider" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 38 Q 500 -10 1000 38" /></svg>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="about__note" aria-hidden="true">about me!</p>
+        <h2 id="about-title" class="label reveal">what's up</h2>
+
+        <div class="about__body">
+          <figure class="polaroid polaroid--left reveal">
+            <img src="images/denko.jpg" width="1600" height="1200" alt="Denkoのメニューバー表示" loading="lazy">
+            <figcaption>Denko, 2026</figcaption>
+          </figure>
+
+          <div class="about__text reveal">
+            <p>大切にしているのは、作る前に「誰が、何に困っているか」を自分の目で確かめること。<span aria-hidden="true">✨</span>技術はそれを解決するための手段の一つだと考えています。</p>
+            <p>これからは実際に使われる現場で経験を重ねて、国や分野にとらわれず、人の困りごとを解決する仕事がしたい。<span aria-hidden="true">🎨</span></p>
+          </div>
+
+          <figure class="polaroid polaroid--right reveal">
+            <img src="images/banjirun.jpg" width="1600" height="1150" alt="Blenderで制作した部屋のレンダリング" loading="lazy">
+            <figcaption>my room in Blender</figcaption>
+          </figure>
+        </div>
+
+        <ul class="stamps reveal" aria-label="得意な領域">
+          <li><span class="stamp stamp--yellow">Webアプリ</span><span class="stamp stamp--yellow stamp--sq" aria-hidden="true">⚡</span></li>
+          <li><span class="stamp stamp--green">iOS / Mac</span><span class="stamp stamp--green stamp--sq" aria-hidden="true">📱</span></li>
+          <li><span class="stamp stamp--pink">ゲーム・3D</span><span class="stamp stamp--pink stamp--sq" aria-hidden="true">🧩</span></li>
+          <li><span class="stamp stamp--blue">ユーザー視点</span><span class="stamp stamp--blue stamp--sq" aria-hidden="true">👀</span></li>
+        </ul>
+      </section>
+
+      <section class="works" id="works" aria-labelledby="works-title">
+        <h2 id="works-title" class="sr-only">Works</h2>
+
+        <div class="folders">
+          <article class="folder folder--black reveal" id="ff-portal">
+            <p class="folder__tab" aria-hidden="true">✦ Project 01</p>
+            <div class="folder__body">
+              <div class="folder__text">
+                <p class="folder__date"><span class="status status--live">運用中</span>2026.9 – ・Webアプリ</p>
+                <h3>サークル練習管理アプリ</h3>
+                <p>約150名のダンスサークルの練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
+                <ul class="chips" aria-label="使用技術"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Vercel</li></ul>
+                <details>
+                  <summary>View project</summary>
+                  <dl class="detail">
+                    <dt>課題</dt>
+                    <dd>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認で、見落としが起きていた。</dd>
+                    <dt>機能</dt>
+                    <dd>練習室ごとの時間割、10分単位の空き部屋申請（重複はDB制約で防止）、出欠回答、鍵の所在共有、カレンダー連携、役職ごとの権限。</dd>
+                    <dt>結果</dt>
+                    <dd>運用開始から約2か月で、ほぼ全員が週3〜4日利用。出欠確認の手間がほぼなくなった。</dd>
+                    <dt>役割</dt>
+                    <dd>仕様書の作成、設計判断、動作確認、改善。実装はClaude Codeを使用。</dd>
+                  </dl>
+                </details>
+              </div>
+              <a class="folder__media" href="images/ff-portal-timetable.jpg" aria-label="時間割画面の拡大画像を開く"><img src="images/ff-portal.jpg" width="1600" height="1200" alt="練習カレンダーと練習室の時間割の画面" loading="lazy"></a>
             </div>
           </article>
 
-          <article class="card reveal" id="denko" style="--i:1">
-            <span class="ribbon ribbon--live" aria-hidden="true"></span>
-            <a class="card__media" href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener" aria-label="DenkoのGitHubリポジトリを開く"><img src="images/denko.jpg" width="1600" height="1200" alt="メニューバーの電光掲示板表示と、天気・AI利用量のパネル" loading="lazy" class="top"></a>
-            <div class="card__body">
-              <p class="status status--live">公開中</p>
-              <h3>Denko</h3>
-              <p>Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震情報、AIエージェントの作業完了を流れる文字で知らせる。</p>
-              <p class="meta">Macアプリ<span>2026.10 –</span></p>
-              <ul class="chips" aria-label="使用技術"><li>Swift</li><li>SwiftUI</li><li>Homebrew</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>課題</dt>
-                  <dd>通知やアプリを見に行くたびに作業の集中が切れる。</dd>
-                  <dt>機能</dt>
-                  <dd>気象庁の防災情報XML、天気、交通のオープンデータを取得して1行に統合。CPU・メモリ・AI利用量のパネル。データは端末内で処理。</dd>
-                  <dt>配布</dt>
-                  <dd>Homebrew caskで配布。MITライセンスでソースを公開。</dd>
-                </dl>
-              </details>
-              <div class="links"><a href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub</a></div>
+          <article class="folder folder--yellow reveal" id="denko">
+            <p class="folder__tab" aria-hidden="true">✦ Project 02</p>
+            <div class="folder__body">
+              <div class="folder__text">
+                <p class="folder__date"><span class="status status--live">公開中</span>2026.10 – ・Macアプリ</p>
+                <h3>Denko</h3>
+                <p>Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震情報、AIエージェントの作業完了を流れる文字で知らせる。</p>
+                <ul class="chips" aria-label="使用技術"><li>Swift</li><li>SwiftUI</li><li>Homebrew</li></ul>
+                <details>
+                  <summary>View project</summary>
+                  <dl class="detail">
+                    <dt>課題</dt>
+                    <dd>通知やアプリを見に行くたびに作業の集中が切れる。</dd>
+                    <dt>機能</dt>
+                    <dd>気象庁の防災情報XML、天気、交通のオープンデータを取得して1行に統合。CPU・メモリ・AI利用量のパネル。データは端末内で処理。</dd>
+                    <dt>配布</dt>
+                    <dd>Homebrew caskで配布。MITライセンスでソースを公開。</dd>
+                  </dl>
+                </details>
+                <p class="folder__links"><a href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub ↗</a></p>
+              </div>
+              <a class="folder__media" href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener" aria-label="DenkoのGitHubリポジトリを開く"><img src="images/denko.jpg" width="1600" height="1200" alt="メニューバーの電光掲示板表示と、天気・AI利用量のパネル" loading="lazy" class="top"></a>
             </div>
           </article>
 
-          <article class="card reveal" id="migaki" style="--i:0">
-            <span class="ribbon ribbon--wip" aria-hidden="true"></span>
-            <a class="card__media" href="images/migaki.jpg" aria-label="ミガキ殿の画像を拡大して開く"><img src="images/migaki.jpg" width="1600" height="1100" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" loading="lazy"></a>
-            <div class="card__body">
-              <p class="status status--wip">開発中</p>
-              <h3>ミガキ殿</h3>
-              <p>歯みがきの2分間で気分や体調を記録するサービス。歯ブラシのちょんまげをした「おとのさま」が問いかけ、ダイヤルで答える。</p>
-              <p class="meta">Webアプリ・デバイス<span>2026.9 –</span></p>
-              <ul class="chips" aria-label="使用技術"><li>TypeScript</li><li>React</li><li>IndexedDB</li><li>Gemini API</li><li>Blender</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>課題</dt>
-                  <dd>日記は続かない。毎日必ずある歯みがきの時間なら記録を習慣にできる。</dd>
-                  <dt>機能</dt>
-                  <dd>過去の回答と比べて普段と違うときだけ追加の質問をする。分析は端末内で行い、記録は外部に送らない。</dd>
-                  <dt>AI</dt>
-                  <dd>求めたときだけGemini APIを呼ぶ。APIキーはサーバーレス関数で中継して秘匿。</dd>
-                  <dt>デバイス</dt>
-                  <dd>本番用の専用デバイスをBlenderでモデリング。現在はWeb版で検証中。</dd>
-                </dl>
-              </details>
+          <article class="folder folder--blue reveal" id="migaki">
+            <p class="folder__tab" aria-hidden="true">✦ Project 03</p>
+            <div class="folder__body">
+              <div class="folder__text">
+                <p class="folder__date"><span class="status status--wip">開発中</span>2026.9 – ・Webアプリ・デバイス</p>
+                <h3>ミガキ殿</h3>
+                <p>歯みがきの2分間で気分や体調を記録するサービス。歯ブラシのちょんまげをした「おとのさま」が問いかけ、ダイヤルで答える。</p>
+                <ul class="chips" aria-label="使用技術"><li>TypeScript</li><li>React</li><li>IndexedDB</li><li>Gemini API</li><li>Blender</li></ul>
+                <details>
+                  <summary>View project</summary>
+                  <dl class="detail">
+                    <dt>課題</dt>
+                    <dd>日記は続かない。毎日必ずある歯みがきの時間なら記録を習慣にできる。</dd>
+                    <dt>機能</dt>
+                    <dd>過去の回答と比べて普段と違うときだけ追加の質問をする。分析は端末内で行い、記録は外部に送らない。</dd>
+                    <dt>AI</dt>
+                    <dd>求めたときだけGemini APIを呼ぶ。APIキーはサーバーレス関数で中継して秘匿。</dd>
+                    <dt>デバイス</dt>
+                    <dd>本番用の専用デバイスをBlenderでモデリング。現在はWeb版で検証中。</dd>
+                  </dl>
+                </details>
+              </div>
+              <a class="folder__media" href="images/migaki.jpg" aria-label="ミガキ殿の画像を拡大して開く"><img src="images/migaki.jpg" width="1600" height="1100" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" loading="lazy"></a>
             </div>
           </article>
 
-          <article class="card reveal" id="banjirun" style="--i:1">
-            <span class="ribbon ribbon--wip" aria-hidden="true"></span>
-            <a class="card__media" href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener" aria-label="banjirunのGitHubリポジトリを開く"><img src="images/banjirun.jpg" width="1600" height="1150" alt="Blenderで制作した部屋のレンダリング" loading="lazy"></a>
-            <div class="card__body">
-              <p class="status status--wip">制作中</p>
-              <h3>banjirun</h3>
-              <p>教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。</p>
-              <p class="meta">ゲーム（VR・PC）<span>2026.10 –</span></p>
-              <ul class="chips" aria-label="使用技術"><li>Unity</li><li>C#</li><li>OpenXR</li><li>Blender</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>3D</dt>
-                  <dd>舞台の部屋をBlenderでモデリングし、複数カメラでレンダリング。</dd>
-                  <dt>VR</dt>
-                  <dd>OpenXRとXR Interaction Toolkitで、同じシーンをMeta QuestとMac・PCで動作。</dd>
-                  <dt>演出</dt>
-                  <dd>LED看板をシェーダーで表現。</dd>
-                </dl>
-              </details>
-              <div class="links"><a href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub</a></div>
+          <article class="folder folder--pink reveal" id="banjirun">
+            <p class="folder__tab" aria-hidden="true">✦ Project 04</p>
+            <div class="folder__body">
+              <div class="folder__text">
+                <p class="folder__date"><span class="status status--wip">制作中</span>2026.10 – ・ゲーム（VR・PC）</p>
+                <h3>banjirun</h3>
+                <p>教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。</p>
+                <ul class="chips" aria-label="使用技術"><li>Unity</li><li>C#</li><li>OpenXR</li><li>Blender</li></ul>
+                <details>
+                  <summary>View project</summary>
+                  <dl class="detail">
+                    <dt>3D</dt>
+                    <dd>舞台の部屋をBlenderでモデリングし、複数カメラでレンダリング。</dd>
+                    <dt>VR</dt>
+                    <dd>OpenXRとXR Interaction Toolkitで、同じシーンをMeta QuestとMac・PCで動作。</dd>
+                    <dt>演出</dt>
+                    <dd>LED看板をシェーダーで表現。</dd>
+                  </dl>
+                </details>
+                <p class="folder__links"><a href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub ↗</a></p>
+              </div>
+              <a class="folder__media" href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener" aria-label="banjirunのGitHubリポジトリを開く"><img src="images/banjirun.jpg" width="1600" height="1150" alt="Blenderで制作した部屋のレンダリング" loading="lazy"></a>
             </div>
           </article>
 
-          <article class="card reveal" id="boomtect" style="--i:0">
-            <span class="ribbon ribbon--live" aria-hidden="true"></span>
-            <a class="card__media" href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener" aria-label="unityroomでBOOMTECTを開く"><img src="images/BOOMTECT-image.jpg" width="1600" height="900" alt="BOOMTECTのゲーム画面" loading="lazy"></a>
-            <div class="card__body">
-              <p class="status status--live">公開中</p>
-              <h3>BOOMTECT</h3>
-              <p>学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
-              <p class="meta">ゲーム（Web）<span>2025.6</span></p>
-              <ul class="chips" aria-label="使用技術"><li>Unity</li><li>C#</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>工夫</dt>
-                  <dd>大量の破片が出ても重くならないよう、不要な物理演算を削減し、オブジェクトの管理方法を設計。</dd>
-                </dl>
-              </details>
-              <div class="links"><a href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ</a></div>
+          <article class="folder folder--green reveal" id="boomtect">
+            <p class="folder__tab" aria-hidden="true">✦ Project 05</p>
+            <div class="folder__body">
+              <div class="folder__text">
+                <p class="folder__date"><span class="status status--live">公開中</span>2025.6 ・ゲーム（Web）</p>
+                <h3>BOOMTECT</h3>
+                <p>学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
+                <ul class="chips" aria-label="使用技術"><li>Unity</li><li>C#</li></ul>
+                <details>
+                  <summary>View project</summary>
+                  <dl class="detail">
+                    <dt>工夫</dt>
+                    <dd>大量の破片が出ても重くならないよう、不要な物理演算を削減し、オブジェクトの管理方法を設計。</dd>
+                  </dl>
+                </details>
+                <p class="folder__links"><a href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ ↗</a></p>
+              </div>
+              <a class="folder__media" href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener" aria-label="unityroomでBOOMTECTを開く"><img src="images/BOOMTECT-image.jpg" width="1600" height="900" alt="BOOMTECTのゲーム画面" loading="lazy"></a>
             </div>
           </article>
 
-          <article class="card reveal" id="langairy" style="--i:1">
-            <span class="ribbon ribbon--live" aria-hidden="true"></span>
-            <a class="card__media" href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener" aria-label="App StoreでLangairyを開く"><img src="images/Langairy-image.png" width="1920" height="1080" alt="Langairyの画面" loading="lazy"></a>
-            <div class="card__body">
-              <p class="status status--live">公開中</p>
-              <h3>Langairy</h3>
-              <p>日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。</p>
-              <p class="meta">iOSアプリ<span>2026.3</span></p>
-              <ul class="chips" aria-label="使用技術"><li>Swift</li><li>SwiftUI</li><li>Gemini API</li></ul>
-              <div class="links"><a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store</a></div>
+          <article class="folder folder--paper reveal" id="langairy">
+            <p class="folder__tab" aria-hidden="true">✦ Project 06</p>
+            <div class="folder__body">
+              <div class="folder__text">
+                <p class="folder__date"><span class="status status--live">公開中</span>2026.3 ・iOSアプリ</p>
+                <h3>Langairy</h3>
+                <p>日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。</p>
+                <ul class="chips" aria-label="使用技術"><li>Swift</li><li>SwiftUI</li><li>Gemini API</li></ul>
+                <p class="folder__links"><a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store ↗</a></p>
+              </div>
+              <a class="folder__media" href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener" aria-label="App StoreでLangairyを開く"><img src="images/Langairy-image.png" width="1920" height="1080" alt="Langairyの画面" loading="lazy"></a>
             </div>
           </article>
         </div>
 
-        <h3 class="subhead reveal" id="more">その他の制作物</h3>
-        <ul class="minis">
-          <li class="reveal" id="warp" style="--i:0">
-            <a href="https://github.com/oriharu-heaven/warp-shader-lab" target="_blank" rel="noopener">Warp Shader Lab</a>
+        <h3 class="label label--small reveal" id="more">other things</h3>
+        <ul class="notes">
+          <li class="note note--yellow reveal" id="warp">
+            <a href="https://github.com/oriharu-heaven/warp-shader-lab" target="_blank" rel="noopener">Warp Shader Lab ↗</a>
             <p>ノイズで抽象的なグラフィックを生成し、PNGで書き出すWebツール</p>
             <ul class="chips" aria-label="使用技術"><li>JavaScript</li><li>WebGL</li><li>GLSL</li></ul>
           </li>
-          <li class="reveal" id="aita" style="--i:1">
+          <li class="note note--mint reveal" id="aita">
             <span>aita</span>
             <p>カレンダーの空き時間を探し、生活リズムを24時間の円で編集できるWebアプリ</p>
             <ul class="chips" aria-label="使用技術"><li>React</li><li>TypeScript</li><li>Supabase</li></ul>
           </li>
-          <li class="reveal" id="youtube" style="--i:0">
-            <a href="https://github.com/oriharu-heaven/ConfortableYoutube" target="_blank" rel="noopener">Confortable YouTube</a>
+          <li class="note note--pink reveal" id="youtube">
+            <a href="https://github.com/oriharu-heaven/ConfortableYoutube" target="_blank" rel="noopener">Confortable YouTube ↗</a>
             <p>ショート動画の非表示や再生速度の自動調整を行うChrome拡張機能</p>
             <ul class="chips" aria-label="使用技術"><li>JavaScript</li><li>Chrome Extension</li></ul>
           </li>
-          <li class="reveal" id="portfolio" style="--i:1">
-            <a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" rel="noopener">Portfolio</a>
+          <li class="note note--beige reveal" id="portfolio">
+            <a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" rel="noopener">Portfolio ↗</a>
             <p>このサイト</p>
             <ul class="chips" aria-label="使用技術"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
           </li>
         </ul>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="wrap">
-        <h2 id="skills-title" class="reveal">Skills</h2>
-        <ul class="skills reveal">
+      <section class="skills" id="skills" aria-labelledby="skills-title">
+        <p class="section-note" aria-hidden="true">tools I use</p>
+        <h2 id="skills-title" class="label reveal">skills</h2>
+        <p class="hint">タグにカーソルを合わせると、使った制作物が出ます</p>
+        <ul class="skillset reveal">
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-0"><img src="images/icons/typescript.svg" width="40" height="40" alt=""><span class="skill__name">TypeScript</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-0">
-              <p>TypeScript</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki">ミガキ殿</a></li><li><a href="#aita">aita</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-0"><span class="stamp stamp--blue">TypeScript</span><span class="stamp stamp--blue stamp--sq"><img src="images/icons/typescript.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-0"><ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki">ミガキ殿</a></li><li><a href="#aita">aita</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-1"><img src="images/icons/nextjs.svg" width="40" height="40" alt=""><span class="skill__name">Next.js</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-1">
-              <p>Next.js</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-1"><span class="stamp stamp--black">Next.js</span><span class="stamp stamp--black stamp--sq"><img src="images/icons/nextjs.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-1"><ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-2"><img src="images/icons/supabase.svg" width="40" height="40" alt=""><span class="skill__name">Supabase</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-2">
-              <p>Supabase</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#aita">aita</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-2"><span class="stamp stamp--green">Supabase</span><span class="stamp stamp--green stamp--sq"><img src="images/icons/supabase.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-2"><ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#aita">aita</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-3"><img src="images/icons/react.svg" width="40" height="40" alt=""><span class="skill__name">React</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-3">
-              <p>React</p>
-              <ul><li><a href="#migaki">ミガキ殿</a></li><li><a href="#aita">aita</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-3"><span class="stamp stamp--yellow">React</span><span class="stamp stamp--yellow stamp--sq"><img src="images/icons/react.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-3"><ul><li><a href="#migaki">ミガキ殿</a></li><li><a href="#aita">aita</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-4"><img src="images/icons/swift.svg" width="40" height="40" alt=""><span class="skill__name">Swift / SwiftUI</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-4">
-              <p>Swift / SwiftUI</p>
-              <ul><li><a href="#denko">Denko</a></li><li><a href="#langairy">Langairy</a></li><li>Life is Tech! で指導</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-4"><span class="stamp stamp--pink">Swift / SwiftUI</span><span class="stamp stamp--pink stamp--sq"><img src="images/icons/swift.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-4"><ul><li><a href="#denko">Denko</a></li><li><a href="#langairy">Langairy</a></li><li>Life is Tech! で指導</li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-5"><img src="images/icons/csharp.svg" width="40" height="40" alt=""><span class="skill__name">C#</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-5">
-              <p>C#</p>
-              <ul><li><a href="#banjirun">banjirun</a></li><li><a href="#boomtect">BOOMTECT</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-5"><span class="stamp stamp--green">C#</span><span class="stamp stamp--green stamp--sq"><img src="images/icons/csharp.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-5"><ul><li><a href="#banjirun">banjirun</a></li><li><a href="#boomtect">BOOMTECT</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-6"><img src="images/icons/unity.svg" width="40" height="40" alt=""><span class="skill__name">Unity</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-6">
-              <p>Unity</p>
-              <ul><li><a href="#banjirun">banjirun</a></li><li><a href="#boomtect">BOOMTECT</a></li><li>Life is Tech! で指導</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-6"><span class="stamp stamp--black">Unity</span><span class="stamp stamp--black stamp--sq"><img src="images/icons/unity.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-6"><ul><li><a href="#banjirun">banjirun</a></li><li><a href="#boomtect">BOOMTECT</a></li><li>Life is Tech! で指導</li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-7"><img src="images/icons/blender.svg" width="40" height="40" alt=""><span class="skill__name">Blender</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-7">
-              <p>Blender</p>
-              <ul><li><a href="#banjirun">banjirun</a></li><li><a href="#migaki">ミガキ殿</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-7"><span class="stamp stamp--yellow">Blender</span><span class="stamp stamp--yellow stamp--sq"><img src="images/icons/blender.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-7"><ul><li><a href="#banjirun">banjirun</a></li><li><a href="#migaki">ミガキ殿</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-8"><img src="images/icons/javascript.svg" width="40" height="40" alt=""><span class="skill__name">JavaScript</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-8">
-              <p>JavaScript</p>
-              <ul><li><a href="#warp">Warp Shader Lab</a></li><li><a href="#youtube">Confortable YouTube</a></li><li><a href="#portfolio">このサイト</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-8"><span class="stamp stamp--blue">JavaScript</span><span class="stamp stamp--blue stamp--sq"><img src="images/icons/javascript.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-8"><ul><li><a href="#warp">Warp Shader Lab</a></li><li><a href="#youtube">Confortable YouTube</a></li><li><a href="#portfolio">このサイト</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-9"><img src="images/icons/opengl.svg" width="40" height="40" alt=""><span class="skill__name">WebGL / GLSL</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-9">
-              <p>WebGL / GLSL</p>
-              <ul><li><a href="#warp">Warp Shader Lab</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-9"><span class="stamp stamp--pink">WebGL / GLSL</span><span class="stamp stamp--pink stamp--sq"><img src="images/icons/opengl.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-9"><ul><li><a href="#warp">Warp Shader Lab</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-10"><span class="skill__mono" aria-hidden="true">✦</span><span class="skill__name">Gemini API</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-10">
-              <p>Gemini API</p>
-              <ul><li><a href="#migaki">ミガキ殿</a></li><li><a href="#langairy">Langairy</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-10"><span class="stamp stamp--green">Gemini API</span><span class="stamp stamp--green stamp--sq" aria-hidden="true">✦</span></button>
+            <div class="skill__pop" role="tooltip" id="skill-10"><ul><li><a href="#migaki">ミガキ殿</a></li><li><a href="#langairy">Langairy</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-11"><span class="skill__mono" aria-hidden="true">&gt;_</span><span class="skill__name">Claude Code</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-11">
-              <p>Claude Code</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki">ミガキ殿</a></li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-11"><span class="stamp stamp--black">Claude Code</span><span class="stamp stamp--black stamp--sq" aria-hidden="true">&gt;_</span></button>
+            <div class="skill__pop" role="tooltip" id="skill-11"><ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki">ミガキ殿</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-12"><img src="images/icons/python.svg" width="40" height="40" alt=""><span class="skill__name">Python</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-12">
-              <p>Python</p>
-              <ul><li>松尾研 GCI</li><li>Kaggle</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-12"><span class="stamp stamp--yellow">Python</span><span class="stamp stamp--yellow stamp--sq"><img src="images/icons/python.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-12"><ul><li>松尾研 GCI</li><li>Kaggle</li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-13"><img src="images/icons/c.svg" width="40" height="40" alt=""><span class="skill__name">C</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-13">
-              <p>C</p>
-              <ul><li>大学の授業</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-13"><span class="stamp stamp--blue">C / C++</span><span class="stamp stamp--blue stamp--sq"><img src="images/icons/cplusplus.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-13"><ul><li>大学の授業</li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-14"><img src="images/icons/cplusplus.svg" width="40" height="40" alt=""><span class="skill__name">C++</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-14">
-              <p>C++</p>
-              <ul><li>大学の授業</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-14"><span class="stamp stamp--pink">Java</span><span class="stamp stamp--pink stamp--sq"><img src="images/icons/java.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-14"><ul><li>大学の授業</li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-15"><img src="images/icons/java.svg" width="40" height="40" alt=""><span class="skill__name">Java</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-15">
-              <p>Java</p>
-              <ul><li>大学の授業</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-15"><span class="stamp stamp--green">Git / GitHub</span><span class="stamp stamp--green stamp--sq"><img src="images/icons/git.svg" width="20" height="20" alt=""></span></button>
+            <div class="skill__pop" role="tooltip" id="skill-15"><ul><li>すべての制作物</li><li><a href="#denko">Homebrew配布</a></li></ul></div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-16"><img src="images/icons/git.svg" width="40" height="40" alt=""><span class="skill__name">Git</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-16">
-              <p>Git</p>
-              <ul><li>すべての制作物</li></ul>
-            </div>
-          </li>
-          <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-17"><img src="images/icons/github.svg" width="40" height="40" alt=""><span class="skill__name">GitHub</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-17">
-              <p>GitHub</p>
-              <ul><li>すべての制作物</li><li><a href="#denko">Homebrew配布</a></li></ul>
-            </div>
-          </li>
-          <li class="skill">
-            <button type="button" class="skill__icon" aria-describedby="skill-18"><span class="skill__mono" aria-hidden="true">EN</span><span class="skill__name">English</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-18">
-              <p>English</p>
-              <ul><li>TOEFL iBT 93</li><li>TOEIC 910</li><li>米国の高校に1年間留学</li></ul>
-            </div>
+            <button type="button" class="skill__btn stamp-pair" aria-describedby="skill-16"><span class="stamp stamp--black">English</span><span class="stamp stamp--black stamp--sq" aria-hidden="true">EN</span></button>
+            <div class="skill__pop" role="tooltip" id="skill-16"><ul><li>TOEFL iBT 93</li><li>TOEIC 910</li><li>米国の高校に1年間留学</li></ul></div>
           </li>
         </ul>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="career" aria-labelledby="career-title">
-      <div class="wrap">
-        <h2 id="career-title" class="reveal">Career</h2>
+      <section class="career" id="career" aria-labelledby="career-title">
+        <p class="section-note" aria-hidden="true">so far...</p>
+        <h2 id="career-title" class="label reveal">career</h2>
         <ol class="timeline">
-          <li class="reveal"><time datetime="2023-08">2023.8 – 2024.6</time>米国 Rham High School に留学</li>
-          <li class="reveal"><time datetime="2025-04">2025.4</time>東京都立大学 システムデザイン学部 情報科学科 入学</li>
-          <li class="reveal"><time datetime="2025-06">2025.6</time>BOOMTECT 公開</li>
-          <li class="reveal"><time datetime="2025-07">2025.7 –</time>Life is Tech! 学生メンター（Unity・Swift）</li>
-          <li class="reveal"><time datetime="2025-09">2025.9</time>東京大学 松尾研究室 GCI 修了</li>
-          <li class="reveal"><time datetime="2026-03">2026.3</time>Langairy 公開</li>
-          <li class="reveal"><time datetime="2026-09">2026.9 –</time>サークル練習管理アプリ 運用開始</li>
-          <li class="reveal"><time datetime="2026-10">2026.10</time>Denko 公開</li>
+          <li class="reveal"><time datetime="2023-08">2023.8 – 2024.6</time><span>米国 Rham High School に留学</span></li>
+          <li class="reveal"><time datetime="2025-04">2025.4</time><span>東京都立大学 システムデザイン学部 情報科学科 入学</span></li>
+          <li class="reveal"><time datetime="2025-06">2025.6</time><span>BOOMTECT 公開</span></li>
+          <li class="reveal"><time datetime="2025-07">2025.7 –</time><span>Life is Tech! 学生メンター（Unity・Swift）</span></li>
+          <li class="reveal"><time datetime="2025-09">2025.9</time><span>東京大学 松尾研究室 GCI 修了</span></li>
+          <li class="reveal"><time datetime="2026-03">2026.3</time><span>Langairy 公開</span></li>
+          <li class="reveal"><time datetime="2026-09">2026.9 –</time><span>サークル練習管理アプリ 運用開始</span></li>
+          <li class="reveal"><time datetime="2026-10">2026.10</time><span>Denko 公開</span></li>
         </ol>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="wrap">
-        <h2 id="contact-title" class="reveal">Contact</h2>
-        <div class="actions reveal">
-          <a class="button button--primary" href="mailto:hevun0604@gmail.com">hevun0604@gmail.com</a>
-          <a class="button" href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub</a>
-          <a class="button" href="https://www.wantedly.com/id/haru_orishimo" target="_blank" rel="noopener">Wantedly</a>
-          <a class="button" href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" rel="noopener">LinkedIn</a>
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact__card reveal">
+          <p class="contact__hand" aria-hidden="true">say hi!</p>
+          <h2 id="contact-title">Contact</h2>
+          <p>お仕事・インターン・制作のご相談など、お気軽にどうぞ。</p>
+          <a class="cta cta--plain" href="mailto:hevun0604@gmail.com"><span class="cta__box" aria-hidden="true">✉</span>hevun0604@gmail.com</a>
+          <ul class="contact__links">
+            <li><a href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub ↗</a></li>
+            <li><a href="https://www.wantedly.com/id/haru_orishimo" target="_blank" rel="noopener">Wantedly ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          </ul>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer class="footer">
-    <p class="wrap">© 2026 Haru Orishimo</p>
-  </footer>
+    <footer class="footer">
+      <p>© 2026 Haru Orishimo</p>
+    </footer>
+  </div>
 </body>
 
 </html>

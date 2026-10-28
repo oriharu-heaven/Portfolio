@@ -14,7 +14,7 @@ https://oriharu-heaven.github.io/Portfolio/
 
 ## Site
 
-HTML / CSS と少量の JavaScript で構築しています。アイコンは devicon を同梱しています。
+HTML / CSS と少量の JavaScript で構築しています。ノートとスクラップブックをモチーフにしたデザインです。アイコンは devicon を同梱しています。
 
 ## Contact
 
