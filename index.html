@@ -4,582 +4,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haru Orishimo | Portfolio</title>
-  <meta name="description" content="Haru Orishimoのポートフォリオサイト。東京都立大学 情報科学科2年。身近な課題を技術で解決することに取り組んでいます。" />
-  <meta property="og:title" content="Haru Orishimo | Portfolio" />
+  <title>折下陽春 | Haru Orishimo Portfolio</title>
+  <meta name="description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。身近な不便を見つけ、作って、使ってもらうところまで取り組んでいます。" />
+  <meta property="og:title" content="折下陽春 | Haru Orishimo Portfolio" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="Haru Orishimoのポートフォリオサイト。東京都立大学 情報科学科2年。身近な課題を技術で解決することに取り組んでいます。" />
-
+  <meta property="og:description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。身近な不便を見つけ、作って、使ってもらうところまで取り組んでいます。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Noto+Sans:wght@700&display=swap"
-    rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-
-  <script src="js/common.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="js/site.js" defer></script>
 </head>
 
-<body data-palette="palette-1">
-  <canvas id="webgl-canvas"></canvas>
-
-  <header class="site-header">
-    <div class="site-header__inner container">
-      <a href="index.html" class="site-header__logo">Haru Orishimo</a>
-      <div class="header-controls">
-        <nav class="site-nav">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#career">Career</a></li>
-            <li><a href="#work">Works</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <button id="color-palette-toggle" class="palette-toggle">
-          Color
-        </button>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode">
-          <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" />
-          </svg>
-          <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path
-              d="M9.37 5.51C9.19 6.15 9.1 6.82 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27C17.45 17.19 14.93 19 12 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49z" />
-          </svg>
-        </button>
-      </div>
+<body>
+  <header class="top">
+    <div class="wrap top__inner">
+      <a href="#" class="top__name">Haru Orishimo</a>
+      <nav class="top__nav" aria-label="ページ内リンク">
+        <a href="#works">Works</a>
+        <a href="#skills">Skills</a>
+        <a href="#career">Career</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero__inner">
-      <h1 class="hero__title anim-char-fadein" data-original-text="Haru Orishimo<br>PORTFOLIO"></h1>
-      <p class="hero__name anim-char-fadein" data-original-text="Solving problems with technology"></p>
-    </div>
-  </section>
-
   <main>
-    <section class="section" id="about">
-      <div class="container">
-        <div class="about-content">
-          <h2 class="section__title anim-char-fadein" data-original-text="About Me"></h2>
-          <p class="section__text about-me-text anim-char-fadein"
-            data-original-text="東京都立大学 情報科学科の2年生です。身近な課題を見つけ、技術を手段として解決することに取り組んでいます。約150名のサークルでは、LINE・Discord・紙に分散していた連絡をまとめる練習管理Webアプリを作り、2026年9月から運用しています。高校時代にアメリカへ1年間留学しており（TOEFL iBT 93 / TOEIC 910）、英語の公式ドキュメントや一次情報も抵抗なく読んで開発に活かしています。">
-          </p>
+    <!-- ===== Intro ===== -->
+    <section class="intro wrap">
+      <p class="label">東京都立大学 システムデザイン学部 情報科学科 2年 ／ 2029年3月卒業予定</p>
+      <h1 class="intro__name">折下 陽春<span>Haru Orishimo</span></h1>
+      <p class="intro__lead">身近な不便を見つけて、作って、<br class="pc">使ってもらうところまでやる学生です。</p>
+      <p class="intro__text">
+        所属する約150名のダンスサークルでは、LINE・Discord・紙に散らばっていた練習の連絡を一つにまとめるWebアプリを作り、2026年9月から運用しています。
+        ほかにもMacアプリ、Webアプリ、ゲームを作り、公開・配布まで自分で行っています。
+      </p>
 
-          <div class="about-extra-container vertical-layout">
-            <div class="about-card anim-scroll-fade">
-              <h3 class="about-card__title">Personality & Hobbies</h3>
-              <p class="about-card__text">
-                好奇心旺盛でフットワークが軽く、新しい環境に飛び込むのが好きです（MBTI:ENFP）。<br>趣味は一人旅、音楽鑑賞、水泳、そして最近始めたカメラです。大学からダンスサークルに所属しており、ブレイクダンスをメインに取り組みつつ、現在は新たにパンキングダンスにも挑戦しています。年末年始には小豆島へリゾートバイトに行くなど、様々な経験を通して視野を広げることを大切にしています。
-              </p>
-            </div>
+      <dl class="facts">
+        <div><dt>運用中のWebアプリ</dt><dd>利用者 約150名</dd></div>
+        <div><dt>公開した作品</dt><dd>App Store / Homebrew / unityroom</dd></div>
+        <div><dt>英語</dt><dd>TOEFL iBT 93 / TOEIC 910</dd></div>
+        <div><dt>稼働</dt><dd>週15〜20時間・1年以上</dd></div>
+      </dl>
 
-            <div class="about-card anim-scroll-fade">
-              <h3 class="about-card__title">Experience</h3>
-              <ul class="experience-list">
-                <li>
-                  <span class="experience-title">学生メンター (Life is Tech!) 2025.7 –</span>
-                  <p class="experience-desc">
-                    中高生向けのプログラミング教育で、Unityを使ったゲーム開発とSwiftを使ったiOSアプリ開発を指導しています。技術を初学者にわかりやすく伝える力と、学習者が自力でエラーを解決できるよう導く力を培っています。
-                  </p>
-                </li>
-                <li>
-                  <span class="experience-title">東京大学 松尾研究室「GCI」修了</span>
-                  <p class="experience-desc">大学のカリキュラム外で、Pythonを使ったデータ分析と機械学習の基礎を学びました。Kaggleでもデータ分析に取り組んでいます。</p>
-                </li>
-              </ul>
-            </div>
+      <p class="intro__links">
+        <a href="#works" class="btn btn--fill">作品を見る ↓</a>
+        <a href="https://github.com/oriharu-heaven" target="_blank" rel="noopener" class="btn">GitHub</a>
+        <a href="mailto:hevun0604@gmail.com" class="btn">メール</a>
+      </p>
+    </section>
+
+    <!-- ===== Works ===== -->
+    <section class="sec" id="works">
+      <div class="wrap">
+        <h2 class="sec__title"><span class="num">01</span>Works<small>主な制作物</small></h2>
+
+        <article class="work">
+          <figure class="work__img"><img src="images/ff-portal.jpg" alt="サークル練習管理Webアプリのカレンダー画面" /></figure>
+          <div class="work__body">
+            <p class="work__meta">Webアプリ ・ 2026.9〜 運用中</p>
+            <h3 class="work__title">サークル練習管理アプリ</h3>
+            <p class="work__summary">約150名・9ジャンルのダンスサークルで使う、練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
+            <ul class="work__points">
+              <li><b>課題</b>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認、空き部屋はLINEのコメントで宣言しており、見落としが起きていた。</li>
+              <li><b>工夫</b>空き部屋は10分単位で申請でき、重複はデータベース側でも防止。GoogleやAppleのカレンダーに自動反映。役職ごとの権限を設定。</li>
+              <li><b>結果</b>運用開始から約2か月で、メンバーのほぼ全員が週3〜4日使う状態に。出欠確認の手間はほぼなくなった。</li>
+            </ul>
+            <p class="work__role">AIエージェント（Claude Code）を使って開発。私は仕様書の作成（v1.29まで改訂）、設計の判断、動作確認、メンバーの声を受けた改善を担当。</p>
+            <p class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Vercel</span></p>
           </div>
+        </article>
 
-          <div class="skills-container">
-
-            <div class="skill-block">
-              <p class="section__text anim-char-fadein skill-title" data-original-text="Skills <small>– 制作物で使用</small>"></p>
-
-              <div class="skills-icons">
-                <div class="skill-item">
-                  <i class="devicon-typescript-plain" title="TypeScript"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">サークル用Webアプリ（AI活用）</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-nextjs-plain" title="Next.js"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">サークル用Webアプリの画面・API</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-supabase-plain" title="Supabase"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">DB・認証・権限設計（RLS）</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-swift-plain" title="Swift"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">SwiftUIでiOSアプリを公開</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-csharp-plain" title="C#"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">BOOMTECTのゲームロジック</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-unity-plain" title="Unity"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">BOOMTECTの物理演算・最適化</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-javascript-plain" title="JavaScript"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">このサイトの動的UI（GSAP等）</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-html5-plain" title="HTML5"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">このサイトの構築</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-css3-plain" title="CSS3"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">このサイトのデザイン</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-git-plain" title="Git"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">制作物のバージョン管理</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-github-original" title="GitHub"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">ソース管理・自動デプロイ連携</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="skill-block">
-              <p class="section__text anim-char-fadein skill-title" data-original-text="Learning <small>– 授業・講座・個人学習</small>"></p>
-
-              <div class="skills-icons">
-                <div class="skill-item">
-                  <i class="devicon-python-plain" title="Python"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">松尾研GCI・Kaggleでデータ分析</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-java-plain" title="Java"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">WebシステムやGUIアプリを作成</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-c-plain" title="C"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">大学の講義で使用</span></div>
-                </div>
-                <div class="skill-item">
-                  <i class="devicon-cplusplus-plain" title="C++"></i>
-                  <div class="skill-tooltip"><span class="skill-tooltip-line"></span><span
-                      class="skill-tooltip-text">大学の講義で使用</span></div>
-                </div>
-              </div>
-            </div>
-
+        <article class="work">
+          <figure class="work__img"><img src="images/denko.svg" alt="Denkoのイメージ図" /><figcaption>※ イメージ図</figcaption></figure>
+          <div class="work__body">
+            <p class="work__meta">Macアプリ ・ 2026.10 公開（ベータ版）</p>
+            <h3 class="work__title">Denko</h3>
+            <p class="work__summary">Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震・津波情報、AIエージェントの作業完了などを、流れる一行で知らせます。</p>
+            <ul class="work__points">
+              <li><b>きっかけ</b>作業中に通知やアプリを見に行くたびに集中が切れるのが不満だった。</li>
+              <li><b>工夫</b>気象庁の防災情報XMLや交通のオープンデータなど、形式の違う複数のデータを取得して一つの表示にまとめた。データは端末内だけで処理。</li>
+              <li><b>配布</b>Homebrewで入れられるようにし、MITライセンスでソースを公開。</li>
+            </ul>
+            <p class="tags"><span>Swift</span><span>SwiftUI</span><span>Homebrew</span></p>
+            <p class="work__links"><a href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub →</a></p>
           </div>
-        </div>
+        </article>
+
+        <article class="work">
+          <figure class="work__img"><img src="images/migaki.jpg" alt="ミガキ殿のホーム画面と回答画面" /></figure>
+          <div class="work__body">
+            <p class="work__meta">Webアプリ（PWA） ・ 2026.9〜 開発中</p>
+            <h3 class="work__title">ミガキ殿</h3>
+            <p class="work__summary">歯みがきの2分間で、その日の気分や体調を記録するアプリ。ちょんまげが歯ブラシの「おとのさま」が問いかけ、1〜10のダイヤルで答えます。</p>
+            <ul class="work__points">
+              <li><b>きっかけ</b>日記は続かないが、毎日必ずある歯みがきの時間なら習慣にできると考えた。</li>
+              <li><b>工夫</b>過去の自分の回答と比べて「いつもと違う」ときだけ、追加で1問たずねる。分析は端末内で行い、記録を外に送らない。</li>
+              <li><b>AI</b>「殿に聞く」を押したときだけGemini APIを呼ぶ。APIキーを守るため、サーバーレス関数で中継。</li>
+            </ul>
+            <p class="tags"><span>TypeScript</span><span>React</span><span>Vite</span><span>IndexedDB</span><span>Gemini API</span></p>
+          </div>
+        </article>
+
+        <article class="work">
+          <figure class="work__img"><img src="images/banjirun.jpg" alt="Blenderで制作した部屋のレンダリング" /></figure>
+          <div class="work__body">
+            <p class="work__meta">ゲーム（VR / PC） ・ 2026.10〜 制作中 ・ 個人制作</p>
+            <h3 class="work__title">banjirun</h3>
+            <p class="work__summary">教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。Meta Quest向けのVR版と、Mac / PC版を作っています。</p>
+            <ul class="work__points">
+              <li><b>3D</b>舞台の部屋をBlenderでモデリングし、複数のカメラでレンダリング（左の画像）。</li>
+              <li><b>VR</b>OpenXRとXR Interaction Toolkitで、同じシーンをVRと画面の両方で動かせるようにした。</li>
+              <li><b>演出</b>LED看板の表示をシェーダーで作成。</li>
+            </ul>
+            <p class="tags"><span>Unity 6</span><span>C#</span><span>OpenXR</span><span>Blender</span></p>
+            <p class="work__links"><a href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub →</a></p>
+          </div>
+        </article>
+
+        <article class="work">
+          <figure class="work__img"><img src="images/BOOMTECT-image.jpg" alt="BOOMTECTのゲーム画面" /></figure>
+          <div class="work__body">
+            <p class="work__meta">ゲーム ・ 2025.6 公開</p>
+            <h3 class="work__title">BOOMTECT</h3>
+            <p class="work__summary">学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
+            <ul class="work__points">
+              <li><b>工夫</b>大量の破片が出ても重くならないよう、不要な物理演算を減らし、オブジェクトの管理方法を工夫した。</li>
+            </ul>
+            <p class="tags"><span>Unity</span><span>C#</span></p>
+            <p class="work__links"><a href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ →</a></p>
+          </div>
+        </article>
+
+        <article class="work">
+          <figure class="work__img"><img src="images/Langairy-image.png" alt="Langairyの画面" /></figure>
+          <div class="work__body">
+            <p class="work__meta">iOSアプリ ・ 2026.3 公開</p>
+            <h3 class="work__title">Langairy</h3>
+            <p class="work__summary">日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。企画から App Store の審査・公開まで一人で行いました。</p>
+            <p class="tags"><span>Swift</span><span>SwiftUI</span><span>Gemini API</span></p>
+            <p class="work__links"><a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store →</a></p>
+          </div>
+        </article>
+
+        <h3 class="sub">小さな制作物</h3>
+        <table class="mini">
+          <thead><tr><th>名前</th><th>何を作ったか</th><th>技術</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://github.com/oriharu-heaven/warp-shader-lab" target="_blank" rel="noopener">Warp Shader Lab</a></td><td>ノイズを使った抽象的なグラフィックを作り、SNS用のサイズで書き出せるWebツール</td><td>JavaScript, WebGL, GLSL</td></tr>
+            <tr><td>aita</td><td>カレンダーの空き時間を探すWebアプリ。「朝は集中」などの自分ルールをAIで整理し、生活リズムを24時間の円で編集できる</td><td>React, TypeScript, Supabase</td></tr>
+            <tr><td><a href="https://github.com/oriharu-heaven/ConfortableYoutube" target="_blank" rel="noopener">Confortable YouTube</a></td><td>ショート動画の非表示や再生速度の自動調整で、YouTubeを見やすくするChrome拡張機能</td><td>JavaScript, Chrome拡張</td></tr>
+            <tr><td>旅のしおり</td><td>旅行の行程と案内をまとめた、贈り物用の一枚のWebページ</td><td>HTML, CSS</td></tr>
+            <tr><td><a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" rel="noopener">このサイト</a></td><td>ポートフォリオ。フレームワークを使わずに作成</td><td>HTML, CSS, JavaScript</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="section" id="career">
-      <div class="container">
-        <h2 class="section__title anim-char-fadein" data-original-text="Career"></h2>
+    <!-- ===== Skills ===== -->
+    <section class="sec" id="skills">
+      <div class="wrap">
+        <h2 class="sec__title"><span class="num">02</span>Skills<small>何に使ったか</small></h2>
+        <table class="skills">
+          <tbody>
+            <tr><th>TypeScript / Next.js / Supabase</th><td>サークル練習管理アプリ（画面・API・データベースと権限設定）、aita</td></tr>
+            <tr><th>React / Vite</th><td>ミガキ殿（PWA）、aita</td></tr>
+            <tr><th>Swift / SwiftUI</th><td>Denko（Macアプリ）、Langairy（iOSアプリ）。Life is Tech! で中高生に指導</td></tr>
+            <tr><th>C# / Unity</th><td>banjirun（VR / PC）、BOOMTECT。Life is Tech! で中高生に指導</td></tr>
+            <tr><th>Blender</th><td>banjirun の舞台となる部屋のモデリングとレンダリング</td></tr>
+            <tr><th>JavaScript / WebGL</th><td>Warp Shader Lab（GLSLシェーダー）、Chrome拡張機能、このサイト</td></tr>
+            <tr><th>生成AI API</th><td>Gemini API を Langairy・ミガキ殿に組み込み。APIキーを隠すためのサーバーレス中継</td></tr>
+            <tr><th>AIエージェントを使った開発</th><td>Claude Code に実装を任せ、仕様書・設計の判断・動作確認を自分で行う形で、サークルアプリなどを開発</td></tr>
+            <tr><th>Git / GitHub</th><td>すべての制作物で使用。Homebrew でのアプリ配布</td></tr>
+            <tr><th>Python</th><td>東京大学 松尾研究室 GCI でデータ分析・機械学習を学習、Kaggle に参加</td></tr>
+            <tr><th>C / C++ / Java</th><td>大学の授業で学習（制作物では未使用）</td></tr>
+            <tr><th>英語</th><td>米国の高校に1年間留学。英語の公式ドキュメントを読んで開発に使っている</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Career ===== -->
+    <section class="sec" id="career">
+      <div class="wrap">
+        <h2 class="sec__title"><span class="num">03</span>Career<small>経歴</small></h2>
         <ol class="timeline">
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2023.8 – 2024.6</span>
-            <h3 class="timeline__title">米国の高校へ1年間留学</h3>
-            <p class="timeline__desc">Rham High School（コネチカット州）。現地の授業を英語で受け、TOEFL iBT 93 / TOEIC 910を取得。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2025.4</span>
-            <h3 class="timeline__title">東京都立大学 システムデザイン学部 情報科学科 入学</h3>
-            <p class="timeline__desc">2029年3月卒業予定。授業でC / C++ / Java / Pythonを学習。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2025.6</span>
-            <h3 class="timeline__title">BOOMTECTを公開</h3>
-            <p class="timeline__desc">Unityで物理演算の破壊シミュレーションゲームを作り、unityroomで公開。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2025.7 –</span>
-            <h3 class="timeline__title">Life is Tech! 学生メンター</h3>
-            <p class="timeline__desc">中高生にUnityでのゲーム開発とSwiftでのiOSアプリ開発を指導。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">大学在学中</span>
-            <h3 class="timeline__title">東京大学 松尾研究室 GCI 修了</h3>
-            <p class="timeline__desc">Pythonでのデータ分析・機械学習を学び、Kaggleにも参加。Deep Learning基礎講座も受講。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2026.3</span>
-            <h3 class="timeline__title">iOSアプリをApp Storeで公開</h3>
-            <p class="timeline__desc">SwiftUIとGemini APIで英語学習アプリを個人開発し、審査を経て公開。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2026.9 –</span>
-            <h3 class="timeline__title">サークル練習管理Webアプリを運用</h3>
-            <p class="timeline__desc">約150名のサークルで、予定・出欠・連絡をまとめるWebアプリを運用開始。</p>
-          </li>
-          <li class="timeline__item anim-scroll-fade">
-            <span class="timeline__date">2026.10</span>
-            <h3 class="timeline__title">チーム開発・Macアプリ公開</h3>
-            <p class="timeline__desc">Akiba Schoolでチームのゲーム制作（banjirun）に参加。MacアプリDenkoをHomebrewで公開。</p>
-          </li>
+          <li><time>2023.8 – 2024.6</time><div><h3>米国の高校に1年間留学</h3><p>Rham High School（コネチカット州）。現地の授業を英語で受講。</p></div></li>
+          <li><time>2025.4</time><div><h3>東京都立大学 システムデザイン学部 情報科学科 入学</h3><p>2029年3月卒業予定。</p></div></li>
+          <li><time>2025.6</time><div><h3>BOOMTECT を公開</h3><p>初めて一人で作ったゲームを unityroom で公開。</p></div></li>
+          <li><time>2025.7 –</time><div><h3>Life is Tech! 学生メンター</h3><p>中高生に、Unityでのゲーム開発とSwiftでのiOSアプリ開発を教えている。</p></div></li>
+          <li><time>2025.9</time><div><h3>東京大学 松尾研究室 GCI 修了</h3><p>Pythonでのデータ分析・機械学習を学習。</p></div></li>
+          <li><time>2026.3</time><div><h3>iOSアプリ Langairy を公開</h3><p>App Store の審査を経て公開。</p></div></li>
+          <li><time>2026.9 –</time><div><h3>サークル練習管理アプリの運用を開始</h3><p>約150名が利用。</p></div></li>
+          <li><time>2026.10</time><div><h3>Macアプリ Denko を公開</h3><p>Homebrew で配布。並行して banjirun を制作中。</p></div></li>
         </ol>
       </div>
     </section>
 
-    <section class="section" id="work">
-      <div class="container">
-        <h2 class="section__title anim-char-fadein" data-original-text="Selected Works"></h2>
-        <div class="work-list">
-
-          <div class="work-item">
-            <div class="work-item__image anim-scroll-fade">
-              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="ffportal">
-                <img src="images/ff-portal.jpg" alt="サークル練習管理Webアプリの画面（マイカレンダーと練習室の時間割）" />
-              </a>
-            </div>
-            <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="Circle Portal"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="Web Application<br>26/9 – 運用中">
-              </p>
-              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
-                data-work="ffportal" data-original-text="View Details"></a>
-
-              <div class="work-data" id="data-ffportal" style="display: none;">
-                <h4 class="work-modal-title">サークル練習管理Webアプリ <span class="work-modal-tech">(Next.js, TypeScript, Supabase, Vercel)</span></h4>
-                <img src="images/ff-portal-timetable.jpg" alt="練習室ごとの時間割画面" style="width:100%;border-radius:8px;margin:12px 0;" />
-                <div class="work-modal-section">
-                  <h5>Problem</h5>
-                  <p>約150名・9ジャンルのダンスサークルでは、練習室の予約結果をExcelで時間割にし、画像にしてLINEで共有していました。各自が手でカレンダーに登録し、空き部屋の使用はLINEのコメントで宣言、出欠は個別に確認。情報がLINE・Discord・紙に分散し、見落としが起きていました。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Solution</h5>
-                  <p>練習日程・空き部屋の申請・出欠・鍵の受け渡しを一つのWebアプリにまとめました。</p>
-                  <ul>
-                    <li>練習室×時間の時間割と、自分の予定だけを集めたマイカレンダー</li>
-                    <li>空き部屋を10分単位で申請（重複はデータベース側の制約でも防止）</li>
-                    <li>出欠のワンタップ回答、鍵の所持者と施錠状況の共有、プッシュ通知</li>
-                    <li>GoogleやAppleのカレンダーへの自動反映（購読URL）</li>
-                    <li>役職ごとの権限（Supabase RLS）、卒業生アカウントへの移行</li>
-                  </ul>
-                  <p>開発にはAIエージェント（Claude Code）を活用し、私は仕様書の作成・設計判断・動作確認・メンバーの声を受けた改善を担っています。仕様書は改訂を重ね、v1.29まで更新しています。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Result</h5>
-                  <p>2026年9月に運用を始め、約2か月でメンバーのほぼ全員が週3〜4日使う状態になりました。出欠確認の手間はほぼゼロになっています。現在は、画面の分かりやすさとiOSで通知が届かない問題の改善に取り組んでいます。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="work-item">
-            <div class="work-item__image anim-scroll-fade">
-              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="denko">
-                <img src="images/denko.svg" alt="Denko" loading="lazy" />
-              </a>
-            </div>
-            <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="Denko"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="macOS Application<br>26/10"></p>
-              <p class="work-item__tech">Swift, SwiftUI, Homebrew</p>
-              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
-                data-work="denko" data-original-text="View Details"></a>
-              <div class="work-data" id="data-denko" style="display: none;">
-                <h4 class="work-modal-title">Denko <span class="work-modal-tech">(Swift, SwiftUI, Homebrew)</span></h4>
-                <div class="work-modal-section">
-                  <h5>Overview</h5>
-                  <p>Macのメニューバーを駅の電光掲示板のように使えるアプリ。天気・ニュース・電車の遅延・地震や津波の情報、Claude CodeやCodexなどのコーディングエージェントの完了通知、CPU・メモリの使用率を、流れる文字で知らせます。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Why</h5>
-                  <p>作業中に複数のアプリや通知を見に行くと集中が切れることが不満でした。視界の端に一行だけ必要な情報が流れる形にすれば、作業を止めずに状況をつかめると考えて作りました。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>What I built</h5>
-                  <ul><li>気象庁XML・Open-Meteo・公共交通オープンデータなど複数の公開データを取得し、一つの表示に統合</li><li>AIエージェントの作業完了・利用量をメニューバーで確認できる仕組み</li><li>Releases（DMG）とHomebrew caskでの配布（<code>brew install --cask oriharu-heaven/tap/denko</code>）</li><li>データは端末内で処理し、トラッキングなし。MITライセンスで公開（現在ベータ版）</li></ul>
-                </div>
-                <div class="work-modal-link"><a href="https://github.com/oriharu-heaven/Denko" target="_blank" class="work-modal-ext">View on GitHub <i class="devicon-github-original"></i></a></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-item">
-            <div class="work-item__image anim-scroll-fade">
-              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="banjirun">
-                <img src="images/banjirun.jpg" alt="banjirun" loading="lazy" />
-              </a>
-            </div>
-            <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="banjirun"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="Game / VR · Team Project<br>26/10"></p>
-              <p class="work-item__tech">Unity 6, C#, OpenXR, Blender</p>
-              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
-                data-work="banjirun" data-original-text="View Details"></a>
-              <div class="work-data" id="data-banjirun" style="display: none;">
-                <h4 class="work-modal-title">banjirun <span class="work-modal-tech">(Unity 6, C#, OpenXR, Blender)</span></h4>
-                <div class="work-modal-section">
-                  <h5>Overview</h5>
-                  <p>秋葉原のスクール（Akiba School）で、チームで制作しているゲーム。教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験を、VR（Meta Quest）版とPC版の両方で作っています。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>My role</h5>
-                  <ul><li>原型となる「小人」視点のプロトタイプを制作</li><li>舞台となる部屋をBlenderでモデリング（画像はレンダリング結果）</li><li>OpenXR + XR Interaction ToolkitでのVR対応、LED看板のシェーダー</li><li>3DモデルはTripoで生成したものも取り込み、チームで分担して制作</li></ul>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Learned</h5>
-                  <p>初めてのチーム開発で、Gitでの共同作業や役割分担、他の人が読める形でドキュメント（VR対応手順など）を残すことの大切さを学びました。</p>
-                </div>
-                <div class="work-modal-link"><a href="https://github.com/oriharu-heaven/banjirun" target="_blank" class="work-modal-ext">View on GitHub <i class="devicon-github-original"></i></a></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-item">
-            <div class="work-item__image anim-scroll-fade">
-              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="migaki">
-                <img src="images/migaki.svg" alt="ミガキ殿" loading="lazy" />
-              </a>
-            </div>
-            <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="ミガキ殿"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="Web App (PWA)<br>開発中"></p>
-              <p class="work-item__tech">TypeScript, React, Vite, Gemini API</p>
-              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
-                data-work="migaki" data-original-text="View Details"></a>
-              <div class="work-data" id="data-migaki" style="display: none;">
-                <h4 class="work-modal-title">ミガキ殿 <span class="work-modal-tech">(TypeScript, React, Vite, Gemini API)</span></h4>
-                <div class="work-modal-section">
-                  <h5>Overview</h5>
-                  <p>歯みがきの時間を使って、その日の気持ちを声で記録するPWA。1〜10のダイヤルで今の状態を答えると、AIが内容に合わせて短い深掘り質問をしてくれます。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Why</h5>
-                  <p>日記は続かないけれど、毎日必ずある「歯みがきの2分」なら習慣にできると考えました。手がふさがっていても使えるよう、音声入力と大きなダイヤルUIにしています。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>What I built</h5>
-                  <ul><li>Gemini API（失敗時はAnthropic APIに切り替え）による質問生成</li><li>APIキーをブラウザに出さないためのサーバーレス中継（Vercel / Cloudflare）</li><li>記録はIndexedDBで端末内に保存。不適切な応答を防ぐガードとテストを用意</li></ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="work-item">
-            <div class="work-item__image anim-scroll-fade">
-              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="boomtect">
-                <img src="images/BOOMTECT-image.jpg" alt="BOOMTECT_image" />
-              </a>
-            </div>
-            <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="BOOMTECT"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="Unity Game<br>25/6">
-              </p>
-              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
-                data-work="boomtect" data-original-text="View Details"></a>
-
-              
-              <div class="work-data" id="data-boomtect" style="display: none;">
-                <h4 class="work-modal-title">BOOMTECT <span class="work-modal-tech">(Unity, C#)</span></h4>
-                <div class="work-modal-section">
-                  <h5>Overview</h5>
-                  <p>学校や職場といった身近な環境を舞台に、特殊な爆発物を用いて建物を破壊する爽快破壊シミュレーションゲーム。</p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Motivation</h5>
-                  <p>
-                    日々のちょっとした退屈やモヤモヤを、ゲームの中でスカッと吹き飛ばしてもらいたい！という思いから企画しました。クスッと笑えるようなユーモアと、本格的なパズル要素を掛け合わせ、多くの人に楽しんでもらえる作品を目指しました。
-                  </p>
-                </div>
-                <div class="work-modal-section">
-                  <h5>Challenges</h5>
-                  <p>
-                    単に壊すだけでなく、ゲーム性を高めるための物理演算とパフォーマンスの両立に挑戦しました。ゲーム内の様々なアクションを実装するため、C#でのコンポーネント設計を工夫しています。大量の破片オブジェクトが発生した際も快適にプレイできるよう、不要な演算の削減やオブジェクトの管理手法を実装した点が一番の工夫です。
-                  </p>
-                </div>
-                <div class="work-modal-link">
-                  <a href="https://unityroom.com/games/boomtect" target="_blank" class="work-modal-ext">Play on
-                    unityroom <i class="devicon-unity-plain"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-item">
-            <div class="work-item__image anim-scroll-fade">
-              <a href="javascript:void(0);" class="work-modal-trigger img-btn" data-work="langairy">
-                <img src="images/Langairy-image.png" alt="Langairy_image" />
-              </a>
-            </div>
-            <div class="work-item__content">
-              <h3 class="work-item__title anim-char-fadein" data-original-text="Langairy"></h3>
-              <p class="work-item__category anim-char-fadein" data-original-text="iOS Application<br>26/3">
-              </p>
-              <a href="javascript:void(0);" class="work-item__link work-modal-trigger anim-char-fadein"
-                data-work="langairy" data-original-text="View Details"></a>
-
-              
-              <div class="work-data" id="data-langairy" style="display: none;">
-                <h4 class="work-modal-title">Langairy <span class="work-modal-tech">(Swift, SwiftUI, Gemini API)</span>
-                </h4>
-                <div class="work-modal-section">
-                  <h5>Overview</h5>
-                  <p>日常の出来事を英語学習の教材に変えるiOSアプリ。SwiftUIで個人開発し、App Storeの審査を経て公開しました。Gemini APIによる言い換え機能や、復習アルゴリズム（SM-2）を組み込んでいます。</p>
-                </div>
-                <div class="work-modal-link">
-                  <a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank"
-                    class="work-modal-ext">View on App Store <i class="devicon-apple-original"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+    <!-- ===== About / Contact ===== -->
+    <section class="sec" id="contact">
+      <div class="wrap about">
+        <div>
+          <h2 class="sec__title"><span class="num">04</span>About</h2>
+          <p>好奇心が強く、新しい環境に飛び込むのが好きです。大学からダンスサークルでブレイクダンスをしています。趣味は一人旅、水泳、カメラ。</p>
+          <p>技術そのものより、それで誰かの困りごとが解決することに一番やりがいを感じます。</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <h2 class="section__title anim-char-fadein" data-original-text="Small Projects"></h2>
-        <p class="section__lead">授業の合間や自分の困りごとから作った小さな制作物です。</p>
-        <div class="mini-grid">
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">空き時間を見つけるカレンダー</p>
-            <h3 class="mini-card__title">aita</h3>
-            <p class="mini-card__desc">予定の空きを自動で探し、「朝は集中」などの自分ルールをAIで構造化。24時間の円で生活リズムを編集できるWebアプリ。</p>
-            <p class="mini-card__tech">React, TypeScript, Supabase, Vercel</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">グラフィック生成ツール</p>
-            <h3 class="mini-card__title">Warp Shader Lab</h3>
-            <p class="mini-card__desc">ドメインワーピングとfBmノイズで抽象的なグラフィックを作り、SNS用サイズのPNGで書き出せるWebツール。</p>
-            <p class="mini-card__tech">JavaScript, WebGL, GLSL</p><a href="https://github.com/oriharu-heaven/warp-shader-lab" target="_blank" class="mini-card__link">GitHub →</a>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">Chrome拡張機能</p>
-            <h3 class="mini-card__title">Confortable YouTube</h3>
-            <p class="mini-card__desc">ショート動画の非表示、広告スキップ、再生速度の自動調整でYouTubeを見やすくする拡張機能。</p>
-            <p class="mini-card__tech">JavaScript, Chrome Extension (MV3)</p><a href="https://github.com/oriharu-heaven/ConfortableYoutube" target="_blank" class="mini-card__link">GitHub →</a>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">出欠管理iOSアプリ</p>
-            <h3 class="mini-card__title">AttendX</h3>
-            <p class="mini-card__desc">出欠を記録し、iCloudで同期。ロック画面のLive Activityで状況を確認できます。</p>
-            <p class="mini-card__tech">Swift, SwiftData, CloudKit</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">ダンス練習ツール</p>
-            <h3 class="mini-card__title">Fobea / ChoreoPlayer</h3>
-            <p class="mini-card__desc">立ち位置（フォーメーション）を記録するアプリと、区間リピートなどができる練習用の音楽プレーヤー。</p>
-            <p class="mini-card__tech">Swift, SwiftUI, SwiftData</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">3Dモデリング</p>
-            <h3 class="mini-card__title">Akiba School Room</h3>
-            <p class="mini-card__desc">banjirunの舞台になる部屋をBlenderで制作。カメラを複数置いてレンダリング。</p>
-            <p class="mini-card__tech">Blender</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">タスク管理ツール</p>
-            <h3 class="mini-card__title">Panopticon / TM</h3>
-            <p class="mini-card__desc">自分の作業管理のために作ったiPhoneアプリとWebツール。</p>
-            <p class="mini-card__tech">Swift, TypeScript</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">家計簿アプリ</p>
-            <h3 class="mini-card__title">Expense Tracker</h3>
-            <p class="mini-card__desc">支出を記録して振り返るためのiOSアプリ。</p>
-            <p class="mini-card__tech">Swift, SwiftUI</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">記念日用Webページ</p>
-            <h3 class="mini-card__title">旅のしおりサイト</h3>
-            <p class="mini-card__desc">旅行の行程と案内をまとめた一枚のWebページを、贈り物として制作。</p>
-            <p class="mini-card__tech">HTML, CSS</p>
-          </div>
-          <div class="mini-card anim-scroll-fade">
-            <p class="mini-card__kind">このサイト</p>
-            <h3 class="mini-card__title">Portfolio Site</h3>
-            <p class="mini-card__desc">スクロール連動アニメーションとWebGL背景、ダーク/ライト・配色切替を実装。</p>
-            <p class="mini-card__tech">HTML, CSS, GSAP, Three.js</p><a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" class="mini-card__link">GitHub →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-content">
-          <h2 class="section__title anim-char-fadein" data-original-text="Get In Touch"></h2>
-          <br>
-          <a href="mailto:hevun0604@gmail.com" class="contact__button anim-char-fadein"
-            data-original-text="hevun0604@gmail.com"></a>
+        <div>
+          <h2 class="sec__title"><span class="num">05</span>Contact</h2>
+          <p class="contact__mail"><a href="mailto:hevun0604@gmail.com">hevun0604@gmail.com</a></p>
+          <p class="contact__links">
+            <a href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.wantedly.com/id/haru_orishimo" target="_blank" rel="noopener">Wantedly</a>
+            <a href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__nav">
-        <a href="#about">About</a>
-        <a href="#career">Career</a>
-        <a href="#work">Work</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="footer__sns">
-        <a href="https://github.com/oriharu-heaven" target="_blank" class="sns-link">
-          <i class="devicon-github-original"></i> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" class="sns-link">
-          <i class="devicon-linkedin-plain"></i> LinkedIn
-        </a>
-      </div>
-
-    </div>
-    <p class="footer__copy">
-      &copy; 2026 Haru Orishimo. All Rights Reserved.
-    </p>
-  </footer>
-
-  
-  <div id="work-modal" class="work-modal">
-    <div class="work-modal__overlay" id="work-modal-overlay"></div>
-    <div class="work-modal__content">
-      <button class="work-modal__close" id="work-modal-close" aria-label="Close modal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <div class="work-modal__body" id="work-modal-body">
-        
-      </div>
-    </div>
-  </div>
-
+  <footer class="foot-line"><p class="foot wrap">© 2026 Haru Orishimo</p></footer>
 </body>
 
 </html>
