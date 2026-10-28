@@ -14,7 +14,7 @@ https://oriharu-heaven.github.io/Portfolio/
 
 ## Site
 
-HTML / CSS / JavaScript のみで構築しています。
+HTML と CSS のみで構築しています（JavaScript 不使用）。
 
 ## Contact
 

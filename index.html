@@ -2,228 +2,315 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>折下陽春 | Haru Orishimo Portfolio</title>
-  <meta name="description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。身近な不便を見つけ、作って、使ってもらうところまで取り組んでいます。" />
-  <meta property="og:title" content="折下陽春 | Haru Orishimo Portfolio" />
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。身近な不便を見つけ、作って、使ってもらうところまで取り組んでいます。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script>document.documentElement.classList.add("js");</script>
-  <script src="js/site.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>折下陽春 | Portfolio</title>
+  <meta name="description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。">
+  <meta property="og:title" content="折下陽春 | Portfolio">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="東京都立大学 情報科学科2年 折下陽春のポートフォリオ。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <header class="top">
-    <div class="wrap top__inner">
-      <a href="#" class="top__name">Haru Orishimo</a>
-      <nav class="top__nav" aria-label="ページ内リンク">
-        <a href="#works">Works</a>
-        <a href="#skills">Skills</a>
-        <a href="#career">Career</a>
-        <a href="#contact">Contact</a>
+  <a class="skip" href="#main">本文へ移動</a>
+
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="header__name" href="#top">Haru Orishimo</a>
+      <nav aria-label="メイン">
+        <ul class="nav">
+          <li><a href="#works">Works</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#career">Career</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- ===== Intro ===== -->
-    <section class="intro wrap">
-      <p class="label">東京都立大学 システムデザイン学部 情報科学科 2年 ／ 2029年3月卒業予定</p>
-      <h1 class="intro__name">折下 陽春<span>Haru Orishimo</span></h1>
-      <p class="intro__lead">身近な不便を見つけて、作って、<br class="pc">使ってもらうところまでやる学生です。</p>
-      <p class="intro__text">
-        所属する約150名のダンスサークルでは、LINE・Discord・紙に散らばっていた練習の連絡を一つにまとめるWebアプリを作り、2026年9月から運用しています。
-        ほかにもMacアプリ、Webアプリ、ゲームを作り、公開・配布まで自分で行っています。
-      </p>
-
-      <dl class="facts">
-        <div><dt>運用中のWebアプリ</dt><dd>利用者 約150名</dd></div>
-        <div><dt>公開した作品</dt><dd>App Store / Homebrew / unityroom</dd></div>
-        <div><dt>英語</dt><dd>TOEFL iBT 93 / TOEIC 910</dd></div>
-      </dl>
-
-      <p class="intro__links">
-        <a href="#works" class="btn btn--fill">作品を見る ↓</a>
-        <a href="https://github.com/oriharu-heaven" target="_blank" rel="noopener" class="btn">GitHub</a>
-        <a href="mailto:hevun0604@gmail.com" class="btn">メール</a>
-      </p>
-    </section>
-
-    <!-- ===== Works ===== -->
-    <section class="sec" id="works">
-      <div class="wrap">
-        <h2 class="sec__title"><span class="num">01</span>Works<small>主な制作物</small></h2>
-
-        <article class="work">
-          <figure class="work__img"><img src="images/ff-portal.jpg" alt="サークル練習管理Webアプリのカレンダー画面" /></figure>
-          <div class="work__body">
-            <p class="work__meta">Webアプリ ・ 2026.9〜 運用中</p>
-            <h3 class="work__title">サークル練習管理アプリ</h3>
-            <p class="work__summary">約150名・9ジャンルのダンスサークルで使う、練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
-            <ul class="work__points">
-              <li><b>課題</b>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認、空き部屋はLINEのコメントで宣言しており、見落としが起きていた。</li>
-              <li><b>工夫</b>空き部屋は10分単位で申請でき、重複はデータベース側でも防止。GoogleやAppleのカレンダーに自動反映。役職ごとの権限を設定。</li>
-              <li><b>結果</b>運用開始から約2か月で、メンバーのほぼ全員が週3〜4日使う状態に。出欠確認の手間はほぼなくなった。</li>
-            </ul>
-            <p class="work__role">AIエージェント（Claude Code）を使って開発。私は仕様書の作成（v1.29まで改訂）、設計の判断、動作確認、メンバーの声を受けた改善を担当。</p>
-            <p class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Vercel</span></p>
-          </div>
-        </article>
-
-        <article class="work">
-          <figure class="work__img"><img src="images/denko.jpg" alt="Denkoの電光掲示板表示とメニュー画面" /></figure>
-          <div class="work__body">
-            <p class="work__meta">Macアプリ ・ 2026.10 公開（ベータ版）</p>
-            <h3 class="work__title">Denko</h3>
-            <p class="work__summary">Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震・津波情報、AIエージェントの作業完了などを、流れる一行で知らせます。</p>
-            <ul class="work__points">
-              <li><b>きっかけ</b>作業中に通知やアプリを見に行くたびに集中が切れるのが不満だった。</li>
-              <li><b>工夫</b>気象庁の防災情報XMLや交通のオープンデータなど、形式の違う複数のデータを取得して一つの表示にまとめた。データは端末内だけで処理。</li>
-              <li><b>配布</b>Homebrewで入れられるようにし、MITライセンスでソースを公開。</li>
-            </ul>
-            <p class="tags"><span>Swift</span><span>SwiftUI</span><span>Homebrew</span></p>
-            <p class="work__links"><a href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub →</a></p>
-          </div>
-        </article>
-
-        <article class="work">
-          <figure class="work__img"><img src="images/migaki.jpg" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" /></figure>
-          <div class="work__body">
-            <p class="work__meta">Webアプリ（PWA） ・ 2026.9〜 開発中</p>
-            <h3 class="work__title">ミガキ殿</h3>
-            <p class="work__summary">歯みがきの2分間で、その日の気分や体調を記録するサービス。ちょんまげが歯ブラシの「おとのさま」が問いかけ、1〜10のダイヤルで答えます。</p>
-            <ul class="work__points">
-              <li><b>きっかけ</b>日記は続かないが、毎日必ずある歯みがきの時間なら習慣にできると考えた。</li>
-              <li><b>工夫</b>過去の自分の回答と比べて「いつもと違う」ときだけ、追加で1問たずねる。分析は端末内で行い、記録を外に送らない。</li>
-              <li><b>AI</b>「殿に聞く」を押したときだけGemini APIを呼ぶ。APIキーを守るため、サーバーレス関数で中継。</li>
-              <li><b>デバイス</b>本番は専用デバイスを想定し、Blenderで3Dモデルを制作（左の画像）。今はWeb版で検証中。</li>
-            </ul>
-            <p class="tags"><span>TypeScript</span><span>React</span><span>Vite</span><span>IndexedDB</span><span>Gemini API</span><span>Blender</span></p>
-          </div>
-        </article>
-
-        <article class="work">
-          <figure class="work__img"><img src="images/banjirun.jpg" alt="Blenderで制作した部屋のレンダリング" /></figure>
-          <div class="work__body">
-            <p class="work__meta">ゲーム（VR / PC） ・ 2026.10〜 制作中 ・ 個人制作</p>
-            <h3 class="work__title">banjirun</h3>
-            <p class="work__summary">教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。Meta Quest向けのVR版と、Mac / PC版を作っています。</p>
-            <ul class="work__points">
-              <li><b>3D</b>舞台の部屋をBlenderでモデリングし、複数のカメラでレンダリング（左の画像）。</li>
-              <li><b>VR</b>OpenXRとXR Interaction Toolkitで、同じシーンをVRと画面の両方で動かせるようにした。</li>
-              <li><b>演出</b>LED看板の表示をシェーダーで作成。</li>
-            </ul>
-            <p class="tags"><span>Unity 6</span><span>C#</span><span>OpenXR</span><span>Blender</span></p>
-            <p class="work__links"><a href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub →</a></p>
-          </div>
-        </article>
-
-        <article class="work">
-          <figure class="work__img"><img src="images/BOOMTECT-image.jpg" alt="BOOMTECTのゲーム画面" /></figure>
-          <div class="work__body">
-            <p class="work__meta">ゲーム ・ 2025.6 公開</p>
-            <h3 class="work__title">BOOMTECT</h3>
-            <p class="work__summary">学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
-            <ul class="work__points">
-              <li><b>工夫</b>大量の破片が出ても重くならないよう、不要な物理演算を減らし、オブジェクトの管理方法を工夫した。</li>
-            </ul>
-            <p class="tags"><span>Unity</span><span>C#</span></p>
-            <p class="work__links"><a href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ →</a></p>
-          </div>
-        </article>
-
-        <article class="work">
-          <figure class="work__img"><img src="images/Langairy-image.png" alt="Langairyの画面" /></figure>
-          <div class="work__body">
-            <p class="work__meta">iOSアプリ ・ 2026.3 公開</p>
-            <h3 class="work__title">Langairy</h3>
-            <p class="work__summary">日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。企画から App Store の審査・公開まで一人で行いました。</p>
-            <p class="tags"><span>Swift</span><span>SwiftUI</span><span>Gemini API</span></p>
-            <p class="work__links"><a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store →</a></p>
-          </div>
-        </article>
-
-        <h3 class="sub">小さな制作物</h3>
-        <table class="mini">
-          <thead><tr><th>名前</th><th>何を作ったか</th><th>技術</th></tr></thead>
-          <tbody>
-            <tr><td><a href="https://github.com/oriharu-heaven/warp-shader-lab" target="_blank" rel="noopener">Warp Shader Lab</a></td><td>ノイズを使った抽象的なグラフィックを作り、SNS用のサイズで書き出せるWebツール</td><td>JavaScript, WebGL, GLSL</td></tr>
-            <tr><td>aita</td><td>カレンダーの空き時間を探すWebアプリ。「朝は集中」などの自分ルールをAIで整理し、生活リズムを24時間の円で編集できる</td><td>React, TypeScript, Supabase</td></tr>
-            <tr><td><a href="https://github.com/oriharu-heaven/ConfortableYoutube" target="_blank" rel="noopener">Confortable YouTube</a></td><td>ショート動画の非表示や再生速度の自動調整で、YouTubeを見やすくするChrome拡張機能</td><td>JavaScript, Chrome拡張</td></tr>
-            <tr><td>旅のしおり</td><td>旅行の行程と案内をまとめた、贈り物用の一枚のWebページ</td><td>HTML, CSS</td></tr>
-            <tr><td><a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" rel="noopener">このサイト</a></td><td>ポートフォリオ。フレームワークを使わずに作成</td><td>HTML, CSS, JavaScript</td></tr>
-          </tbody>
-        </table>
+  <main id="main">
+    <section class="intro wrap" id="top" aria-labelledby="name">
+      <h1 id="name">折下 陽春<span lang="en">Haru Orishimo</span></h1>
+      <p>東京都立大学 システムデザイン学部 情報科学科 2年（2029年3月卒業予定）</p>
+      <ul class="stats">
+        <li><strong>150<small>名</small></strong>運用中アプリの利用者</li>
+        <li><strong>6</strong>主な制作物</li>
+        <li><strong>93</strong>TOEFL iBT</li>
+        <li><strong>910</strong>TOEIC</li>
+      </ul>
+      <div class="actions">
+        <a class="button button--primary" href="#works">作品を見る</a>
+        <a class="button" href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub</a>
+        <a class="button" href="mailto:hevun0604@gmail.com">メール</a>
       </div>
     </section>
 
-    <!-- ===== Skills ===== -->
-    <section class="sec" id="skills">
+    <section class="section" id="works" aria-labelledby="works-title">
       <div class="wrap">
-        <h2 class="sec__title"><span class="num">02</span>Skills<small>何に使ったか</small></h2>
-        <table class="skills">
-          <tbody>
-            <tr><th>TypeScript / Next.js / Supabase</th><td>サークル練習管理アプリ（画面・API・データベースと権限設定）、aita</td></tr>
-            <tr><th>React / Vite</th><td>ミガキ殿（PWA）、aita</td></tr>
-            <tr><th>Swift / SwiftUI</th><td>Denko（Macアプリ）、Langairy（iOSアプリ）。Life is Tech! で中高生に指導</td></tr>
-            <tr><th>C# / Unity</th><td>banjirun（VR / PC）、BOOMTECT。Life is Tech! で中高生に指導</td></tr>
-            <tr><th>Blender</th><td>banjirun の舞台となる部屋、ミガキ殿のデバイスのモデリングとレンダリング</td></tr>
-            <tr><th>JavaScript / WebGL</th><td>Warp Shader Lab（GLSLシェーダー）、Chrome拡張機能、このサイト</td></tr>
-            <tr><th>生成AI API</th><td>Gemini API を Langairy・ミガキ殿に組み込み。APIキーを隠すためのサーバーレス中継</td></tr>
-            <tr><th>AIエージェントを使った開発</th><td>Claude Code に実装を任せ、仕様書・設計の判断・動作確認を自分で行う形で、サークルアプリなどを開発</td></tr>
-            <tr><th>Git / GitHub</th><td>すべての制作物で使用。Homebrew でのアプリ配布</td></tr>
-            <tr><th>Python</th><td>東京大学 松尾研究室 GCI でデータ分析・機械学習を学習、Kaggle に参加</td></tr>
-            <tr><th>C / C++ / Java</th><td>大学の授業で学習（制作物では未使用）</td></tr>
-            <tr><th>英語</th><td>米国の高校に1年間留学。英語の公式ドキュメントを読んで開発に使っている</td></tr>
-          </tbody>
-        </table>
+        <h2 id="works-title">Works</h2>
+
+        <div class="works">
+          <article class="card" id="ff-portal">
+            <img src="images/ff-portal.jpg" width="1600" height="1200" alt="練習カレンダーと練習室の時間割の画面" loading="lazy">
+            <div class="card__body">
+              <p class="status status--live">運用中</p>
+              <h3>サークル練習管理アプリ</h3>
+              <p>約150名のダンスサークルの練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
+              <p class="meta">Webアプリ<span>2026.9 –</span></p>
+              <ul class="chips" aria-label="使用技術">
+                <li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Vercel</li>
+              </ul>
+              <details>
+                <summary>詳しく見る</summary>
+                <dl class="detail">
+                  <dt>課題</dt>
+                  <dd>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認で、見落としが起きていた。</dd>
+                  <dt>機能</dt>
+                  <dd>練習室ごとの時間割、10分単位の空き部屋申請（重複はDB制約で防止）、出欠回答、鍵の所在共有、カレンダー連携、役職ごとの権限。</dd>
+                  <dt>結果</dt>
+                  <dd>運用開始から約2か月で、ほぼ全員が週3〜4日利用。出欠確認の手間がほぼなくなった。</dd>
+                  <dt>役割</dt>
+                  <dd>仕様書の作成、設計判断、動作確認、改善。実装はClaude Codeを使用。</dd>
+                </dl>
+              </details>
+            </div>
+          </article>
+
+          <article class="card" id="denko">
+            <img src="images/denko.jpg" width="1600" height="1200" alt="メニューバーの電光掲示板表示と、天気・AI利用量のパネル" loading="lazy" class="top">
+            <div class="card__body">
+              <p class="status status--live">公開中</p>
+              <h3>Denko</h3>
+              <p>Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震情報、AIエージェントの作業完了を流れる文字で知らせる。</p>
+              <p class="meta">Macアプリ<span>2026.10 –</span></p>
+              <ul class="chips" aria-label="使用技術">
+                <li>Swift</li><li>SwiftUI</li><li>Homebrew</li>
+              </ul>
+              <details>
+                <summary>詳しく見る</summary>
+                <dl class="detail">
+                  <dt>課題</dt>
+                  <dd>通知やアプリを見に行くたびに作業の集中が切れる。</dd>
+                  <dt>機能</dt>
+                  <dd>気象庁の防災情報XML、天気、交通のオープンデータを取得して1行に統合。CPU・メモリ・AI利用量のパネル。データは端末内で処理。</dd>
+                  <dt>配布</dt>
+                  <dd>Homebrew caskで配布。MITライセンスでソースを公開。</dd>
+                </dl>
+              </details>
+              <div class="links">
+                <a href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="migaki">
+            <img src="images/migaki.jpg" width="1600" height="1100" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" loading="lazy">
+            <div class="card__body">
+              <p class="status status--wip">開発中</p>
+              <h3>ミガキ殿</h3>
+              <p>歯みがきの2分間で気分や体調を記録するサービス。歯ブラシのちょんまげをした「おとのさま」が問いかけ、ダイヤルで答える。</p>
+              <p class="meta">Webアプリ・デバイス<span>2026.9 –</span></p>
+              <ul class="chips" aria-label="使用技術">
+                <li>TypeScript</li><li>React</li><li>IndexedDB</li><li>Gemini API</li><li>Blender</li>
+              </ul>
+              <details>
+                <summary>詳しく見る</summary>
+                <dl class="detail">
+                  <dt>課題</dt>
+                  <dd>日記は続かない。毎日必ずある歯みがきの時間なら記録を習慣にできる。</dd>
+                  <dt>機能</dt>
+                  <dd>過去の回答と比べて普段と違うときだけ追加の質問をする。分析は端末内で行い、記録は外部に送らない。</dd>
+                  <dt>AI</dt>
+                  <dd>求めたときだけGemini APIを呼ぶ。APIキーはサーバーレス関数で中継して秘匿。</dd>
+                  <dt>デバイス</dt>
+                  <dd>本番用の専用デバイスをBlenderでモデリング。現在はWeb版で検証中。</dd>
+                </dl>
+              </details>
+            </div>
+          </article>
+
+          <article class="card" id="banjirun">
+            <img src="images/banjirun.jpg" width="1600" height="1150" alt="Blenderで制作した部屋のレンダリング" loading="lazy">
+            <div class="card__body">
+              <p class="status status--wip">制作中</p>
+              <h3>banjirun</h3>
+              <p>教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。</p>
+              <p class="meta">ゲーム（VR・PC）<span>2026.10 –</span></p>
+              <ul class="chips" aria-label="使用技術">
+                <li>Unity</li><li>C#</li><li>OpenXR</li><li>Blender</li>
+              </ul>
+              <details>
+                <summary>詳しく見る</summary>
+                <dl class="detail">
+                  <dt>3D</dt>
+                  <dd>舞台の部屋をBlenderでモデリングし、複数カメラでレンダリング。</dd>
+                  <dt>VR</dt>
+                  <dd>OpenXRとXR Interaction Toolkitで、同じシーンをMeta QuestとMac・PCで動作。</dd>
+                  <dt>演出</dt>
+                  <dd>LED看板をシェーダーで表現。</dd>
+                </dl>
+              </details>
+              <div class="links">
+                <a href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="boomtect">
+            <img src="images/BOOMTECT-image.jpg" width="1600" height="900" alt="BOOMTECTのゲーム画面" loading="lazy">
+            <div class="card__body">
+              <p class="status status--live">公開中</p>
+              <h3>BOOMTECT</h3>
+              <p>学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
+              <p class="meta">ゲーム（Web）<span>2025.6</span></p>
+              <ul class="chips" aria-label="使用技術">
+                <li>Unity</li><li>C#</li>
+              </ul>
+              <details>
+                <summary>詳しく見る</summary>
+                <dl class="detail">
+                  <dt>工夫</dt>
+                  <dd>大量の破片が出ても重くならないよう、不要な物理演算を削減し、オブジェクトの管理方法を設計。</dd>
+                </dl>
+              </details>
+              <div class="links">
+                <a href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" id="langairy">
+            <img src="images/Langairy-image.png" width="1920" height="1080" alt="Langairyの画面" loading="lazy">
+            <div class="card__body">
+              <p class="status status--live">公開中</p>
+              <h3>Langairy</h3>
+              <p>日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。</p>
+              <p class="meta">iOSアプリ<span>2026.3</span></p>
+              <ul class="chips" aria-label="使用技術">
+                <li>Swift</li><li>SwiftUI</li><li>Gemini API</li>
+              </ul>
+              <div class="links">
+                <a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="subhead" id="more">その他の制作物</h3>
+        <ul class="minis">
+          <li id="warp">
+            <a href="https://github.com/oriharu-heaven/warp-shader-lab" target="_blank" rel="noopener">Warp Shader Lab</a>
+            <p>ノイズで抽象的なグラフィックを生成し、PNGで書き出すWebツール</p>
+            <ul class="chips" aria-label="使用技術"><li>JavaScript</li><li>WebGL</li><li>GLSL</li></ul>
+          </li>
+          <li id="aita">
+            <span>aita</span>
+            <p>カレンダーの空き時間を探し、生活リズムを24時間の円で編集できるWebアプリ</p>
+            <ul class="chips" aria-label="使用技術"><li>React</li><li>TypeScript</li><li>Supabase</li></ul>
+          </li>
+          <li id="youtube">
+            <a href="https://github.com/oriharu-heaven/ConfortableYoutube" target="_blank" rel="noopener">Confortable YouTube</a>
+            <p>ショート動画の非表示や再生速度の自動調整を行うChrome拡張機能</p>
+            <ul class="chips" aria-label="使用技術"><li>JavaScript</li><li>Chrome Extension</li></ul>
+          </li>
+          <li id="portfolio">
+            <a href="https://github.com/oriharu-heaven/Portfolio" target="_blank" rel="noopener">Portfolio</a>
+            <p>このサイト</p>
+            <ul class="chips" aria-label="使用技術"><li>HTML</li><li>CSS</li></ul>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===== Career ===== -->
-    <section class="sec" id="career">
+    <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
-        <h2 class="sec__title"><span class="num">03</span>Career<small>経歴</small></h2>
+        <h2 id="skills-title">Skills</h2>
+        <dl class="skills">
+          <div>
+            <dt>TypeScript・Next.js・Supabase</dt>
+            <dd><a href="#ff-portal">サークル練習管理アプリ</a><a href="#aita">aita</a></dd>
+          </div>
+          <div>
+            <dt>React</dt>
+            <dd><a href="#migaki">ミガキ殿</a><a href="#aita">aita</a></dd>
+          </div>
+          <div>
+            <dt>Swift・SwiftUI</dt>
+            <dd><a href="#denko">Denko</a><a href="#langairy">Langairy</a><span>Life is Tech! で指導</span></dd>
+          </div>
+          <div>
+            <dt>C#・Unity</dt>
+            <dd><a href="#banjirun">banjirun</a><a href="#boomtect">BOOMTECT</a><span>Life is Tech! で指導</span></dd>
+          </div>
+          <div>
+            <dt>Blender</dt>
+            <dd><a href="#banjirun">banjirun</a><a href="#migaki">ミガキ殿</a></dd>
+          </div>
+          <div>
+            <dt>JavaScript・WebGL</dt>
+            <dd><a href="#warp">Warp Shader Lab</a><a href="#youtube">Confortable YouTube</a></dd>
+          </div>
+          <div>
+            <dt>Gemini API</dt>
+            <dd><a href="#migaki">ミガキ殿</a><a href="#langairy">Langairy</a></dd>
+          </div>
+          <div>
+            <dt>Claude Code</dt>
+            <dd><a href="#ff-portal">サークル練習管理アプリ</a><a href="#migaki">ミガキ殿</a></dd>
+          </div>
+          <div>
+            <dt>Python</dt>
+            <dd><span>松尾研 GCI</span><span>Kaggle</span></dd>
+          </div>
+          <div>
+            <dt>C・C++・Java</dt>
+            <dd><span>大学の授業</span></dd>
+          </div>
+          <div>
+            <dt>英語</dt>
+            <dd><span>米国高校留学</span><span>TOEFL iBT 93</span><span>TOEIC 910</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="career" aria-labelledby="career-title">
+      <div class="wrap">
+        <h2 id="career-title">Career</h2>
         <ol class="timeline">
-          <li><time>2023.8 – 2024.6</time><div><h3>米国の高校に1年間留学</h3><p>Rham High School（コネチカット州）。現地の授業を英語で受講。</p></div></li>
-          <li><time>2025.4</time><div><h3>東京都立大学 システムデザイン学部 情報科学科 入学</h3><p>2029年3月卒業予定。</p></div></li>
-          <li><time>2025.6</time><div><h3>BOOMTECT を公開</h3><p>初めて一人で作ったゲームを unityroom で公開。</p></div></li>
-          <li><time>2025.7 –</time><div><h3>Life is Tech! 学生メンター</h3><p>中高生に、Unityでのゲーム開発とSwiftでのiOSアプリ開発を教えている。</p></div></li>
-          <li><time>2025.9</time><div><h3>東京大学 松尾研究室 GCI 修了</h3><p>Pythonでのデータ分析・機械学習を学習。</p></div></li>
-          <li><time>2026.3</time><div><h3>iOSアプリ Langairy を公開</h3><p>App Store の審査を経て公開。</p></div></li>
-          <li><time>2026.9 –</time><div><h3>サークル練習管理アプリの運用を開始</h3><p>約150名が利用。</p></div></li>
-          <li><time>2026.10</time><div><h3>Macアプリ Denko を公開</h3><p>Homebrew で配布。並行して banjirun を制作中。</p></div></li>
+          <li><time datetime="2023-08">2023.8 – 2024.6</time>米国 Rham High School に留学</li>
+          <li><time datetime="2025-04">2025.4</time>東京都立大学 システムデザイン学部 情報科学科 入学</li>
+          <li><time datetime="2025-06">2025.6</time>BOOMTECT 公開</li>
+          <li><time datetime="2025-07">2025.7 –</time>Life is Tech! 学生メンター（Unity・Swift）</li>
+          <li><time datetime="2025-09">2025.9</time>東京大学 松尾研究室 GCI 修了</li>
+          <li><time datetime="2026-03">2026.3</time>Langairy 公開</li>
+          <li><time datetime="2026-09">2026.9 –</time>サークル練習管理アプリ 運用開始</li>
+          <li><time datetime="2026-10">2026.10</time>Denko 公開</li>
         </ol>
       </div>
     </section>
 
-    <!-- ===== About / Contact ===== -->
-    <section class="sec" id="contact">
-      <div class="wrap about">
-        <div>
-          <h2 class="sec__title"><span class="num">04</span>About</h2>
-          <p>好奇心が強く、新しい環境に飛び込むのが好きです。大学からダンスサークルでブレイクダンスをしています。趣味は一人旅、水泳、カメラ。</p>
-          <p>技術そのものより、それで誰かの困りごとが解決することに一番やりがいを感じます。</p>
-        </div>
-        <div>
-          <h2 class="sec__title"><span class="num">05</span>Contact</h2>
-          <p class="contact__mail"><a href="mailto:hevun0604@gmail.com">hevun0604@gmail.com</a></p>
-          <p class="contact__links">
-            <a href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.wantedly.com/id/haru_orishimo" target="_blank" rel="noopener">Wantedly</a>
-            <a href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" rel="noopener">LinkedIn</a>
-          </p>
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Contact</h2>
+        <div class="actions">
+          <a class="button button--primary" href="mailto:hevun0604@gmail.com">hevun0604@gmail.com</a>
+          <a class="button" href="https://github.com/oriharu-heaven" target="_blank" rel="noopener">GitHub</a>
+          <a class="button" href="https://www.wantedly.com/id/haru_orishimo" target="_blank" rel="noopener">Wantedly</a>
+          <a class="button" href="https://www.linkedin.com/in/haru-orishimo-a827573b0/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="foot-line"><p class="foot wrap">© 2026 Haru Orishimo</p></footer>
+  <footer class="footer">
+    <p class="wrap">© 2026 Haru Orishimo</p>
+  </footer>
 </body>
 
 </html>
