@@ -2,10 +2,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const revealItems = document.querySelectorAll(".reveal");
-  const reveal = (el) => {
-    el.classList.add("is-visible");
-    el.dispatchEvent(new CustomEvent("revealed"));
-  };
+  const reveal = (el) => el.classList.add("is-visible");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,7 +61,6 @@
   });
 
   setupSkills();
-  setupBoard();
 
   function setupSkills() {
     const area = document.querySelector(".skills-area");
@@ -181,71 +177,5 @@
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-  }
-
-  function setupBoard() {
-    const board = document.querySelector(".board");
-    if (!board) return;
-    const tiles = Array.from(board.querySelectorAll(".board__tile"));
-    const pawn = board.querySelector(".pawn");
-    const dice = board.querySelector(".dice");
-    const face = board.querySelector(".dice__face");
-    const result = board.querySelector(".dice__result");
-    const faces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
-    const last = tiles.length - 1;
-    const stepTime = reduceMotion ? 0 : 280;
-    let position = 0;
-    let moving = false;
-
-    const place = (index) => {
-      const tile = tiles[index];
-      const boardBox = board.getBoundingClientRect();
-      const box = tile.getBoundingClientRect();
-      pawn.style.transform = `translate(${box.left - boardBox.left + box.width - 30}px, ${box.top - boardBox.top + 10}px)`;
-      tiles.forEach((t, i) => t.classList.toggle("is-current", i === index));
-    };
-
-    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-    const moveTo = async (target) => {
-      if (moving) return;
-      moving = true;
-      dice.disabled = true;
-      const direction = target > position ? 1 : -1;
-      while (position !== target) {
-        position += direction;
-        pawn.classList.remove("is-hopping");
-        void pawn.offsetWidth;
-        pawn.classList.add("is-hopping");
-        place(position);
-        tiles[position].classList.add("is-visited");
-        await wait(stepTime);
-      }
-      moving = false;
-      dice.disabled = false;
-    };
-
-    tiles.forEach((tile, index) => {
-      tile.querySelector(".board__go").addEventListener("click", () => moveTo(index));
-    });
-
-    dice.addEventListener("click", async () => {
-      if (moving) return;
-      const roll = Math.floor(Math.random() * 6) + 1;
-      face.textContent = faces[roll - 1];
-      dice.classList.remove("is-rolling");
-      void dice.offsetWidth;
-      dice.classList.add("is-rolling");
-      const target = position + roll > last ? last - (position + roll - last) : position + roll;
-      result.textContent = `${roll} が出た！`;
-      await wait(reduceMotion ? 0 : 400);
-      await moveTo(target);
-      if (target === last) result.textContent = `${roll} が出た！ NEXT に到着`;
-    });
-
-    pawn.hidden = false;
-    place(0);
-    window.addEventListener("resize", () => place(position));
-    board.addEventListener("revealed", () => moveTo(last - 1), { once: true });
   }
 })();
