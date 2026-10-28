@@ -56,127 +56,168 @@
 
         <div class="works">
           <article class="card reveal" id="ff-portal" style="--i:0">
-            <a class="card__media" href="images/ff-portal-timetable.jpg" aria-label="時間割画面の拡大画像を開く"><img src="images/ff-portal.jpg" width="1600" height="1200" alt="練習カレンダーと練習室の時間割の画面" loading="lazy"></a>
-            <div class="card__body">
+            <button type="button" class="card__open" data-work="ff-portal" aria-haspopup="dialog">
+              <span class="card__media"><img src="images/ff-portal.jpg" width="1600" height="1200" alt="" loading="lazy"></span>
+              <span class="card__body">
+                <span class="status status--live">運用中</span>
+                <span class="card__title">サークル練習管理アプリ</span>
+                <span class="card__summary">約150名のダンスサークルの練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</span>
+                <span class="meta">Webアプリ<span>2026.9 –</span></span>
+              </span>
+            </button>
+            <div class="card__detail" id="detail-ff-portal">
+              <img src="images/ff-portal.jpg" width="1600" height="1200" alt="練習カレンダーと練習室の時間割の画面" loading="lazy">
               <p class="status status--live">運用中</p>
               <h3>サークル練習管理アプリ</h3>
-              <p>約150名のダンスサークルの練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
               <p class="meta">Webアプリ<span>2026.9 –</span></p>
+              <p>約150名のダンスサークルの練習日程・空き部屋の申請・出欠・鍵の受け渡しをまとめたWebアプリ。</p>
+              <dl class="detail">
+                <dt>課題</dt>
+                <dd>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認で、見落としが起きていた。</dd>
+                <dt>機能</dt>
+                <dd>練習室ごとの時間割、10分単位の空き部屋申請（重複はDB制約で防止）、出欠回答、鍵の所在共有、カレンダー連携、役職ごとの権限。</dd>
+                <dt>結果</dt>
+                <dd>運用開始から約2か月で、ほぼ全員が週3〜4日利用。出欠確認の手間がほぼなくなった。</dd>
+                <dt>役割</dt>
+                <dd>企画・仕様・設計から運用・改善まで自分で担当。コーディングにはAIエージェント（Claude Code）を活用。</dd>
+              </dl>
               <ul class="chips" aria-label="使用技術"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Vercel</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>課題</dt>
-                  <dd>練習室の時間割はExcelを画像にしてLINEで共有。出欠は個別確認で、見落としが起きていた。</dd>
-                  <dt>機能</dt>
-                  <dd>練習室ごとの時間割、10分単位の空き部屋申請（重複はDB制約で防止）、出欠回答、鍵の所在共有、カレンダー連携、役職ごとの権限。</dd>
-                  <dt>結果</dt>
-                  <dd>運用開始から約2か月で、ほぼ全員が週3〜4日利用。出欠確認の手間がほぼなくなった。</dd>
-                  <dt>役割</dt>
-                  <dd>企画・仕様・設計から運用・改善まで自分で担当。コーディングにはAIエージェント（Claude Code）を活用。</dd>
-                </dl>
-              </details>
+              <div class="links"><a class="button" href="images/ff-portal-timetable.jpg">画像を拡大</a></div>
             </div>
           </article>
 
           <article class="card reveal" id="denko" style="--i:1">
-            <a class="card__media" href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener" aria-label="DenkoのGitHubリポジトリを開く"><img src="images/denko.jpg" width="1600" height="1200" alt="メニューバーの電光掲示板表示と、天気・AI利用量のパネル" loading="lazy" class="top"></a>
-            <div class="card__body">
+            <button type="button" class="card__open" data-work="denko" aria-haspopup="dialog">
+              <span class="card__media"><img src="images/denko.jpg" width="1600" height="1200" alt="" loading="lazy" class="top"></span>
+              <span class="card__body">
+                <span class="status status--live">公開中</span>
+                <span class="card__title">Denko</span>
+                <span class="card__summary">Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震情報、AIエージェントの作業完了を流れる文字で知らせる。</span>
+                <span class="meta">Macアプリ<span>2026.10 –</span></span>
+              </span>
+            </button>
+            <div class="card__detail" id="detail-denko">
+              <img src="images/denko.jpg" width="1600" height="1200" alt="メニューバーの電光掲示板表示と、天気・AI利用量のパネル" loading="lazy">
               <p class="status status--live">公開中</p>
               <h3>Denko</h3>
-              <p>Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震情報、AIエージェントの作業完了を流れる文字で知らせる。</p>
               <p class="meta">Macアプリ<span>2026.10 –</span></p>
+              <p>Macのメニューバーを駅の電光掲示板にするアプリ。天気、電車の遅延、地震情報、AIエージェントの作業完了を流れる文字で知らせる。</p>
+              <dl class="detail">
+                <dt>課題</dt>
+                <dd>通知やアプリを見に行くたびに作業の集中が切れる。</dd>
+                <dt>機能</dt>
+                <dd>気象庁の防災情報XML、天気、交通のオープンデータを取得して1行に統合。CPU・メモリ・AI利用量のパネル。データは端末内で処理。</dd>
+                <dt>配布</dt>
+                <dd>Homebrew caskで配布。MITライセンスでソースを公開。</dd>
+              </dl>
               <ul class="chips" aria-label="使用技術"><li>Swift</li><li>SwiftUI</li><li>Homebrew</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>課題</dt>
-                  <dd>通知やアプリを見に行くたびに作業の集中が切れる。</dd>
-                  <dt>機能</dt>
-                  <dd>気象庁の防災情報XML、天気、交通のオープンデータを取得して1行に統合。CPU・メモリ・AI利用量のパネル。データは端末内で処理。</dd>
-                  <dt>配布</dt>
-                  <dd>Homebrew caskで配布。MITライセンスでソースを公開。</dd>
-                </dl>
-              </details>
-              <div class="links"><a href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub</a></div>
+              <div class="links"><a class="button" href="https://github.com/oriharu-heaven/Denko" target="_blank" rel="noopener">GitHub</a></div>
             </div>
           </article>
 
           <article class="card reveal" id="migaki" style="--i:2">
-            <a class="card__media" href="images/migaki.jpg" aria-label="ミガキ殿の画像を拡大して開く"><img src="images/migaki.jpg" width="1600" height="1100" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" loading="lazy"></a>
-            <div class="card__body">
+            <button type="button" class="card__open" data-work="migaki" aria-haspopup="dialog">
+              <span class="card__media"><img src="images/migaki.jpg" width="1600" height="1100" alt="" loading="lazy"></span>
+              <span class="card__body">
+                <span class="status status--wip">開発中</span>
+                <span class="card__title">ミガキ殿</span>
+                <span class="card__summary">歯みがきの2分間で気分や体調を記録するサービス。歯ブラシのちょんまげをした「おとのさま」が問いかけ、ダイヤルで答える。</span>
+                <span class="meta">Webアプリ・デバイス<span>2026.9 –</span></span>
+              </span>
+            </button>
+            <div class="card__detail" id="detail-migaki">
+              <img src="images/migaki.jpg" width="1600" height="1100" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" loading="lazy">
               <p class="status status--wip">開発中</p>
               <h3>ミガキ殿</h3>
-              <p>歯みがきの2分間で気分や体調を記録するサービス。歯ブラシのちょんまげをした「おとのさま」が問いかけ、ダイヤルで答える。</p>
               <p class="meta">Webアプリ・デバイス<span>2026.9 –</span></p>
+              <p>歯みがきの2分間で気分や体調を記録するサービス。歯ブラシのちょんまげをした「おとのさま」が問いかけ、ダイヤルで答える。</p>
+              <dl class="detail">
+                <dt>課題</dt>
+                <dd>日記は続かない。毎日必ずある歯みがきの時間なら記録を習慣にできる。</dd>
+                <dt>機能</dt>
+                <dd>過去の回答と比べて普段と違うときだけ追加の質問をする。分析は端末内で行い、記録は外部に送らない。</dd>
+                <dt>AI</dt>
+                <dd>求めたときだけGemini APIを呼ぶ。APIキーはサーバーレス関数で中継して秘匿。</dd>
+                <dt>デバイス</dt>
+                <dd>本番用の専用デバイスをBlenderでモデリング。現在はWeb版で検証中。</dd>
+              </dl>
               <ul class="chips" aria-label="使用技術"><li>TypeScript</li><li>React</li><li>IndexedDB</li><li>Gemini API</li><li>Blender</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>課題</dt>
-                  <dd>日記は続かない。毎日必ずある歯みがきの時間なら記録を習慣にできる。</dd>
-                  <dt>機能</dt>
-                  <dd>過去の回答と比べて普段と違うときだけ追加の質問をする。分析は端末内で行い、記録は外部に送らない。</dd>
-                  <dt>AI</dt>
-                  <dd>求めたときだけGemini APIを呼ぶ。APIキーはサーバーレス関数で中継して秘匿。</dd>
-                  <dt>デバイス</dt>
-                  <dd>本番用の専用デバイスをBlenderでモデリング。現在はWeb版で検証中。</dd>
-                </dl>
-              </details>
+              <div class="links"><a class="button" href="images/migaki.jpg">画像を拡大</a></div>
             </div>
           </article>
 
           <article class="card reveal" id="banjirun" style="--i:0">
-            <a class="card__media" href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener" aria-label="banjirunのGitHubリポジトリを開く"><img src="images/banjirun.jpg" width="1600" height="1150" alt="Blenderで制作した部屋のレンダリング" loading="lazy"></a>
-            <div class="card__body">
+            <button type="button" class="card__open" data-work="banjirun" aria-haspopup="dialog">
+              <span class="card__media"><img src="images/banjirun.jpg" width="1600" height="1150" alt="" loading="lazy"></span>
+              <span class="card__body">
+                <span class="status status--wip">制作中</span>
+                <span class="card__title">banjirun</span>
+                <span class="card__summary">教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。</span>
+                <span class="meta">ゲーム（VR・PC）<span>2026.10 –</span></span>
+              </span>
+            </button>
+            <div class="card__detail" id="detail-banjirun">
+              <img src="images/banjirun.jpg" width="1600" height="1150" alt="Blenderで制作した部屋のレンダリング" loading="lazy">
               <p class="status status--wip">制作中</p>
               <h3>banjirun</h3>
-              <p>教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。</p>
               <p class="meta">ゲーム（VR・PC）<span>2026.10 –</span></p>
+              <p>教室を舞台にしたタイムアタックと、部屋からバンジージャンプする一人称体験のゲーム。</p>
+              <dl class="detail">
+                <dt>3D</dt>
+                <dd>舞台の部屋をBlenderでモデリングし、複数カメラでレンダリング。</dd>
+                <dt>VR</dt>
+                <dd>OpenXRとXR Interaction Toolkitで、同じシーンをMeta QuestとMac・PCで動作。</dd>
+                <dt>演出</dt>
+                <dd>LED看板をシェーダーで表現。</dd>
+              </dl>
               <ul class="chips" aria-label="使用技術"><li>Unity</li><li>C#</li><li>OpenXR</li><li>Blender</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>3D</dt>
-                  <dd>舞台の部屋をBlenderでモデリングし、複数カメラでレンダリング。</dd>
-                  <dt>VR</dt>
-                  <dd>OpenXRとXR Interaction Toolkitで、同じシーンをMeta QuestとMac・PCで動作。</dd>
-                  <dt>演出</dt>
-                  <dd>LED看板をシェーダーで表現。</dd>
-                </dl>
-              </details>
-              <div class="links"><a href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub</a></div>
+              <div class="links"><a class="button" href="https://github.com/oriharu-heaven/banjirun" target="_blank" rel="noopener">GitHub</a></div>
             </div>
           </article>
 
           <article class="card reveal" id="boomtect" style="--i:1">
-            <a class="card__media" href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener" aria-label="unityroomでBOOMTECTを開く"><img src="images/BOOMTECT-image.jpg" width="1600" height="900" alt="BOOMTECTのゲーム画面" loading="lazy"></a>
-            <div class="card__body">
+            <button type="button" class="card__open" data-work="boomtect" aria-haspopup="dialog">
+              <span class="card__media"><img src="images/BOOMTECT-image.jpg" width="1600" height="900" alt="" loading="lazy"></span>
+              <span class="card__body">
+                <span class="status status--live">公開中</span>
+                <span class="card__title">BOOMTECT</span>
+                <span class="card__summary">学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</span>
+                <span class="meta">ゲーム（Web）<span>2025.6</span></span>
+              </span>
+            </button>
+            <div class="card__detail" id="detail-boomtect">
+              <img src="images/BOOMTECT-image.jpg" width="1600" height="900" alt="BOOMTECTのゲーム画面" loading="lazy">
               <p class="status status--live">公開中</p>
               <h3>BOOMTECT</h3>
-              <p>学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
               <p class="meta">ゲーム（Web）<span>2025.6</span></p>
+              <p>学校や職場を舞台に、爆発物で建物を壊していく物理演算パズルゲーム。</p>
+              <dl class="detail">
+                <dt>工夫</dt>
+                <dd>大量の破片が出ても重くならないよう、不要な物理演算を削減し、オブジェクトの管理方法を設計。</dd>
+              </dl>
               <ul class="chips" aria-label="使用技術"><li>Unity</li><li>C#</li></ul>
-              <details>
-                <summary>詳しく見る</summary>
-                <dl class="detail">
-                  <dt>工夫</dt>
-                  <dd>大量の破片が出ても重くならないよう、不要な物理演算を削減し、オブジェクトの管理方法を設計。</dd>
-                </dl>
-              </details>
-              <div class="links"><a href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ</a></div>
+              <div class="links"><a class="button" href="https://unityroom.com/games/boomtect" target="_blank" rel="noopener">unityroomで遊ぶ</a></div>
             </div>
           </article>
 
           <article class="card reveal" id="langairy" style="--i:2">
-            <a class="card__media" href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener" aria-label="App StoreでLangairyを開く"><img src="images/Langairy-image.png" width="1920" height="1080" alt="Langairyの画面" loading="lazy"></a>
-            <div class="card__body">
+            <button type="button" class="card__open" data-work="langairy" aria-haspopup="dialog">
+              <span class="card__media"><img src="images/Langairy-image.png" width="1920" height="1080" alt="" loading="lazy"></span>
+              <span class="card__body">
+                <span class="status status--live">公開中</span>
+                <span class="card__title">Langairy</span>
+                <span class="card__summary">日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。</span>
+                <span class="meta">iOSアプリ<span>2026.3</span></span>
+              </span>
+            </button>
+            <div class="card__detail" id="detail-langairy">
+              <img src="images/Langairy-image.png" width="1920" height="1080" alt="Langairyの画面" loading="lazy">
               <p class="status status--live">公開中</p>
               <h3>Langairy</h3>
-              <p>日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。</p>
               <p class="meta">iOSアプリ<span>2026.3</span></p>
+              <p>日記の文章を自然な英語に言い換える、英語学習用のiOSアプリ。</p>
               <ul class="chips" aria-label="使用技術"><li>Swift</li><li>SwiftUI</li><li>Gemini API</li></ul>
-              <div class="links"><a href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store</a></div>
+              <div class="links"><a class="button" href="https://apps.apple.com/jp/app/langairy/id6760103888" target="_blank" rel="noopener">App Store</a></div>
             </div>
           </article>
         </div>
@@ -210,157 +251,169 @@
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
         <h2 id="skills-title" class="reveal">Skills</h2>
-        <ul class="skills reveal">
+        <div class="skills-area reveal">
+          <ul class="skills">
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="TypeScript" aria-describedby="skill-0"><span class="skill__tile"><img src="images/icons/typescript.svg" width="40" height="40" alt=""></span><span class="skill__name">TypeScript</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-0">
+            <button type="button" class="skill__icon" aria-label="TypeScript" aria-controls="skill-panel" aria-describedby="skill-0"><span class="skill__tile"><img src="images/icons/typescript.svg" width="32" height="32" alt=""></span><span class="skill__name">TypeScript</span></button>
+            <div class="skill__pop" id="skill-0" role="tooltip">
               <p>TypeScript</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki">ミガキ殿</a></li><li><a href="#aita">aita</a></li></ul>
+              <ul><li><a href="#ff-portal" data-open="ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki" data-open="migaki">ミガキ殿</a></li><li><a href="#aita" data-open="aita">aita</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Next.js" aria-describedby="skill-1"><span class="skill__tile"><img src="images/icons/nextjs.svg" width="40" height="40" alt=""></span><span class="skill__name">Next.js</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-1">
+            <button type="button" class="skill__icon" aria-label="Next.js" aria-controls="skill-panel" aria-describedby="skill-1"><span class="skill__tile"><img src="images/icons/nextjs.svg" width="32" height="32" alt=""></span><span class="skill__name">Next.js</span></button>
+            <div class="skill__pop" id="skill-1" role="tooltip">
               <p>Next.js</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li></ul>
+              <ul><li><a href="#ff-portal" data-open="ff-portal">サークル練習管理アプリ</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Supabase" aria-describedby="skill-2"><span class="skill__tile"><img src="images/icons/supabase.svg" width="40" height="40" alt=""></span><span class="skill__name">Supabase</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-2">
+            <button type="button" class="skill__icon" aria-label="Supabase" aria-controls="skill-panel" aria-describedby="skill-2"><span class="skill__tile"><img src="images/icons/supabase.svg" width="32" height="32" alt=""></span><span class="skill__name">Supabase</span></button>
+            <div class="skill__pop" id="skill-2" role="tooltip">
               <p>Supabase</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#aita">aita</a></li></ul>
+              <ul><li><a href="#ff-portal" data-open="ff-portal">サークル練習管理アプリ</a></li><li><a href="#aita" data-open="aita">aita</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="React" aria-describedby="skill-3"><span class="skill__tile"><img src="images/icons/react.svg" width="40" height="40" alt=""></span><span class="skill__name">React</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-3">
+            <button type="button" class="skill__icon" aria-label="React" aria-controls="skill-panel" aria-describedby="skill-3"><span class="skill__tile"><img src="images/icons/react.svg" width="32" height="32" alt=""></span><span class="skill__name">React</span></button>
+            <div class="skill__pop" id="skill-3" role="tooltip">
               <p>React</p>
-              <ul><li><a href="#migaki">ミガキ殿</a></li><li><a href="#aita">aita</a></li></ul>
+              <ul><li><a href="#migaki" data-open="migaki">ミガキ殿</a></li><li><a href="#aita" data-open="aita">aita</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Swift / SwiftUI" aria-describedby="skill-4"><span class="skill__tile"><img src="images/icons/swift.svg" width="40" height="40" alt=""></span><span class="skill__name">Swift / SwiftUI</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-4">
+            <button type="button" class="skill__icon" aria-label="Swift / SwiftUI" aria-controls="skill-panel" aria-describedby="skill-4"><span class="skill__tile"><img src="images/icons/swift.svg" width="32" height="32" alt=""></span><span class="skill__name">Swift / SwiftUI</span></button>
+            <div class="skill__pop" id="skill-4" role="tooltip">
               <p>Swift / SwiftUI</p>
-              <ul><li><a href="#denko">Denko</a></li><li><a href="#langairy">Langairy</a></li><li>Life is Tech! で指導</li></ul>
+              <ul><li><a href="#denko" data-open="denko">Denko</a></li><li><a href="#langairy" data-open="langairy">Langairy</a></li><li>Life is Tech! で指導</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="C#" aria-describedby="skill-5"><span class="skill__tile"><img src="images/icons/csharp.svg" width="40" height="40" alt=""></span><span class="skill__name">C#</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-5">
+            <button type="button" class="skill__icon" aria-label="C#" aria-controls="skill-panel" aria-describedby="skill-5"><span class="skill__tile"><img src="images/icons/csharp.svg" width="32" height="32" alt=""></span><span class="skill__name">C#</span></button>
+            <div class="skill__pop" id="skill-5" role="tooltip">
               <p>C#</p>
-              <ul><li><a href="#banjirun">banjirun</a></li><li><a href="#boomtect">BOOMTECT</a></li></ul>
+              <ul><li><a href="#banjirun" data-open="banjirun">banjirun</a></li><li><a href="#boomtect" data-open="boomtect">BOOMTECT</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Unity" aria-describedby="skill-6"><span class="skill__tile"><img src="images/icons/unity.svg" width="40" height="40" alt=""></span><span class="skill__name">Unity</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-6">
+            <button type="button" class="skill__icon" aria-label="Unity" aria-controls="skill-panel" aria-describedby="skill-6"><span class="skill__tile"><img src="images/icons/unity.svg" width="32" height="32" alt=""></span><span class="skill__name">Unity</span></button>
+            <div class="skill__pop" id="skill-6" role="tooltip">
               <p>Unity</p>
-              <ul><li><a href="#banjirun">banjirun</a></li><li><a href="#boomtect">BOOMTECT</a></li><li>Life is Tech! で指導</li></ul>
+              <ul><li><a href="#banjirun" data-open="banjirun">banjirun</a></li><li><a href="#boomtect" data-open="boomtect">BOOMTECT</a></li><li>Life is Tech! で指導</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Blender" aria-describedby="skill-7"><span class="skill__tile"><img src="images/icons/blender.svg" width="40" height="40" alt=""></span><span class="skill__name">Blender</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-7">
+            <button type="button" class="skill__icon" aria-label="Blender" aria-controls="skill-panel" aria-describedby="skill-7"><span class="skill__tile"><img src="images/icons/blender.svg" width="32" height="32" alt=""></span><span class="skill__name">Blender</span></button>
+            <div class="skill__pop" id="skill-7" role="tooltip">
               <p>Blender</p>
-              <ul><li><a href="#banjirun">banjirun</a></li><li><a href="#migaki">ミガキ殿</a></li></ul>
+              <ul><li><a href="#banjirun" data-open="banjirun">banjirun</a></li><li><a href="#migaki" data-open="migaki">ミガキ殿</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="JavaScript" aria-describedby="skill-8"><span class="skill__tile"><img src="images/icons/javascript.svg" width="40" height="40" alt=""></span><span class="skill__name">JavaScript</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-8">
+            <button type="button" class="skill__icon" aria-label="JavaScript" aria-controls="skill-panel" aria-describedby="skill-8"><span class="skill__tile"><img src="images/icons/javascript.svg" width="32" height="32" alt=""></span><span class="skill__name">JavaScript</span></button>
+            <div class="skill__pop" id="skill-8" role="tooltip">
               <p>JavaScript</p>
-              <ul><li><a href="#warp">Warp Shader Lab</a></li><li><a href="#youtube">Confortable YouTube</a></li><li><a href="#portfolio">このサイト</a></li></ul>
+              <ul><li><a href="#warp" data-open="warp">Warp Shader Lab</a></li><li><a href="#youtube" data-open="youtube">Confortable YouTube</a></li><li><a href="#portfolio" data-open="portfolio">このサイト</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="WebGL / GLSL" aria-describedby="skill-9"><span class="skill__tile"><img src="images/icons/opengl.svg" width="40" height="40" alt=""></span><span class="skill__name">WebGL / GLSL</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-9">
+            <button type="button" class="skill__icon" aria-label="WebGL / GLSL" aria-controls="skill-panel" aria-describedby="skill-9"><span class="skill__tile"><img src="images/icons/opengl.svg" width="32" height="32" alt=""></span><span class="skill__name">WebGL / GLSL</span></button>
+            <div class="skill__pop" id="skill-9" role="tooltip">
               <p>WebGL / GLSL</p>
-              <ul><li><a href="#warp">Warp Shader Lab</a></li></ul>
+              <ul><li><a href="#warp" data-open="warp">Warp Shader Lab</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Gemini API" aria-describedby="skill-10"><span class="skill__tile"><img src="images/icons/gemini.svg" width="40" height="40" alt=""></span><span class="skill__name">Gemini API</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-10">
+            <button type="button" class="skill__icon" aria-label="Gemini API" aria-controls="skill-panel" aria-describedby="skill-10"><span class="skill__tile"><img src="images/icons/gemini.svg" width="32" height="32" alt=""></span><span class="skill__name">Gemini API</span></button>
+            <div class="skill__pop" id="skill-10" role="tooltip">
               <p>Gemini API</p>
-              <ul><li><a href="#migaki">ミガキ殿</a></li><li><a href="#langairy">Langairy</a></li></ul>
+              <ul><li><a href="#migaki" data-open="migaki">ミガキ殿</a></li><li><a href="#langairy" data-open="langairy">Langairy</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Claude Code" aria-describedby="skill-11"><span class="skill__tile"><img src="images/icons/claude.svg" width="40" height="40" alt=""></span><span class="skill__name">Claude Code</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-11">
+            <button type="button" class="skill__icon" aria-label="Claude Code" aria-controls="skill-panel" aria-describedby="skill-11"><span class="skill__tile"><img src="images/icons/claude.svg" width="32" height="32" alt=""></span><span class="skill__name">Claude Code</span></button>
+            <div class="skill__pop" id="skill-11" role="tooltip">
               <p>Claude Code</p>
-              <ul><li><a href="#ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki">ミガキ殿</a></li></ul>
+              <ul><li><a href="#ff-portal" data-open="ff-portal">サークル練習管理アプリ</a></li><li><a href="#migaki" data-open="migaki">ミガキ殿</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Python" aria-describedby="skill-12"><span class="skill__tile"><img src="images/icons/python.svg" width="40" height="40" alt=""></span><span class="skill__name">Python</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-12">
+            <button type="button" class="skill__icon" aria-label="Python" aria-controls="skill-panel" aria-describedby="skill-12"><span class="skill__tile"><img src="images/icons/python.svg" width="32" height="32" alt=""></span><span class="skill__name">Python</span></button>
+            <div class="skill__pop" id="skill-12" role="tooltip">
               <p>Python</p>
               <ul><li>松尾研 GCI</li><li>Kaggle</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="C" aria-describedby="skill-13"><span class="skill__tile"><img src="images/icons/c.svg" width="40" height="40" alt=""></span><span class="skill__name">C</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-13">
+            <button type="button" class="skill__icon" aria-label="C" aria-controls="skill-panel" aria-describedby="skill-13"><span class="skill__tile"><img src="images/icons/c.svg" width="32" height="32" alt=""></span><span class="skill__name">C</span></button>
+            <div class="skill__pop" id="skill-13" role="tooltip">
               <p>C</p>
               <ul><li>大学の授業</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="C++" aria-describedby="skill-14"><span class="skill__tile"><img src="images/icons/cplusplus.svg" width="40" height="40" alt=""></span><span class="skill__name">C++</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-14">
+            <button type="button" class="skill__icon" aria-label="C++" aria-controls="skill-panel" aria-describedby="skill-14"><span class="skill__tile"><img src="images/icons/cplusplus.svg" width="32" height="32" alt=""></span><span class="skill__name">C++</span></button>
+            <div class="skill__pop" id="skill-14" role="tooltip">
               <p>C++</p>
               <ul><li>大学の授業</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Java" aria-describedby="skill-15"><span class="skill__tile"><img src="images/icons/java.svg" width="40" height="40" alt=""></span><span class="skill__name">Java</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-15">
+            <button type="button" class="skill__icon" aria-label="Java" aria-controls="skill-panel" aria-describedby="skill-15"><span class="skill__tile"><img src="images/icons/java.svg" width="32" height="32" alt=""></span><span class="skill__name">Java</span></button>
+            <div class="skill__pop" id="skill-15" role="tooltip">
               <p>Java</p>
               <ul><li>大学の授業</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="Git" aria-describedby="skill-16"><span class="skill__tile"><img src="images/icons/git.svg" width="40" height="40" alt=""></span><span class="skill__name">Git</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-16">
+            <button type="button" class="skill__icon" aria-label="Git" aria-controls="skill-panel" aria-describedby="skill-16"><span class="skill__tile"><img src="images/icons/git.svg" width="32" height="32" alt=""></span><span class="skill__name">Git</span></button>
+            <div class="skill__pop" id="skill-16" role="tooltip">
               <p>Git</p>
               <ul><li>すべての制作物</li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="GitHub" aria-describedby="skill-17"><span class="skill__tile"><img src="images/icons/github.svg" width="40" height="40" alt=""></span><span class="skill__name">GitHub</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-17">
+            <button type="button" class="skill__icon" aria-label="GitHub" aria-controls="skill-panel" aria-describedby="skill-17"><span class="skill__tile"><img src="images/icons/github.svg" width="32" height="32" alt=""></span><span class="skill__name">GitHub</span></button>
+            <div class="skill__pop" id="skill-17" role="tooltip">
               <p>GitHub</p>
-              <ul><li>すべての制作物</li><li><a href="#denko">Homebrew配布</a></li></ul>
+              <ul><li>すべての制作物</li><li><a href="#denko" data-open="denko">Homebrew配布</a></li></ul>
             </div>
           </li>
           <li class="skill">
-            <button type="button" class="skill__icon" aria-label="English" aria-describedby="skill-18"><span class="skill__tile"><span class="skill__mono" aria-hidden="true">EN</span></span><span class="skill__name">English</span></button>
-            <div class="skill__pop" role="tooltip" id="skill-18">
+            <button type="button" class="skill__icon" aria-label="English" aria-controls="skill-panel" aria-describedby="skill-18"><span class="skill__tile"><span class="skill__mono" aria-hidden="true">EN</span></span><span class="skill__name">English</span></button>
+            <div class="skill__pop" id="skill-18" role="tooltip">
               <p>English</p>
               <ul><li>TOEFL iBT 93</li><li>TOEIC 910</li><li>米国の高校に1年間留学</li></ul>
             </div>
           </li>
-        </ul>
+          </ul>
+          <div class="skill-panel" id="skill-panel" aria-live="polite" hidden></div>
+        </div>
       </div>
     </section>
 
     <section class="section" id="career" aria-labelledby="career-title">
       <div class="wrap">
         <h2 id="career-title" class="reveal">Career</h2>
-        <ol class="timeline">
-          <li class="reveal" style="--i:0"><span class="timeline__step" aria-hidden="true">1</span><time datetime="2023-08">2023.8 – 2024.6</time><p>米国 Rham High School に留学</p></li>
-          <li class="reveal" style="--i:1"><span class="timeline__step" aria-hidden="true">2</span><time datetime="2025-04">2025.4</time><p>東京都立大学 システムデザイン学部 情報科学科 入学</p></li>
-          <li class="reveal" style="--i:2"><span class="timeline__step" aria-hidden="true">3</span><time datetime="2025-06">2025.6</time><p>BOOMTECT 公開</p></li>
-          <li class="reveal" style="--i:3"><span class="timeline__step" aria-hidden="true">4</span><time datetime="2025-07">2025.7 –</time><p>Life is Tech! 学生メンター（Unity・Swiftを指導）</p></li>
-          <li class="reveal" style="--i:0"><span class="timeline__step" aria-hidden="true">5</span><time datetime="2025-09">2025.9</time><p>東京大学 松尾研究室 GCI 修了</p></li>
-          <li class="reveal" style="--i:1"><span class="timeline__step" aria-hidden="true">6</span><time datetime="2026-03">2026.3</time><p>Langairy 公開</p></li>
-          <li class="reveal" style="--i:2"><span class="timeline__step" aria-hidden="true">7</span><time datetime="2026-09">2026.9 –</time><p>サークル練習管理アプリ 運用開始</p></li>
-          <li class="reveal" style="--i:3"><span class="timeline__step" aria-hidden="true">8</span><time datetime="2026-10">2026.10</time><p>Denko 公開</p></li>
-        </ol>
+        <div class="board reveal">
+          <ol class="board__path">
+            <li class="board__tile board__tile--start"><button type="button" class="board__go" aria-label="STARTへ戻る"></button><span class="board__label">START</span></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="1マス目へ進む"></button><span class="board__no" aria-hidden="true">1</span><time datetime="2023-08">2023.8 – 2024.6</time><p>米国 Rham High School に留学</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="2マス目へ進む"></button><span class="board__no" aria-hidden="true">2</span><time datetime="2025-04">2025.4</time><p>東京都立大学 システムデザイン学部 情報科学科 入学</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="3マス目へ進む"></button><span class="board__no" aria-hidden="true">3</span><time datetime="2025-06">2025.6</time><p>BOOMTECT 公開</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="4マス目へ進む"></button><span class="board__no" aria-hidden="true">4</span><time datetime="2025-07">2025.7 –</time><p>Life is Tech! 学生メンター（Unity・Swiftを指導）</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="5マス目へ進む"></button><span class="board__no" aria-hidden="true">5</span><time datetime="2025-09">2025.9</time><p>東京大学 松尾研究室 GCI 修了</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="6マス目へ進む"></button><span class="board__no" aria-hidden="true">6</span><time datetime="2026-03">2026.3</time><p>Langairy 公開</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="7マス目へ進む"></button><span class="board__no" aria-hidden="true">7</span><time datetime="2026-09">2026.9 –</time><p>サークル練習管理アプリ 運用開始</p></li>
+            <li class="board__tile"><button type="button" class="board__go" aria-label="8マス目へ進む"></button><span class="board__no" aria-hidden="true">8</span><time datetime="2026-10">2026.10</time><p>Denko 公開</p></li>
+            <li class="board__tile board__tile--next"><button type="button" class="board__go" aria-label="NEXTへ進む"></button><span class="board__label">NEXT</span><p>実務の現場で、次のマスへ</p></li>
+          </ol>
+          <span class="pawn" aria-hidden="true"></span>
+          <div class="board__controls">
+            <button type="button" class="button dice" aria-describedby="dice-result"><span class="dice__face" aria-hidden="true">⚀</span>サイコロを振る</button>
+            <p class="dice__result" id="dice-result" aria-live="polite"></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -376,6 +429,13 @@
       </div>
     </section>
   </main>
+
+  <dialog class="modal" id="work-dialog" aria-label="作品の詳細">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="閉じる">×</button>
+      <div class="modal__content"></div>
+    </div>
+  </dialog>
 
   <footer class="footer">
     <p class="wrap">© 2026 Haru Orishimo</p>
