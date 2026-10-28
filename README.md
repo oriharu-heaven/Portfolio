@@ -14,7 +14,7 @@ https://oriharu-heaven.github.io/Portfolio/
 
 ## Site
 
-HTML と CSS のみで構築しています（JavaScript 不使用）。
+HTML / CSS と少量の JavaScript で構築しています。アイコンは devicon を同梱しています。
 
 ## Contact
 
