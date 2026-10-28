@@ -45,7 +45,6 @@
         <div><dt>運用中のWebアプリ</dt><dd>利用者 約150名</dd></div>
         <div><dt>公開した作品</dt><dd>App Store / Homebrew / unityroom</dd></div>
         <div><dt>英語</dt><dd>TOEFL iBT 93 / TOEIC 910</dd></div>
-        <div><dt>稼働</dt><dd>週15〜20時間・1年以上</dd></div>
       </dl>
 
       <p class="intro__links">
@@ -77,7 +76,7 @@
         </article>
 
         <article class="work">
-          <figure class="work__img"><img src="images/denko.svg" alt="Denkoのイメージ図" /><figcaption>※ イメージ図</figcaption></figure>
+          <figure class="work__img"><img src="images/denko.jpg" alt="Denkoの電光掲示板表示とメニュー画面" /></figure>
           <div class="work__body">
             <p class="work__meta">Macアプリ ・ 2026.10 公開（ベータ版）</p>
             <h3 class="work__title">Denko</h3>
@@ -93,17 +92,18 @@
         </article>
 
         <article class="work">
-          <figure class="work__img"><img src="images/migaki.jpg" alt="ミガキ殿のホーム画面と回答画面" /></figure>
+          <figure class="work__img"><img src="images/migaki.jpg" alt="おとのさまのデバイスの3Dモデルと、Web版のホーム画面・回答画面" /></figure>
           <div class="work__body">
             <p class="work__meta">Webアプリ（PWA） ・ 2026.9〜 開発中</p>
             <h3 class="work__title">ミガキ殿</h3>
-            <p class="work__summary">歯みがきの2分間で、その日の気分や体調を記録するアプリ。ちょんまげが歯ブラシの「おとのさま」が問いかけ、1〜10のダイヤルで答えます。</p>
+            <p class="work__summary">歯みがきの2分間で、その日の気分や体調を記録するサービス。ちょんまげが歯ブラシの「おとのさま」が問いかけ、1〜10のダイヤルで答えます。</p>
             <ul class="work__points">
               <li><b>きっかけ</b>日記は続かないが、毎日必ずある歯みがきの時間なら習慣にできると考えた。</li>
               <li><b>工夫</b>過去の自分の回答と比べて「いつもと違う」ときだけ、追加で1問たずねる。分析は端末内で行い、記録を外に送らない。</li>
               <li><b>AI</b>「殿に聞く」を押したときだけGemini APIを呼ぶ。APIキーを守るため、サーバーレス関数で中継。</li>
+              <li><b>デバイス</b>本番は専用デバイスを想定し、Blenderで3Dモデルを制作（左の画像）。今はWeb版で検証中。</li>
             </ul>
-            <p class="tags"><span>TypeScript</span><span>React</span><span>Vite</span><span>IndexedDB</span><span>Gemini API</span></p>
+            <p class="tags"><span>TypeScript</span><span>React</span><span>Vite</span><span>IndexedDB</span><span>Gemini API</span><span>Blender</span></p>
           </div>
         </article>
 
@@ -172,7 +172,7 @@
             <tr><th>React / Vite</th><td>ミガキ殿（PWA）、aita</td></tr>
             <tr><th>Swift / SwiftUI</th><td>Denko（Macアプリ）、Langairy（iOSアプリ）。Life is Tech! で中高生に指導</td></tr>
             <tr><th>C# / Unity</th><td>banjirun（VR / PC）、BOOMTECT。Life is Tech! で中高生に指導</td></tr>
-            <tr><th>Blender</th><td>banjirun の舞台となる部屋のモデリングとレンダリング</td></tr>
+            <tr><th>Blender</th><td>banjirun の舞台となる部屋、ミガキ殿のデバイスのモデリングとレンダリング</td></tr>
             <tr><th>JavaScript / WebGL</th><td>Warp Shader Lab（GLSLシェーダー）、Chrome拡張機能、このサイト</td></tr>
             <tr><th>生成AI API</th><td>Gemini API を Langairy・ミガキ殿に組み込み。APIキーを隠すためのサーバーレス中継</td></tr>
             <tr><th>AIエージェントを使った開発</th><td>Claude Code に実装を任せ、仕様書・設計の判断・動作確認を自分で行う形で、サークルアプリなどを開発</td></tr>

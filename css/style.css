@@ -34,7 +34,7 @@ img { display: block; max-width: 100%; height: auto; }
 .intro__name span { display: block; font-family: var(--mono); font-size: 16px; font-weight: 400; letter-spacing: .08em; color: var(--sub); margin-top: 12px; }
 .intro__lead { font-size: clamp(22px, 3.2vw, 32px); font-weight: 700; line-height: 1.5; }
 .intro__text { max-width: 640px; margin-top: 20px; color: var(--sub); }
-.facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; border-top: 2px solid var(--ink); }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 48px; border-top: 2px solid var(--ink); }
 .facts div { padding: 16px 16px 0 0; }
 .facts div + div { padding-left: 16px; border-left: 1px solid var(--line); }
 .facts dt { font-size: 12px; color: var(--sub); }
@@ -108,7 +108,7 @@ th, td { text-align: left; vertical-align: top; padding: 14px 16px 14px 0; borde
   .top__nav { gap: 12px; font-size: 12px; }
   .top__name { font-size: 13px; }
   .intro { padding-top: 56px; padding-bottom: 64px; }
-  .facts { grid-template-columns: 1fr 1fr; }
+  .facts { grid-template-columns: 1fr; }
   .facts div, .facts div + div { padding: 14px 8px 14px 0; border-left: none; border-bottom: 1px solid var(--line); }
   .sec { padding: 64px 0; }
   .sec__title { font-size: 26px; margin-bottom: 32px; flex-wrap: wrap; }
