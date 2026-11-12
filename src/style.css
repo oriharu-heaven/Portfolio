@@ -1,0 +1,16 @@
+:root {
+  font-family: "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+  line-height: 1.8;
+  color: #1c1a22;
+  background: #f2f1f5;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 16px;
+}
